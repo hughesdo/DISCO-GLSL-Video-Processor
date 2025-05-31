@@ -10,6 +10,10 @@
 This was an experiment in *vibe coding*.  
 All credit for the original shader goes to [ScratchDev on ShaderToy](https://www.shadertoy.com/view/mdcBRl), created on 2023-10-17. I was merely poking around, seeing if layering vibe-driven tweaks could make it more interesting. It was mostly a failed attempt — but sometimes failure teaches us what not to do, and that’s still a step forward.
 
+## 🎬 Preview
+
+[![Watch the preview on YouTube](https://img.youtube.com/vi/zvIya7i-uOA/hqdefault.jpg)](https://youtu.be/zvIya7i-uOA)
+
 ---
 
 ## 🌟 Overview
