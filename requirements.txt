@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+moderngl
+librosa
+numpy
+pillow
+imageio
+ffmpeg-python
+python-multipart
+aiofiles

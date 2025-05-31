@@ -1,0 +1,68 @@
+{
+  "After EffectsTik Tok Edit.glsl": {
+    "uniforms": {
+      "progress": 0.5,
+      "raySamples": 120.0,
+      "saturation": 0.8,
+      "baseIntensity": 1.0,
+      "colorShift": 0.0,
+      "waveAmplitude": 1.0,
+      "pulseSpeed": 1.0
+    },
+    "audioEffects": [
+      "progress",
+      "raySamples", 
+      "saturation",
+      "baseIntensity",
+      "colorShift",
+      "waveAmplitude",
+      "pulseSpeed"
+    ]
+  },
+  "DiscoLights.glsl": {
+    "uniforms": {
+      "lightIntensity": 1.0,
+      "colorRotation": 0.0,
+      "strobeRate": 0.0,
+      "bloomStrength": 0.5
+    },
+    "audioEffects": [
+      "lightIntensity",
+      "colorRotation", 
+      "strobeRate",
+      "bloomStrength"
+    ]
+  },
+  "WaveDistortion.glsl": {
+    "uniforms": {
+      "waveFrequency": 10.0,
+      "waveAmplitude": 0.1,
+      "distortionStrength": 0.5,
+      "colorMix": 0.0
+    },
+    "audioEffects": [
+      "waveFrequency",
+      "waveAmplitude",
+      "distortionStrength",
+      "colorMix"
+    ]
+  },
+  "ParticleSystem.glsl": {
+    "uniforms": {
+      "particleCount": 50.0,
+      "particleSize": 2.0,
+      "particleSpeed": 1.0,
+      "energyLevel": 0.0,
+      "colorSpectrum": 0.0,
+      "explosionForce": 0.0
+    },
+    "audioEffects": [
+      "particleCount",
+      "particleSize", 
+      "particleSpeed",
+      "energyLevel",
+      "colorSpectrum",
+      "explosionForce"
+    ]
+  }
+}

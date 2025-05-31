@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GLSL Shader Video Processor</title>
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    label, select, input[type=file], button {
+      display: block;
+      margin: 10px 0;
+    }
+    canvas {
+      display: block;
+      margin-top: 20px;
+      border: 1px solid #444;
+    }
+
+    .section {
+      border: 1px solid #444;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 5px;
+      background-color: #1a1a1a;
+    }
+    .section h2 {
+      margin-top: 0;
+      color: #2196F3;
+    }
+  </style>
+</head>
+<body>
+  <h1>GLSL Shader Video Processor</h1>
+  
+  <div class="section">
+    <h2>Required Files</h2>
+    <label>Input Video File:
+      <input type="file" id="videoFile" accept="video/*">
+    </label>
+
+    <label>Input Audio File (Full Mix):
+      <input type="file" id="audioFile" accept="audio/*">
+    </label>
+
+    <label>Select Shader:
+      <select id="shaderSelect">
+        <option value="">-- Select Shader --</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="section">
+    <h2>Shader Uniforms</h2>
+    <div id="uniformsBox"></div>
+  </div>
+
+
+
+  <button onclick="startRender()" style="background-color: #4CAF50; color: white; padding: 15px 30px; font-size: 16px; border: none; border-radius: 5px; cursor: pointer; margin-top: 20px;">Render Video</button>
+
+  <!-- Progress Section -->
+  <div id="progressSection" style="display: none; margin-top: 20px;">
+    <div class="section">
+      <h2>Rendering Progress</h2>
+      <div style="background-color: #333; border-radius: 10px; padding: 3px; margin: 10px 0;">
+        <div id="progressBar" style="background-color: #4CAF50; height: 20px; border-radius: 7px; width: 0%; transition: width 0.3s ease;"></div>
+      </div>
+      <p id="progressText">Initializing...</p>
+      <p id="progressDetails" style="color: #888; font-size: 14px;"></p>
+    </div>
+  </div>
+
+  <!-- Video Player Section -->
+  <div id="videoSection" style="display: none; margin-top: 20px;">
+    <div class="section">
+      <h2>Rendered Video</h2>
+      <video id="videoPlayer" controls style="width: 100%; max-width: 800px; border-radius: 5px;">
+        Your browser does not support the video tag.
+      </video>
+      <div style="margin-top: 15px;">
+        <button id="downloadBtn" onclick="downloadVideo()" style="background-color: #2196F3; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-right: 10px;">
+          Download Video
+        </button>
+        <button onclick="resetInterface()" style="background-color: #666; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+          Process Another Video
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="glCanvas" width="1280" height="720" style="display: none;"></canvas>
+
+  <script>
+    let shaders = [];
+    let shaderConfig = {};
+    let currentVideoBlob = null;
+    let progressInterval = null;
+    const shaderSelect = document.getElementById("shaderSelect");
+    const uniformsBox = document.getElementById("uniformsBox");
+
+    // Load shaders and configuration
+    fetch("/shaders/list")
+      .then(r => r.json())
+      .then(list => {
+        shaders = list;
+        for (let shader of list) {
+          const opt = document.createElement("option");
+          opt.value = shader;
+          opt.textContent = shader.replace('.glsl', '');
+          shaderSelect.appendChild(opt);
+        }
+        return fetch("/shaders/config")
+      })
+      .then(r => r.json())
+      .then(cfg => {
+        shaderConfig = cfg;
+        updateUniformUI();
+      });
+
+    shaderSelect.onchange = () => {
+      updateUniformUI();
+    };
+
+    function updateUniformUI() {
+      uniformsBox.innerHTML = '';
+      const sel = shaderSelect.value;
+      if (!sel) return;
+      
+      const config = shaderConfig[sel]?.uniforms || {};
+      if (Object.keys(config).length === 0) {
+        uniformsBox.innerHTML = '<p style="color: #666;">No configurable uniforms for this shader.</p>';
+        return;
+      }
+
+      for (let [key, val] of Object.entries(config)) {
+        let label = document.createElement("label");
+        label.textContent = key + ":";
+        let input = document.createElement("input");
+        input.id = "uniform_" + key;
+        input.value = val;
+        input.style.width = "300px";
+        input.type = "number";
+        input.step = "0.01";
+        label.appendChild(input);
+        uniformsBox.appendChild(label);
+      }
+    }
+
+
+
+    function startRender() {
+      const videoFile = document.getElementById("videoFile").files[0];
+      const audioFile = document.getElementById("audioFile").files[0];
+      const shaderName = shaderSelect.value;
+      
+      if (!videoFile || !audioFile || !shaderName) {
+        return alert("Please select video file, audio file, and shader.");
+      }
+
+      const formData = new FormData();
+      formData.append("video", videoFile);
+      formData.append("audio", audioFile);
+      formData.append("shader", shaderName);
+
+      // Add uniform values
+      const config = shaderConfig[shaderName]?.uniforms || {};
+      for (let key in config) {
+        const input = document.getElementById("uniform_" + key);
+        if (input) {
+          formData.append("uniform_" + key, input.value);
+        }
+      }
+
+
+
+      // Show progress section and hide other sections
+      document.getElementById('progressSection').style.display = 'block';
+      document.getElementById('videoSection').style.display = 'none';
+
+      // Show loading state
+      const button = event.target;
+      const originalText = button.textContent;
+      button.textContent = "Processing...";
+      button.disabled = true;
+
+      // Start progress tracking
+      startProgressTracking();
+
+      fetch("/process", {
+        method: "POST",
+        body: formData
+      }).then(res => {
+        if (!res.ok) {
+          return res.text().then(text => {
+            throw new Error(`Server error: ${text}`);
+          });
+        }
+        return res.blob();
+      }).then(blob => {
+        // Stop progress tracking
+        stopProgressTracking();
+
+        // Store the video blob
+        currentVideoBlob = blob;
+
+        // Show video player
+        showVideoPlayer(blob);
+
+        // Hide progress section
+        document.getElementById('progressSection').style.display = 'none';
+
+      }).catch(err => {
+        stopProgressTracking();
+        document.getElementById('progressSection').style.display = 'none';
+        alert("Error: " + err.message);
+      }).finally(() => {
+        button.textContent = originalText;
+        button.disabled = false;
+      });
+    }
+
+    // Audio Reactivity Functions
+    function updateReactivitySettings() {
+      const preset = document.getElementById('reactivityPreset').value;
+      const customControls = document.getElementById('customReactivityControls');
+
+      if (preset === 'custom') {
+        customControls.style.display = 'block';
+      } else {
+        customControls.style.display = 'none';
+
+        // Apply preset values
+        const presets = {
+          subtle: { beat: 0.5, bass: 0.7, mid: 0.5, treble: 0.3 },
+          moderate: { beat: 1.0, bass: 1.0, mid: 1.0, treble: 1.0 },
+          intense: { beat: 1.8, bass: 1.5, mid: 1.3, treble: 1.2 }
+        };
+
+        if (presets[preset]) {
+          const p = presets[preset];
+          document.getElementById('beatSensitivity').value = p.beat;
+          document.getElementById('bassResponse').value = p.bass;
+          document.getElementById('midResponse').value = p.mid;
+          document.getElementById('trebleResponse').value = p.treble;
+          updateSliderValues();
+        }
+      }
+    }
+
+    function updateSliderValues() {
+      document.getElementById('beatSensitivityValue').textContent =
+        document.getElementById('beatSensitivity').value;
+      document.getElementById('bassResponseValue').textContent =
+        document.getElementById('bassResponse').value;
+      document.getElementById('midResponseValue').textContent =
+        document.getElementById('midResponse').value;
+      document.getElementById('trebleResponseValue').textContent =
+        document.getElementById('trebleResponse').value;
+    }
+
+    // Setup slider event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+      ['beatSensitivity', 'bassResponse', 'midResponse', 'trebleResponse'].forEach(id => {
+        const slider = document.getElementById(id);
+        if (slider) {
+          slider.addEventListener('input', updateSliderValues);
+        }
+      });
+
+      // Advanced audio toggle
+      const advancedCheckbox = document.getElementById('useAdvancedAudio');
+      const advancedControls = document.getElementById('advancedAudioControls');
+
+      if (advancedCheckbox && advancedControls) {
+        advancedCheckbox.addEventListener('change', function() {
+          advancedControls.style.display = this.checked ? 'block' : 'none';
+        });
+      }
+    });
+
+    // Progress tracking functions
+    function startProgressTracking() {
+      let progress = 0;
+      const progressBar = document.getElementById('progressBar');
+      const progressText = document.getElementById('progressText');
+      const progressDetails = document.getElementById('progressDetails');
+
+      // Simulate progress (since we don't have real-time progress from server yet)
+      progressInterval = setInterval(() => {
+        progress += Math.random() * 2;
+        if (progress > 95) progress = 95; // Don't go to 100% until actually done
+
+        progressBar.style.width = progress + '%';
+
+        if (progress < 20) {
+          progressText.textContent = 'Extracting video frames...';
+          progressDetails.textContent = 'Breaking down your video into individual frames';
+        } else if (progress < 40) {
+          progressText.textContent = 'Analyzing audio frequencies...';
+          progressDetails.textContent = 'Processing audio for beat detection and frequency analysis';
+        } else if (progress < 80) {
+          progressText.textContent = 'Rendering shader effects...';
+          progressDetails.textContent = 'Applying trippy visual effects to each frame';
+        } else {
+          progressText.textContent = 'Combining final video...';
+          progressDetails.textContent = 'Merging processed frames with audio';
+        }
+      }, 500);
+    }
+
+    function stopProgressTracking() {
+      if (progressInterval) {
+        clearInterval(progressInterval);
+        progressInterval = null;
+      }
+
+      // Complete the progress bar
+      document.getElementById('progressBar').style.width = '100%';
+      document.getElementById('progressText').textContent = 'Processing complete!';
+      document.getElementById('progressDetails').textContent = 'Your trippy video is ready!';
+    }
+
+    function showVideoPlayer(blob) {
+      const videoSection = document.getElementById('videoSection');
+      const videoPlayer = document.getElementById('videoPlayer');
+
+      // Create object URL for the video
+      const videoUrl = URL.createObjectURL(blob);
+      videoPlayer.src = videoUrl;
+
+      // Show the video section
+      videoSection.style.display = 'block';
+
+      // Scroll to video
+      videoSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function downloadVideo() {
+      if (currentVideoBlob) {
+        const url = URL.createObjectURL(currentVideoBlob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'disco_trippy_video.mp4';
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+    }
+
+    function resetInterface() {
+      // Hide video and progress sections
+      document.getElementById('videoSection').style.display = 'none';
+      document.getElementById('progressSection').style.display = 'none';
+
+      // Reset form
+      document.getElementById('videoFile').value = '';
+      document.getElementById('audioFile').value = '';
+      document.getElementById('shaderSelect').value = '';
+
+      // Reset advanced audio controls
+      document.getElementById('useAdvancedAudio').checked = false;
+      document.getElementById('advancedAudioControls').style.display = 'none';
+
+      // Clear video blob
+      if (currentVideoBlob) {
+        URL.revokeObjectURL(currentVideoBlob);
+        currentVideoBlob = null;
+      }
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+  </script>
+</body>
+</html>
