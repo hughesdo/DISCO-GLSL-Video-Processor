@@ -1,0 +1,29 @@
+3DRaymarching1 & 2
+https://www.shadertoy.com/view/mlX3Rf
+
+After EffectsTik Tok Edit   & Rays:
+https://www.shadertoy.com/view/mdcBRl
+
+
+TVZoom inspired by:
+https://www.shadertoy.com/view/lsGGzW
+Video on Tablet - Created by TambakoJagua
+"Video on Tablet" by Emmanuel Keller aka Tambako - January 2016
+License Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+Contact: tamby@tambako.ch
+
+
+RayBalls inspired by:
+https://glslsandbox.com/e#27338.10
+// Voronoi Variation
+By: Brandon Fogerty
+bfogerty at gmail dot com
+xdpixel.com
+
+
+Webby:
+https://www.shadertoy.com/view/t3s3D4
+
+Video Filters:
+https://www.shadertoy.com/view/XsX3z8
+

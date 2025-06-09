@@ -8,12 +8,14 @@ import tempfile
 import subprocess
 import shutil
 import logging
+import json
 
 logger = logging.getLogger(__name__)
 
 class ShaderVideoProcessor:
     def __init__(self, video_path, audio_path, shader_path, output_path,
-                 extra_uniforms={}):
+                 extra_uniforms={}, progress_tracker=None, audio_settings=None,
+                 max_frames=None):
         """
         Initialize the shader video processor.
 
@@ -23,16 +25,76 @@ class ShaderVideoProcessor:
             shader_path: Path to GLSL shader file
             output_path: Path for output video
             extra_uniforms: Dict of uniform name -> value for shader
+            progress_tracker: Optional progress tracker for real-time updates
+            audio_settings: Dict with audio reactivity settings
+            max_frames: Optional limit on number of frames to process (for preview mode)
         """
         self.video_path = Path(video_path)
         self.audio_path = Path(audio_path)
         self.shader_path = Path(shader_path)
         self.output_path = Path(output_path)
         self.extra_uniforms = extra_uniforms
-        self.resolution = (1280, 720)
+        self.progress_tracker = progress_tracker
+        self.max_frames = max_frames  # For preview mode
+        self.base_resolution = (1280, 720)
         self.frame_rate = 30
-        
-        # Create OpenGL context
+
+        # Screen shake settings for EasyBeats shader (define first)
+        self.enable_screen_shake = True
+        self.shake_oversample = 1.2  # Render 20% larger to compensate for shake
+
+        # Audio reactivity settings with defaults
+        self.audio_settings = audio_settings or {
+            'beat_sensitivity': 1.0,
+            'bass_response': 1.0,
+            'mid_response': 1.0,
+            'treble_response': 1.0,
+            'reactivity_preset': 'moderate'
+        }
+
+        # Load shader configuration for texture support
+        self.shader_config = self._load_shader_config()
+
+        # Initialize texture cache for static textures
+        self.texture_cache = {}
+
+        # Check if this is a screen shake shader that needs oversized rendering
+        self.needs_oversized_rendering = self._check_if_shake_shader()
+        if self.needs_oversized_rendering:
+            # Render 20% larger to compensate for shake displacement
+            self.resolution = (int(self.base_resolution[0] * self.shake_oversample),
+                             int(self.base_resolution[1] * self.shake_oversample))
+            logger.info(f"Using oversized rendering for screen shake: {self.resolution}")
+        else:
+            self.resolution = self.base_resolution
+
+    def _load_shader_config(self):
+        """Load shader configuration for texture and uniform information"""
+        try:
+            config_path = Path("Shaders/shader_config.json")
+            if config_path.exists():
+                with open(config_path, 'r') as f:
+                    config = json.load(f)
+                shader_name = self.shader_path.name
+                if shader_name in config:
+                    logger.info(f"Loaded configuration for shader: {shader_name}")
+                    return config[shader_name]
+                else:
+                    logger.info(f"No specific configuration found for shader: {shader_name}")
+            else:
+                logger.warning("Shader configuration file not found")
+        except Exception as e:
+            logger.warning(f"Failed to load shader configuration: {e}")
+        return {}
+
+    def _check_if_shake_shader(self):
+        """Check if the current shader needs oversized rendering for screen shake"""
+        shader_name = self.shader_path.name
+        shake_shaders = ['EasyBeats.glsl', 'BeatDropShake.glsl', 'CameraShake.glsl']
+        return shader_name in shake_shaders
+
+    def _init_opengl_context(self):
+        """Initialize OpenGL context"""
         try:
             self.ctx = moderngl.create_standalone_context()
             logger.info("Created OpenGL context successfully")
@@ -40,52 +102,245 @@ class ShaderVideoProcessor:
             logger.error(f"Failed to create OpenGL context: {e}")
             raise
 
-    def get_audio_levels(self, audio_file, total_frames):
-        """Extract audio amplitude levels for each frame"""
+    def get_advanced_audio_analysis(self, audio_file, total_frames):
+        """Extract comprehensive audio features for each frame"""
         try:
-            logger.info(f"Analyzing audio: {audio_file}")
+            logger.info(f"Performing advanced audio analysis: {audio_file}")
             y, sr = librosa.load(str(audio_file), sr=None)
-            
+
             # Calculate hop length to match video frame rate
             hop_length = int(sr / self.frame_rate)
-            
-            # Get RMS energy for amplitude
+
+            # 1. FREQUENCY BAND SEPARATION
+            # Define frequency bands (in Hz)
+            bass_freq = (20, 250)      # Bass frequencies
+            mid_freq = (250, 4000)     # Mid frequencies
+            treble_freq = (4000, sr//2) # Treble frequencies (up to Nyquist)
+
+            # Create bandpass filters for each frequency range
+            def extract_frequency_band(audio, sr, freq_range, hop_length):
+                # Use librosa's bandpass filter
+                filtered = librosa.effects.preemphasis(audio)
+
+                # Get spectral centroid and RMS for the band
+                stft = librosa.stft(filtered, hop_length=hop_length)
+                freqs = librosa.fft_frequencies(sr=sr)
+
+                # Find frequency bin indices for our band
+                freq_mask = (freqs >= freq_range[0]) & (freqs <= freq_range[1])
+
+                # Extract energy in this frequency band
+                band_stft = stft[freq_mask, :]
+                band_energy = np.mean(np.abs(band_stft) ** 2, axis=0)
+
+                return band_energy
+
+            # Extract frequency bands
+            bass_energy = extract_frequency_band(y, sr, bass_freq, hop_length)
+            mid_energy = extract_frequency_band(y, sr, mid_freq, hop_length)
+            treble_energy = extract_frequency_band(y, sr, treble_freq, hop_length)
+
+            # 2. BEAT DETECTION
+            # Use onset detection for beat/kick detection
+            onset_frames = librosa.onset.onset_detect(
+                y=y, sr=sr, hop_length=hop_length,
+                units='frames', backtrack=True
+            )
+
+            # Create beat strength array
+            beat_strength = np.zeros(len(bass_energy))
+            for onset_frame in onset_frames:
+                if onset_frame < len(beat_strength):
+                    # Create beat pulse with decay
+                    for i in range(min(10, len(beat_strength) - onset_frame)):
+                        decay = np.exp(-i * 0.3)  # Exponential decay
+                        beat_strength[onset_frame + i] = max(
+                            beat_strength[onset_frame + i],
+                            decay
+                        )
+
+            # 3. ENHANCED BEAT DETECTION FOR LOW FREQUENCIES
+            # Focus on bass frequencies for kick detection
+            bass_onset_frames = librosa.onset.onset_detect(
+                y=librosa.effects.preemphasis(y), sr=sr,
+                hop_length=hop_length, units='frames',
+                pre_max=3, post_max=3, pre_avg=3, post_avg=5, delta=0.1, wait=10
+            )
+
+            kick_strength = np.zeros(len(bass_energy))
+            for kick_frame in bass_onset_frames:
+                if kick_frame < len(kick_strength):
+                    # Stronger, shorter kick pulses
+                    for i in range(min(5, len(kick_strength) - kick_frame)):
+                        decay = np.exp(-i * 0.5)  # Faster decay for kicks
+                        kick_strength[kick_frame + i] = max(
+                            kick_strength[kick_frame + i],
+                            decay
+                        )
+
+            # 4. NORMALIZE ALL FEATURES
+            def safe_normalize(arr):
+                if arr.max() > arr.min():
+                    return np.interp(arr, (arr.min(), arr.max()), (0, 1))
+                else:
+                    return np.zeros_like(arr)
+
+            bass_levels = safe_normalize(bass_energy)
+            mid_levels = safe_normalize(mid_energy)
+            treble_levels = safe_normalize(treble_energy)
+            beat_levels = safe_normalize(beat_strength)
+            kick_levels = safe_normalize(kick_strength)
+
+            # 5. APPLY USER AUDIO REACTIVITY SETTINGS
+            # Scale audio levels based on user preferences
+            bass_response = self.audio_settings.get('bass_response', 1.0)
+            mid_response = self.audio_settings.get('mid_response', 1.0)
+            treble_response = self.audio_settings.get('treble_response', 1.0)
+            beat_sensitivity = self.audio_settings.get('beat_sensitivity', 1.0)
+
+            # Apply scaling (clamp to reasonable ranges)
+            bass_levels = np.clip(bass_levels * bass_response, 0, 2.0)
+            mid_levels = np.clip(mid_levels * mid_response, 0, 2.0)
+            treble_levels = np.clip(treble_levels * treble_response, 0, 2.0)
+            beat_levels = np.clip(beat_levels * beat_sensitivity, 0, 2.0)
+            kick_levels = np.clip(kick_levels * beat_sensitivity, 0, 2.0)
+
+            # 6. ADDITIONAL SPECTRAL FEATURES
+            # Spectral centroid (brightness)
+            spectral_centroids = librosa.feature.spectral_centroid(y=y, sr=sr, hop_length=hop_length)[0]
+            brightness_levels = safe_normalize(spectral_centroids)
+
+            # Spectral rolloff (energy distribution)
+            spectral_rolloff = librosa.feature.spectral_rolloff(y=y, sr=sr, hop_length=hop_length)[0]
+            energy_levels = safe_normalize(spectral_rolloff)
+
+            # Zero crossing rate (percussiveness)
+            zcr = librosa.feature.zero_crossing_rate(y, hop_length=hop_length)[0]
+            percussive_levels = safe_normalize(zcr)
+
+            # 7. OVERALL RMS FOR COMPATIBILITY
             rms = librosa.feature.rms(y=y, hop_length=hop_length)[0]
-            
-            # Normalize to 0-1 range
-            if rms.max() > rms.min():
-                rms = np.interp(rms, (rms.min(), rms.max()), (0, 1))
-            else:
-                rms = np.zeros_like(rms)
-            
-            # Pad or trim to match video length
-            if len(rms) < total_frames:
-                rms = np.pad(rms, (0, total_frames - len(rms)), constant_values=0)
-            elif len(rms) > total_frames:
-                rms = rms[:total_frames]
-                
-            logger.info(f"Extracted {len(rms)} audio levels")
-            return rms
-            
+            rms_levels = safe_normalize(rms)
+
+            # 8. ENHANCED BEAT FEATURES
+            # Tempo and beat tracking
+            tempo, beat_frames = librosa.beat.beat_track(y=y, sr=sr, hop_length=hop_length, units='frames')
+
+            # Create tempo-synced beat array
+            tempo_beats = np.zeros(len(bass_energy))
+            for beat_frame in beat_frames:
+                if beat_frame < len(tempo_beats):
+                    # Create beat pulse with decay
+                    for i in range(min(8, len(tempo_beats) - beat_frame)):
+                        decay = np.exp(-i * 0.4)
+                        tempo_beats[beat_frame + i] = max(tempo_beats[beat_frame + i], decay)
+
+            tempo_beat_levels = safe_normalize(tempo_beats)
+
+            # 9. PAD OR TRIM TO MATCH VIDEO LENGTH
+            def match_video_length(arr, target_frames):
+                if len(arr) < target_frames:
+                    return np.pad(arr, (0, target_frames - len(arr)), constant_values=0)
+                elif len(arr) > target_frames:
+                    return arr[:target_frames]
+                return arr
+
+            audio_features = {
+                'bassLevel': match_video_length(bass_levels, total_frames),
+                'midLevel': match_video_length(mid_levels, total_frames),
+                'trebleLevel': match_video_length(treble_levels, total_frames),
+                'beatLevel': match_video_length(beat_levels, total_frames),
+                'kickLevel': match_video_length(kick_levels, total_frames),
+                'rmsLevel': match_video_length(rms_levels, total_frames),
+                'brightnessLevel': match_video_length(brightness_levels, total_frames),
+                'energyLevel': match_video_length(energy_levels, total_frames),
+                'percussiveLevel': match_video_length(percussive_levels, total_frames),
+                'tempoBeatLevel': match_video_length(tempo_beat_levels, total_frames),
+            }
+
+            logger.info(f"Extracted advanced audio features: {list(audio_features.keys())}")
+            logger.info(f"Bass range: {float(bass_levels.min()):.3f} - {float(bass_levels.max()):.3f}")
+            logger.info(f"Mid range: {float(mid_levels.min()):.3f} - {float(mid_levels.max()):.3f}")
+            logger.info(f"Treble range: {float(treble_levels.min()):.3f} - {float(treble_levels.max()):.3f}")
+            logger.info(f"Detected {len(onset_frames)} beats, {len(bass_onset_frames)} kicks")
+            logger.info(f"Estimated tempo: {float(tempo):.1f} BPM, {len(beat_frames)} tempo beats")
+            logger.info(f"Audio reactivity settings: {self.audio_settings}")
+
+            return audio_features
+
         except Exception as e:
-            logger.error(f"Error analyzing audio {audio_file}: {e}")
-            # Return zero array if audio analysis fails
-            return np.zeros(total_frames)
+            logger.error(f"Error in advanced audio analysis {audio_file}: {str(e)}")
+            logger.info("Falling back to basic audio analysis...")
+
+            # Try basic RMS analysis as fallback
+            try:
+                y, sr = librosa.load(str(audio_file), sr=None)
+                hop_length = int(sr / self.frame_rate)
+                rms = librosa.feature.rms(y=y, hop_length=hop_length)[0]
+
+                # Normalize and pad/trim
+                if rms.max() > rms.min():
+                    rms_normalized = np.interp(rms, (rms.min(), rms.max()), (0, 1))
+                else:
+                    rms_normalized = np.zeros_like(rms)
+
+                if len(rms_normalized) < total_frames:
+                    rms_normalized = np.pad(rms_normalized, (0, total_frames - len(rms_normalized)), constant_values=0)
+                elif len(rms_normalized) > total_frames:
+                    rms_normalized = rms_normalized[:total_frames]
+
+                logger.info("Basic RMS analysis successful - using as fallback for all audio features")
+
+                # Use RMS for all features as fallback
+                return {
+                    'bassLevel': rms_normalized,
+                    'midLevel': rms_normalized,
+                    'trebleLevel': rms_normalized,
+                    'beatLevel': rms_normalized,
+                    'kickLevel': rms_normalized,
+                    'rmsLevel': rms_normalized,
+                    'brightnessLevel': rms_normalized,
+                    'energyLevel': rms_normalized,
+                    'percussiveLevel': rms_normalized,
+                    'tempoBeatLevel': rms_normalized,
+                }
+
+            except Exception as fallback_error:
+                logger.error(f"Fallback audio analysis also failed: {str(fallback_error)}")
+                # Return zero arrays if everything fails
+                return {
+                    'bassLevel': np.zeros(total_frames),
+                    'midLevel': np.zeros(total_frames),
+                    'trebleLevel': np.zeros(total_frames),
+                    'beatLevel': np.zeros(total_frames),
+                    'kickLevel': np.zeros(total_frames),
+                    'rmsLevel': np.zeros(total_frames),
+                    'brightnessLevel': np.zeros(total_frames),
+                    'energyLevel': np.zeros(total_frames),
+                    'percussiveLevel': np.zeros(total_frames),
+                    'tempoBeatLevel': np.zeros(total_frames),
+                }
 
     def extract_frames(self):
         """Extract frames from input video using FFmpeg"""
         temp_dir = Path(tempfile.mkdtemp(prefix="disco_frames_"))
         output_pattern = temp_dir / "frame_%05d.png"
-        
+
         try:
             logger.info(f"Extracting frames to: {temp_dir}")
-            
+
             cmd = [
                 "ffmpeg", "-y", "-i", str(self.video_path),
                 "-vf", f"scale={self.resolution[0]}:{self.resolution[1]}",
                 "-r", str(self.frame_rate),  # Set output frame rate
-                str(output_pattern)
             ]
+
+            # Add frame limit for preview mode
+            if self.max_frames:
+                cmd.extend(["-frames:v", str(self.max_frames)])
+                logger.info(f"Preview mode: limiting to {self.max_frames} frames")
+
+            cmd.append(str(output_pattern))
             
             result = subprocess.run(cmd, capture_output=True, text=True, check=True)
             
@@ -102,13 +357,52 @@ class ShaderVideoProcessor:
             raise Exception(f"Failed to extract frames: {e.stderr}")
 
     def render_frames(self, input_frames):
-        """Render frames with shader effects"""
+        """Render frames with shader effects and audio-reactive features"""
         temp_out = Path(tempfile.mkdtemp(prefix="disco_render_"))
-        
+
         try:
+            # Initialize OpenGL context if not already done
+            if not hasattr(self, 'ctx'):
+                self._init_opengl_context()
+
             logger.info(f"Loading shader: {self.shader_path}")
             shader_code = self.shader_path.read_text()
-            
+
+            # Perform advanced audio analysis only if shader is audio-reactive
+            total_frames = len(input_frames)
+            is_audio_reactive = self.shader_config.get('audioReactive', True)  # Default to True for backward compatibility
+
+            if is_audio_reactive:
+                logger.info("Performing advanced audio analysis for audio-reactive shader...")
+                if self.progress_tracker:
+                    self.progress_tracker.update(
+                        progress=20, stage="analyzing",
+                        message="Analyzing audio frequencies...",
+                        details="Extracting bass, mid, treble, and beat information"
+                    )
+                audio_features = self.get_advanced_audio_analysis(self.audio_path, total_frames)
+            else:
+                logger.info("Skipping audio analysis for non-audio-reactive shader")
+                if self.progress_tracker:
+                    self.progress_tracker.update(
+                        progress=20, stage="analyzing",
+                        message="Skipping audio analysis...",
+                        details="Shader is not audio-reactive"
+                    )
+                # Create minimal audio features for non-reactive shaders
+                audio_features = {
+                    'bassLevel': np.zeros(total_frames),
+                    'midLevel': np.zeros(total_frames),
+                    'trebleLevel': np.zeros(total_frames),
+                    'beatLevel': np.zeros(total_frames),
+                    'kickLevel': np.zeros(total_frames),
+                    'rmsLevel': np.zeros(total_frames),
+                    'brightnessLevel': np.zeros(total_frames),
+                    'energyLevel': np.zeros(total_frames),
+                    'percussiveLevel': np.zeros(total_frames),
+                    'tempoBeatLevel': np.zeros(total_frames),
+                }
+
             # Create shader program
             vertex_shader = """#version 330
 in vec2 in_vert;
@@ -142,23 +436,60 @@ void main() {
             fbo = self.ctx.simple_framebuffer(self.resolution)
             fbo.use()
 
-            # Render each frame
+            # Render each frame with audio-reactive features
             for i, frame_path in enumerate(input_frames):
                 try:
-                    # Load input frame as texture
+                    # Load input frame as texture (iChannel0 for video)
                     img = Image.open(frame_path).convert("RGB")
                     tex = self.ctx.texture(self.resolution, 3, img.tobytes())
                     tex.use(0)
+
+                    # Load additional textures if specified in shader config (with caching)
+                    texture_units = {0: tex}  # iChannel0 is the video
+                    if hasattr(self, 'shader_config') and 'textures' in self.shader_config:
+                        for channel, filename in self.shader_config['textures'].items():
+                            if channel != 'iChannel0':  # Skip video channel
+                                channel_num = int(channel.replace('iChannel', ''))
+                                texture_path = Path("Textures") / filename
+
+                                # Check cache first
+                                cache_key = f"{channel}_{filename}"
+                                if cache_key in self.texture_cache:
+                                    tex_obj = self.texture_cache[cache_key]
+                                    tex_obj.use(channel_num)
+                                    texture_units[channel_num] = tex_obj
+                                elif texture_path.exists():
+                                    try:
+                                        tex_img = Image.open(texture_path).convert("RGB")
+                                        tex_obj = self.ctx.texture(tex_img.size, 3, tex_img.tobytes())
+                                        tex_obj.use(channel_num)
+                                        texture_units[channel_num] = tex_obj
+                                        # Cache the texture for future frames
+                                        self.texture_cache[cache_key] = tex_obj
+                                        logger.info(f"Loaded and cached texture {filename} for {channel}")
+                                    except Exception as e:
+                                        logger.warning(f"Failed to load texture {filename}: {e}")
+                                else:
+                                    logger.warning(f"Texture file not found: {texture_path}")
 
                     # Set standard uniforms
                     if 'iResolution' in prog:
                         prog['iResolution'].value = tuple(self.resolution)
                     if 'iTime' in prog:
                         prog['iTime'].value = i / self.frame_rate
-                    if 'iChannel0' in prog:
-                        prog['iChannel0'].value = 0
 
-                    # Set extra uniforms from config
+                    # Set texture channel uniforms
+                    for channel_num in texture_units.keys():
+                        channel_name = f'iChannel{channel_num}'
+                        if channel_name in prog:
+                            prog[channel_name].value = channel_num
+
+                    # Set audio-reactive uniforms (automatically provide audio data)
+                    for audio_name, audio_data in audio_features.items():
+                        if audio_name in prog and i < len(audio_data):
+                            prog[audio_name].value = float(audio_data[i])
+
+                    # Set extra uniforms from config (these can override audio uniforms)
                     for name, val in self.extra_uniforms.items():
                         if name in prog:
                             if isinstance(val, (list, tuple)):
@@ -166,21 +497,30 @@ void main() {
                             else:
                                 prog[name].value = float(val)
 
-
-
                     # Render the frame
                     vao.render()
-                    
+
                     # Read back the rendered frame
                     data = fbo.read(components=3)
                     rendered_img = Image.frombytes('RGB', self.resolution, data)
                     # Flip vertically because OpenGL has origin at bottom-left
                     rendered_img = rendered_img.transpose(Image.FLIP_TOP_BOTTOM)
                     rendered_img.save(temp_out / f"frame_{i:05d}.png")
-                    
+
+                    # Update progress tracker
+                    if self.progress_tracker and i % 10 == 0:  # Update every 10 frames
+                        # Progress from 25% to 85% during rendering
+                        render_progress = 25 + (60 * (i + 1) / total_frames)
+                        self.progress_tracker.update(
+                            progress=render_progress,
+                            frame_count=i + 1,
+                            total_frames=total_frames,
+                            details=f"Rendering frame {i+1} of {total_frames}"
+                        )
+
                     if i % 30 == 0:  # Log progress every second
-                        logger.info(f"Rendered frame {i+1}/{len(input_frames)}")
-                        
+                        logger.info(f"Rendered frame {i+1}/{total_frames}")
+
                 except Exception as e:
                     logger.error(f"Error rendering frame {i}: {e}")
                     # Copy original frame if rendering fails
@@ -197,16 +537,29 @@ void main() {
         """Combine rendered frames with audio using FFmpeg"""
         try:
             logger.info("Combining frames with audio")
-            
+
+            # Build FFmpeg command
             cmd = [
                 "ffmpeg", "-y",
                 "-framerate", str(self.frame_rate),
                 "-i", str(frames_folder / "frame_%05d.png"),
                 "-i", str(self.audio_path),
+            ]
+
+            # If we used oversized rendering, scale back to target resolution
+            if self.needs_oversized_rendering:
+                target_w, target_h = self.base_resolution
+                cmd.extend([
+                    "-vf", f"scale={target_w}:{target_h}:flags=lanczos",
+                ])
+                logger.info(f"Scaling oversized frames back to {target_w}x{target_h}")
+
+            # Add encoding settings
+            cmd.extend([
                 "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p",
                 "-c:a", "aac", "-shortest",
                 str(self.output_path)
-            ]
+            ])
             
             result = subprocess.run(cmd, capture_output=True, text=True, check=True)
             logger.info("Video combination completed successfully")
@@ -218,25 +571,50 @@ void main() {
     def run(self):
         """Main processing pipeline"""
         temp_dirs = []
-        
+
         try:
             logger.info("Starting video processing pipeline")
-            
+
+            if self.progress_tracker:
+                self.progress_tracker.update(progress=10, stage="extracting",
+                                           message="Extracting video frames...",
+                                           details="Breaking down video into individual frames")
+
             # Step 1: Extract frames from input video
             input_frames, temp_frames_dir = self.extract_frames()
             temp_dirs.append(temp_frames_dir)
+
+            if self.progress_tracker:
+                self.progress_tracker.update(progress=25, stage="rendering",
+                                           message="Rendering shader effects...",
+                                           details="Applying visual effects to each frame",
+                                           total_frames=len(input_frames))
 
             # Step 2: Render frames with shader effects
             rendered_frames_dir = self.render_frames(input_frames)
             temp_dirs.append(rendered_frames_dir)
 
+            if self.progress_tracker:
+                self.progress_tracker.update(progress=85, stage="combining",
+                                           message="Combining final video...",
+                                           details="Merging processed frames with audio")
+
             # Step 3: Combine frames with audio
             self.combine_video(rendered_frames_dir)
+
+            if self.progress_tracker:
+                self.progress_tracker.update(progress=100, stage="complete",
+                                           message="Processing complete!",
+                                           details="Your trippy video is ready!")
 
             logger.info(f"Processing complete! Output: {self.output_path}")
 
         except Exception as e:
             logger.error(f"Processing pipeline failed: {e}")
+            if self.progress_tracker:
+                self.progress_tracker.update(progress=0, stage="error",
+                                           message="Processing failed",
+                                           details=f"Error: {str(e)}")
             raise
         finally:
             # Clean up temporary directories

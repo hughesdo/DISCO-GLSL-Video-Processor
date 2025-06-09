@@ -1,0 +1,891 @@
+2025-06-08 19:01:07,658 - INFO - Loaded configuration for 20 shaders
+2025-06-08 19:01:07,663 - INFO - Found video files: ['20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'torchered1.mp4', 'torchered2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'torchered1.mp4', 'torchered2.mp4']
+2025-06-08 19:01:07,668 - INFO - Found audio files: ['meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3']
+2025-06-08 19:01:07,668 - INFO - Shader Test Runner initialized
+2025-06-08 19:01:07,668 - INFO - Found 20 shaders to test
+2025-06-08 19:01:07,669 - INFO - Found 16 video files
+2025-06-08 19:01:07,669 - INFO - Found 4 audio files
+2025-06-08 19:01:07,685 - INFO - Testing 20 shaders
+2025-06-08 19:01:07,688 - INFO - Preview frames: 250
+2025-06-08 19:01:07,689 - INFO - Output directory: Outputs
+2025-06-08 19:01:07,690 - INFO - 
+[1/20] Testing After EffectsTik Tok Edit.glsl
+2025-06-08 19:01:07,691 - INFO - 
+============================================================
+2025-06-08 19:01:07,691 - INFO - TESTING SHADER: After EffectsTik Tok Edit.glsl
+2025-06-08 19:01:07,692 - INFO - ============================================================
+2025-06-08 19:01:07,693 - INFO - Video input: torchered2.mp4
+2025-06-08 19:01:07,693 - INFO - Audio input: meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:01:07,694 - INFO - Using defaults for After EffectsTik Tok Edit.glsl: {'progress': 0.5, 'raySamples': 120.0, 'saturation': 0.8, 'baseIntensity': 1.0, 'colorShift': 0.0, 'waveAmplitude': 1.0, 'pulseSpeed': 1.0}
+2025-06-08 19:01:07,696 - INFO - Loaded configuration for shader: After EffectsTik Tok Edit.glsl
+2025-06-08 19:01:07,697 - INFO - Starting processing...
+2025-06-08 19:01:07,698 - INFO - Starting video processing pipeline
+2025-06-08 19:01:07,701 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_e0u2io9b
+2025-06-08 19:01:07,702 - INFO - Preview mode: limiting to 250 frames
+2025-06-08 19:01:24,355 - INFO - Extracted 250 frames
+2025-06-08 19:01:24,356 - INFO -    Progress: 25% - rendering
+2025-06-08 19:01:24,648 - INFO - Created OpenGL context successfully
+2025-06-08 19:01:24,649 - INFO - Loading shader: Shaders\After EffectsTik Tok Edit.glsl
+2025-06-08 19:01:24,652 - INFO - Performing advanced audio analysis for audio-reactive shader...
+2025-06-08 19:01:24,652 - INFO - Performing advanced audio analysis: Videos\meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:01:39,960 - INFO - Extracted advanced audio features: ['bassLevel', 'midLevel', 'trebleLevel', 'beatLevel', 'kickLevel', 'rmsLevel', 'brightnessLevel', 'energyLevel', 'percussiveLevel', 'tempoBeatLevel']
+2025-06-08 19:01:39,961 - INFO - Bass range: 0.000 - 1.000
+2025-06-08 19:01:39,964 - INFO - Mid range: 0.000 - 1.000
+2025-06-08 19:01:39,965 - INFO - Treble range: 0.000 - 1.000
+2025-06-08 19:01:39,966 - INFO - Detected 425 beats, 175 kicks
+2025-06-08 19:01:39,966 - INFO - Estimated tempo: 120.0 BPM, 193 tempo beats
+2025-06-08 19:01:39,967 - INFO - Audio reactivity settings: {'reactivity_preset': 'moderate', 'beat_sensitivity': 1.0, 'bass_response': 1.0, 'mid_response': 1.0, 'treble_response': 1.0}
+2025-06-08 19:01:40,028 - INFO - Shader compiled successfully
+2025-06-08 19:01:40,430 - INFO - Rendered frame 1/250
+2025-06-08 19:01:47,101 - INFO - Rendered frame 31/250
+2025-06-08 19:01:54,315 - INFO - Rendered frame 61/250
+2025-06-08 19:02:01,150 - INFO -    Progress: 47% - processing
+2025-06-08 19:02:01,151 - INFO - Rendered frame 91/250
+2025-06-08 19:02:08,820 - INFO - Rendered frame 121/250
+2025-06-08 19:02:15,284 - INFO - Rendered frame 151/250
+2025-06-08 19:02:21,965 - INFO -    Progress: 68% - processing
+2025-06-08 19:02:21,965 - INFO - Rendered frame 181/250
+2025-06-08 19:02:28,392 - INFO - Rendered frame 211/250
+2025-06-08 19:02:40,605 - INFO - Rendered frame 241/250
+2025-06-08 19:02:44,572 - INFO - Rendering complete: 250 frames
+2025-06-08 19:02:44,574 - INFO - Combining frames with audio
+2025-06-08 19:03:43,544 - INFO - Video combination completed successfully
+2025-06-08 19:03:43,545 - INFO -    Progress: 100% - complete
+2025-06-08 19:03:43,547 - INFO - Processing complete! Output: Outputs\After EffectsTik Tok Edit.mp4
+2025-06-08 19:03:44,015 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_e0u2io9b
+2025-06-08 19:03:44,518 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_j_e4p5uw
+2025-06-08 19:03:44,536 - INFO -    Output: After EffectsTik Tok Edit.mp4
+2025-06-08 19:03:44,537 - INFO -    Size: 21.2 MB
+2025-06-08 19:03:44,538 - INFO -    Duration: 156.8 seconds
+2025-06-08 19:03:45,539 - INFO - 
+[2/20] Testing Rays.glsl
+2025-06-08 19:03:45,543 - INFO - 
+============================================================
+2025-06-08 19:03:45,546 - INFO - TESTING SHADER: Rays.glsl
+2025-06-08 19:03:45,548 - INFO - ============================================================
+2025-06-08 19:03:45,552 - INFO - Video input: 20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4
+2025-06-08 19:03:45,556 - INFO - Audio input: You can kiss me.mp3
+2025-06-08 19:03:45,562 - INFO - Using defaults for Rays.glsl: {'progress': 0.5, 'raySamples': 25.0, 'saturation': 0.05, 'baseIntensity': 0.05, 'colorShift': 0.08, 'waveAmplitude': 1.0, 'pulseSpeed': 1.0}
+2025-06-08 19:03:45,567 - INFO - Loaded configuration for shader: Rays.glsl
+2025-06-08 19:03:45,568 - INFO - Starting processing...
+2025-06-08 19:03:45,571 - INFO - Starting video processing pipeline
+2025-06-08 19:03:45,575 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_8dy0sviv
+2025-06-08 19:03:45,576 - INFO - Preview mode: limiting to 250 frames
+2025-06-08 19:04:11,596 - INFO - Extracted 150 frames
+2025-06-08 19:04:11,596 - INFO -    Progress: 25% - rendering
+2025-06-08 19:04:11,628 - INFO - Created OpenGL context successfully
+2025-06-08 19:04:11,628 - INFO - Loading shader: Shaders\Rays.glsl
+2025-06-08 19:04:11,631 - INFO - Performing advanced audio analysis for audio-reactive shader...
+2025-06-08 19:04:11,631 - INFO - Performing advanced audio analysis: Videos\You can kiss me.mp3
+2025-06-08 19:04:14,517 - INFO - Extracted advanced audio features: ['bassLevel', 'midLevel', 'trebleLevel', 'beatLevel', 'kickLevel', 'rmsLevel', 'brightnessLevel', 'energyLevel', 'percussiveLevel', 'tempoBeatLevel']
+2025-06-08 19:04:14,517 - INFO - Bass range: 0.000 - 1.000
+2025-06-08 19:04:14,518 - INFO - Mid range: 0.000 - 1.000
+2025-06-08 19:04:14,519 - INFO - Treble range: 0.000 - 1.000
+2025-06-08 19:04:14,520 - INFO - Detected 495 beats, 208 kicks
+2025-06-08 19:04:14,520 - INFO - Estimated tempo: 120.0 BPM, 229 tempo beats
+2025-06-08 19:04:14,521 - INFO - Audio reactivity settings: {'reactivity_preset': 'moderate', 'beat_sensitivity': 1.0, 'bass_response': 1.0, 'mid_response': 1.0, 'treble_response': 1.0}
+2025-06-08 19:04:14,528 - INFO - Shader compiled successfully
+2025-06-08 19:04:14,722 - INFO - Rendered frame 1/150
+2025-06-08 19:04:20,439 - INFO - Rendered frame 31/150
+2025-06-08 19:04:24,247 - INFO -    Progress: 45% - processing
+2025-06-08 19:04:26,154 - INFO - Rendered frame 61/150
+2025-06-08 19:04:32,024 - INFO - Rendered frame 91/150
+2025-06-08 19:04:34,062 - INFO -    Progress: 65% - processing
+2025-06-08 19:04:39,141 - INFO - Rendered frame 121/150
+2025-06-08 19:04:49,505 - INFO - Rendering complete: 150 frames
+2025-06-08 19:04:49,508 - INFO - Combining frames with audio
+2025-06-08 19:05:27,845 - INFO - Video combination completed successfully
+2025-06-08 19:05:27,847 - INFO -    Progress: 100% - complete
+2025-06-08 19:05:27,849 - INFO - Processing complete! Output: Outputs\Rays.mp4
+2025-06-08 19:05:28,177 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_8dy0sviv
+2025-06-08 19:05:28,502 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_ns07feql
+2025-06-08 19:05:28,561 - INFO -    Output: Rays.mp4
+2025-06-08 19:05:28,562 - INFO -    Size: 6.1 MB
+2025-06-08 19:05:28,563 - INFO -    Duration: 102.9 seconds
+2025-06-08 19:05:29,565 - INFO - 
+[3/20] Testing CameraShake.glsl
+2025-06-08 19:05:29,566 - INFO - 
+============================================================
+2025-06-08 19:05:29,566 - INFO - TESTING SHADER: CameraShake.glsl
+2025-06-08 19:05:29,567 - INFO - ============================================================
+2025-06-08 19:05:29,568 - INFO - Video input: 20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4
+2025-06-08 19:05:29,568 - INFO - Audio input: meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:05:29,569 - INFO - Using defaults for CameraShake.glsl: {'beatIntensity': 1.5, 'kickLevel': 0.8, 'snareLevel': 0.7, 'shakeIntensity': 2.0, 'beatDecay': 5.0, 'beatThreshold': 0.2, 'maxShakeRadius': 0.05}
+2025-06-08 19:05:29,571 - INFO - Loaded configuration for shader: CameraShake.glsl
+2025-06-08 19:05:29,572 - INFO - Using oversized rendering for screen shake: (1536, 864)
+2025-06-08 19:05:29,572 - INFO - Starting processing...
+2025-06-08 19:05:29,573 - INFO - Starting video processing pipeline
+2025-06-08 19:05:29,575 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames__gai1ps8
+2025-06-08 19:05:29,575 - INFO - Preview mode: limiting to 250 frames
+2025-06-08 19:05:56,581 - INFO - Extracted 150 frames
+2025-06-08 19:05:56,581 - INFO -    Progress: 25% - rendering
+2025-06-08 19:05:56,601 - INFO - Created OpenGL context successfully
+2025-06-08 19:05:56,602 - INFO - Loading shader: Shaders\CameraShake.glsl
+2025-06-08 19:05:56,603 - INFO - Performing advanced audio analysis for audio-reactive shader...
+2025-06-08 19:05:56,604 - INFO - Performing advanced audio analysis: Videos\meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:05:59,460 - INFO - Extracted advanced audio features: ['bassLevel', 'midLevel', 'trebleLevel', 'beatLevel', 'kickLevel', 'rmsLevel', 'brightnessLevel', 'energyLevel', 'percussiveLevel', 'tempoBeatLevel']
+2025-06-08 19:05:59,460 - INFO - Bass range: 0.000 - 1.000
+2025-06-08 19:05:59,461 - INFO - Mid range: 0.000 - 1.000
+2025-06-08 19:05:59,461 - INFO - Treble range: 0.000 - 1.000
+2025-06-08 19:05:59,462 - INFO - Detected 425 beats, 175 kicks
+2025-06-08 19:05:59,462 - INFO - Estimated tempo: 120.0 BPM, 193 tempo beats
+2025-06-08 19:05:59,463 - INFO - Audio reactivity settings: {'reactivity_preset': 'moderate', 'beat_sensitivity': 1.0, 'bass_response': 1.0, 'mid_response': 1.0, 'treble_response': 1.0}
+2025-06-08 19:05:59,483 - INFO - Shader compiled successfully
+2025-06-08 19:05:59,770 - INFO - Rendered frame 1/150
+2025-06-08 19:06:09,564 - INFO - Rendered frame 31/150
+2025-06-08 19:06:16,129 - INFO -    Progress: 45% - processing
+2025-06-08 19:06:19,297 - INFO - Rendered frame 61/150
+2025-06-08 19:06:30,077 - INFO - Rendered frame 91/150
+2025-06-08 19:06:33,555 - INFO -    Progress: 65% - processing
+2025-06-08 19:06:42,730 - INFO - Rendered frame 121/150
+2025-06-08 19:06:55,048 - INFO - Rendering complete: 150 frames
+2025-06-08 19:06:55,050 - INFO - Combining frames with audio
+2025-06-08 19:06:55,050 - INFO - Scaling oversized frames back to 1280x720
+2025-06-08 19:07:13,072 - INFO - Video combination completed successfully
+2025-06-08 19:07:13,072 - INFO -    Progress: 100% - complete
+2025-06-08 19:07:13,073 - INFO - Processing complete! Output: Outputs\CameraShake.mp4
+2025-06-08 19:07:13,136 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames__gai1ps8
+2025-06-08 19:07:13,217 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_j64we6ax
+2025-06-08 19:07:13,226 - INFO -    Output: CameraShake.mp4
+2025-06-08 19:07:13,226 - INFO -    Size: 4.9 MB
+2025-06-08 19:07:13,227 - INFO -    Duration: 103.6 seconds
+2025-06-08 19:07:14,228 - INFO - 
+[4/20] Testing Trippy.glsl
+2025-06-08 19:07:14,229 - INFO - 
+============================================================
+2025-06-08 19:07:14,230 - INFO - TESTING SHADER: Trippy.glsl
+2025-06-08 19:07:14,230 - INFO - ============================================================
+2025-06-08 19:07:14,257 - INFO - Video input: torchered2.mp4
+2025-06-08 19:07:14,258 - INFO - Audio input: meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:07:14,258 - INFO - Using defaults for Trippy.glsl: {'bassLevel': 0.5, 'midLevel': 0.5, 'trebleLevel': 0.5, 'distortionAmount': 1.5, 'swirlSpeed': 1.0, 'waveFrequency': 15.0, 'colorIntensity': 0.8, 'timeSpeed': 1.2, 'trippyMix': 0.9}
+2025-06-08 19:07:14,283 - INFO - Loaded configuration for shader: Trippy.glsl
+2025-06-08 19:07:14,283 - INFO - Starting processing...
+2025-06-08 19:07:14,284 - INFO - Starting video processing pipeline
+2025-06-08 19:07:14,312 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_b5__1aod
+2025-06-08 19:07:14,312 - INFO - Preview mode: limiting to 250 frames
+2025-06-08 19:07:50,084 - INFO - Extracted 250 frames
+2025-06-08 19:07:50,085 - INFO -    Progress: 25% - rendering
+2025-06-08 19:07:50,121 - INFO - Created OpenGL context successfully
+2025-06-08 19:07:50,126 - INFO - Loading shader: Shaders\Trippy.glsl
+2025-06-08 19:07:50,129 - INFO - Performing advanced audio analysis for audio-reactive shader...
+2025-06-08 19:07:50,130 - INFO - Performing advanced audio analysis: Videos\meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:07:55,242 - INFO - Extracted advanced audio features: ['bassLevel', 'midLevel', 'trebleLevel', 'beatLevel', 'kickLevel', 'rmsLevel', 'brightnessLevel', 'energyLevel', 'percussiveLevel', 'tempoBeatLevel']
+2025-06-08 19:07:55,243 - INFO - Bass range: 0.000 - 1.000
+2025-06-08 19:07:55,244 - INFO - Mid range: 0.000 - 1.000
+2025-06-08 19:07:55,244 - INFO - Treble range: 0.000 - 1.000
+2025-06-08 19:07:55,245 - INFO - Detected 425 beats, 175 kicks
+2025-06-08 19:07:55,245 - INFO - Estimated tempo: 120.0 BPM, 193 tempo beats
+2025-06-08 19:07:55,245 - INFO - Audio reactivity settings: {'reactivity_preset': 'moderate', 'beat_sensitivity': 1.0, 'bass_response': 1.0, 'mid_response': 1.0, 'treble_response': 1.0}
+2025-06-08 19:07:55,269 - INFO - Shader compiled successfully
+2025-06-08 19:07:55,616 - INFO - Rendered frame 1/250
+2025-06-08 19:08:07,542 - INFO - Rendered frame 31/250
+2025-06-08 19:08:14,712 - INFO - Rendered frame 61/250
+2025-06-08 19:08:21,662 - INFO -    Progress: 47% - processing
+2025-06-08 19:08:21,663 - INFO - Rendered frame 91/250
+2025-06-08 19:08:28,657 - INFO - Rendered frame 121/250
+2025-06-08 19:08:36,146 - INFO - Rendered frame 151/250
+2025-06-08 19:08:51,312 - INFO -    Progress: 68% - processing
+2025-06-08 19:08:51,313 - INFO - Rendered frame 181/250
+2025-06-08 19:08:58,157 - INFO - Rendered frame 211/250
+2025-06-08 19:09:05,431 - INFO - Rendered frame 241/250
+2025-06-08 19:09:07,519 - INFO - Rendering complete: 250 frames
+2025-06-08 19:09:07,520 - INFO - Combining frames with audio
+2025-06-08 19:09:56,346 - INFO - Video combination completed successfully
+2025-06-08 19:09:56,347 - INFO -    Progress: 100% - complete
+2025-06-08 19:09:56,347 - INFO - Processing complete! Output: Outputs\Trippy.mp4
+2025-06-08 19:09:56,683 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_b5__1aod
+2025-06-08 19:09:56,934 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_82js79c2
+2025-06-08 19:09:56,947 - INFO -    Output: Trippy.mp4
+2025-06-08 19:09:56,948 - INFO -    Size: 47.2 MB
+2025-06-08 19:09:56,948 - INFO -    Duration: 162.7 seconds
+2025-06-08 19:09:57,949 - INFO - 
+[5/20] Testing AudioRipples.glsl
+2025-06-08 19:09:57,950 - INFO - 
+============================================================
+2025-06-08 19:09:57,951 - INFO - TESTING SHADER: AudioRipples.glsl
+2025-06-08 19:09:57,951 - INFO - ============================================================
+2025-06-08 19:09:57,951 - INFO - Video input: 20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4
+2025-06-08 19:09:57,952 - INFO - Audio input: You can kiss me.mp3
+2025-06-08 19:09:57,952 - INFO - Using defaults for AudioRipples.glsl: {'trebleLevel': 0.6, 'bassLevel': 0.4, 'midLevel': 0.5, 'rippleIntensity': 1.2, 'rippleFrequency': 40.0, 'rippleSpeed': 8.0, 'centerX': 0.5, 'centerY': 0.5, 'multiRipple': 0.0, 'timeSpeed': 1.0}
+2025-06-08 19:09:57,956 - INFO - Loaded configuration for shader: AudioRipples.glsl
+2025-06-08 19:09:57,957 - INFO - Starting processing...
+2025-06-08 19:09:57,957 - INFO - Starting video processing pipeline
+2025-06-08 19:09:57,960 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_49ev_6qu
+2025-06-08 19:09:57,962 - INFO - Preview mode: limiting to 250 frames
+2025-06-08 19:10:18,310 - INFO - Extracted 150 frames
+2025-06-08 19:10:18,311 - INFO -    Progress: 25% - rendering
+2025-06-08 19:10:18,353 - INFO - Created OpenGL context successfully
+2025-06-08 19:10:18,354 - INFO - Loading shader: Shaders\AudioRipples.glsl
+2025-06-08 19:10:18,356 - INFO - Performing advanced audio analysis for audio-reactive shader...
+2025-06-08 19:10:18,356 - INFO - Performing advanced audio analysis: Videos\You can kiss me.mp3
+2025-06-08 19:10:22,290 - INFO - Extracted advanced audio features: ['bassLevel', 'midLevel', 'trebleLevel', 'beatLevel', 'kickLevel', 'rmsLevel', 'brightnessLevel', 'energyLevel', 'percussiveLevel', 'tempoBeatLevel']
+2025-06-08 19:10:22,291 - INFO - Bass range: 0.000 - 1.000
+2025-06-08 19:10:22,293 - INFO - Mid range: 0.000 - 1.000
+2025-06-08 19:10:22,294 - INFO - Treble range: 0.000 - 1.000
+2025-06-08 19:10:22,295 - INFO - Detected 495 beats, 208 kicks
+2025-06-08 19:10:22,296 - INFO - Estimated tempo: 120.0 BPM, 229 tempo beats
+2025-06-08 19:10:22,298 - INFO - Audio reactivity settings: {'reactivity_preset': 'moderate', 'beat_sensitivity': 1.0, 'bass_response': 1.0, 'mid_response': 1.0, 'treble_response': 1.0}
+2025-06-08 19:10:22,321 - INFO - Shader compiled successfully
+2025-06-08 19:10:22,559 - INFO - Rendered frame 1/150
+2025-06-08 19:10:30,986 - INFO - Rendered frame 31/150
+2025-06-08 19:10:37,604 - INFO -    Progress: 45% - processing
+2025-06-08 19:10:41,420 - INFO - Rendered frame 61/150
+2025-06-08 19:10:55,800 - INFO - Rendered frame 91/150
+2025-06-08 19:10:59,446 - INFO -    Progress: 65% - processing
+2025-06-08 19:11:04,815 - INFO - Rendered frame 121/150
+2025-06-08 19:11:12,104 - INFO - Rendering complete: 150 frames
+2025-06-08 19:11:12,105 - INFO - Combining frames with audio
+2025-06-08 19:11:34,852 - INFO - Video combination completed successfully
+2025-06-08 19:11:34,853 - INFO -    Progress: 100% - complete
+2025-06-08 19:11:34,854 - INFO - Processing complete! Output: Outputs\AudioRipples.mp4
+2025-06-08 19:11:34,948 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_49ev_6qu
+2025-06-08 19:11:35,064 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_536fq0qp
+2025-06-08 19:11:35,077 - INFO -    Output: AudioRipples.mp4
+2025-06-08 19:11:35,077 - INFO -    Size: 7.8 MB
+2025-06-08 19:11:35,078 - INFO -    Duration: 97.1 seconds
+2025-06-08 19:11:36,078 - INFO - 
+[6/20] Testing HeatDistortion.glsl
+2025-06-08 19:11:36,079 - INFO - 
+============================================================
+2025-06-08 19:11:36,079 - INFO - TESTING SHADER: HeatDistortion.glsl
+2025-06-08 19:11:36,080 - INFO - ============================================================
+2025-06-08 19:11:36,080 - INFO - Video input: 20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4
+2025-06-08 19:11:36,082 - INFO - Audio input: meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:11:36,082 - INFO - Using defaults for HeatDistortion.glsl: {'bassLevel': 0.5, 'midLevel': 0.4, 'trebleLevel': 0.6, 'heatStrength': 0.03, 'heatSpeed': 2.0, 'heatFrequency': 5.0, 'audioReactivity': 0.8, 'timeSpeed': 1.0, 'noiseComplexity': 1.0}
+2025-06-08 19:11:36,085 - INFO - Loaded configuration for shader: HeatDistortion.glsl
+2025-06-08 19:11:36,085 - INFO - Starting processing...
+2025-06-08 19:11:36,086 - INFO - Starting video processing pipeline
+2025-06-08 19:11:36,086 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_g83854v2
+2025-06-08 19:11:36,087 - INFO - Preview mode: limiting to 250 frames
+2025-06-08 19:11:51,190 - INFO - Extracted 150 frames
+2025-06-08 19:11:51,190 - INFO -    Progress: 25% - rendering
+2025-06-08 19:11:51,225 - INFO - Created OpenGL context successfully
+2025-06-08 19:11:51,226 - INFO - Loading shader: Shaders\HeatDistortion.glsl
+2025-06-08 19:11:51,228 - INFO - Performing advanced audio analysis for audio-reactive shader...
+2025-06-08 19:11:51,228 - INFO - Performing advanced audio analysis: Videos\meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:11:55,403 - INFO - Extracted advanced audio features: ['bassLevel', 'midLevel', 'trebleLevel', 'beatLevel', 'kickLevel', 'rmsLevel', 'brightnessLevel', 'energyLevel', 'percussiveLevel', 'tempoBeatLevel']
+2025-06-08 19:11:55,404 - INFO - Bass range: 0.000 - 1.000
+2025-06-08 19:11:55,404 - INFO - Mid range: 0.000 - 1.000
+2025-06-08 19:11:55,405 - INFO - Treble range: 0.000 - 1.000
+2025-06-08 19:11:55,405 - INFO - Detected 425 beats, 175 kicks
+2025-06-08 19:11:55,406 - INFO - Estimated tempo: 120.0 BPM, 193 tempo beats
+2025-06-08 19:11:55,407 - INFO - Audio reactivity settings: {'reactivity_preset': 'moderate', 'beat_sensitivity': 1.0, 'bass_response': 1.0, 'mid_response': 1.0, 'treble_response': 1.0}
+2025-06-08 19:11:55,450 - INFO - Shader compiled successfully
+2025-06-08 19:11:55,703 - INFO - Rendered frame 1/150
+2025-06-08 19:12:04,624 - INFO - Rendered frame 31/150
+2025-06-08 19:12:10,493 - INFO -    Progress: 45% - processing
+2025-06-08 19:12:13,453 - INFO - Rendered frame 61/150
+2025-06-08 19:12:21,820 - INFO - Rendered frame 91/150
+2025-06-08 19:12:24,803 - INFO -    Progress: 65% - processing
+2025-06-08 19:12:31,108 - INFO - Rendered frame 121/150
+2025-06-08 19:12:39,456 - INFO - Rendering complete: 150 frames
+2025-06-08 19:12:39,458 - INFO - Combining frames with audio
+2025-06-08 19:13:00,641 - INFO - Video combination completed successfully
+2025-06-08 19:13:00,643 - INFO -    Progress: 100% - complete
+2025-06-08 19:13:00,645 - INFO - Processing complete! Output: Outputs\HeatDistortion.mp4
+2025-06-08 19:13:00,863 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_g83854v2
+2025-06-08 19:13:01,041 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_u29993qx
+2025-06-08 19:13:01,052 - INFO -    Output: HeatDistortion.mp4
+2025-06-08 19:13:01,052 - INFO -    Size: 10.0 MB
+2025-06-08 19:13:01,053 - INFO -    Duration: 85.0 seconds
+2025-06-08 19:13:02,054 - INFO - 
+[7/20] Testing 3DRaymarching.glsl
+2025-06-08 19:13:02,054 - INFO - 
+============================================================
+2025-06-08 19:13:02,055 - INFO - TESTING SHADER: 3DRaymarching.glsl
+2025-06-08 19:13:02,075 - INFO - ============================================================
+2025-06-08 19:13:02,076 - INFO - Video input: 20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4
+2025-06-08 19:13:02,077 - INFO - Audio input: You can kiss me.mp3
+2025-06-08 19:13:02,079 - INFO - Using defaults for 3DRaymarching.glsl: {'cameraSpeed': 1.0, 'rotationAmount': 1.0, 'fovVariation': 0.3, 'colorIntensity': 1.2, 'glowStrength': 1.0, 'timeSpeed': 1.0, 'starDensity': 1.0, 'boxSize': 0.5}
+2025-06-08 19:13:02,123 - INFO - Loaded configuration for shader: 3DRaymarching.glsl
+2025-06-08 19:13:02,123 - INFO - Starting processing...
+2025-06-08 19:13:02,124 - INFO - Starting video processing pipeline
+2025-06-08 19:13:02,125 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_ppgkge8_
+2025-06-08 19:13:02,126 - INFO - Preview mode: limiting to 250 frames
+2025-06-08 19:13:16,235 - INFO - Extracted 150 frames
+2025-06-08 19:13:16,236 - INFO -    Progress: 25% - rendering
+2025-06-08 19:13:16,279 - INFO - Created OpenGL context successfully
+2025-06-08 19:13:16,280 - INFO - Loading shader: Shaders\3DRaymarching.glsl
+2025-06-08 19:13:16,290 - INFO - Performing advanced audio analysis for audio-reactive shader...
+2025-06-08 19:13:16,291 - INFO - Performing advanced audio analysis: Videos\You can kiss me.mp3
+2025-06-08 19:13:20,051 - INFO - Extracted advanced audio features: ['bassLevel', 'midLevel', 'trebleLevel', 'beatLevel', 'kickLevel', 'rmsLevel', 'brightnessLevel', 'energyLevel', 'percussiveLevel', 'tempoBeatLevel']
+2025-06-08 19:13:20,052 - INFO - Bass range: 0.000 - 1.000
+2025-06-08 19:13:20,052 - INFO - Mid range: 0.000 - 1.000
+2025-06-08 19:13:20,053 - INFO - Treble range: 0.000 - 1.000
+2025-06-08 19:13:20,053 - INFO - Detected 495 beats, 208 kicks
+2025-06-08 19:13:20,054 - INFO - Estimated tempo: 120.0 BPM, 229 tempo beats
+2025-06-08 19:13:20,054 - INFO - Audio reactivity settings: {'reactivity_preset': 'moderate', 'beat_sensitivity': 1.0, 'bass_response': 1.0, 'mid_response': 1.0, 'treble_response': 1.0}
+2025-06-08 19:13:20,098 - INFO - Shader compiled successfully
+2025-06-08 19:13:20,345 - INFO - Rendered frame 1/150
+2025-06-08 19:13:28,075 - INFO - Rendered frame 31/150
+2025-06-08 19:13:32,841 - INFO -    Progress: 45% - processing
+2025-06-08 19:13:35,240 - INFO - Rendered frame 61/150
+2025-06-08 19:13:41,493 - INFO - Rendered frame 91/150
+2025-06-08 19:13:43,566 - INFO -    Progress: 65% - processing
+2025-06-08 19:13:47,937 - INFO - Rendered frame 121/150
+2025-06-08 19:13:55,943 - INFO - Rendering complete: 150 frames
+2025-06-08 19:13:55,944 - INFO - Combining frames with audio
+2025-06-08 19:14:19,809 - INFO - Video combination completed successfully
+2025-06-08 19:14:19,810 - INFO -    Progress: 100% - complete
+2025-06-08 19:14:19,811 - INFO - Processing complete! Output: Outputs\3DRaymarching.mp4
+2025-06-08 19:14:19,909 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_ppgkge8_
+2025-06-08 19:14:20,004 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_59eg3hz0
+2025-06-08 19:14:20,016 - INFO -    Output: 3DRaymarching.mp4
+2025-06-08 19:14:20,016 - INFO -    Size: 4.9 MB
+2025-06-08 19:14:20,016 - INFO -    Duration: 77.9 seconds
+2025-06-08 19:14:21,018 - INFO - 
+[8/20] Testing VideoFilters.glsl
+2025-06-08 19:14:21,018 - INFO - 
+============================================================
+2025-06-08 19:14:21,019 - INFO - TESTING SHADER: VideoFilters.glsl
+2025-06-08 19:14:21,020 - INFO - ============================================================
+2025-06-08 19:14:21,020 - INFO - Video input: 20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4
+2025-06-08 19:14:21,021 - INFO - Audio input: meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:14:21,021 - INFO - Using defaults for VideoFilters.glsl: {'filterMode': 0.0, 'chromaticAmount': 0.01, 'showDividers': 1.0, 'dividerWidth': 2.0, 'saturationAmount': 1.0, 'invertAmount': 1.0, 'colorShiftMode': 0.0}
+2025-06-08 19:14:21,023 - INFO - Loaded configuration for shader: VideoFilters.glsl
+2025-06-08 19:14:21,024 - INFO - Starting processing...
+2025-06-08 19:14:21,024 - INFO - Starting video processing pipeline
+2025-06-08 19:14:21,025 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_h0f40kmm
+2025-06-08 19:14:21,026 - INFO - Preview mode: limiting to 250 frames
+2025-06-08 19:14:37,957 - INFO - Extracted 150 frames
+2025-06-08 19:14:37,977 - INFO -    Progress: 25% - rendering
+2025-06-08 19:14:38,051 - INFO - Created OpenGL context successfully
+2025-06-08 19:14:38,051 - INFO - Loading shader: Shaders\VideoFilters.glsl
+2025-06-08 19:14:38,082 - INFO - Performing advanced audio analysis for audio-reactive shader...
+2025-06-08 19:14:38,082 - INFO - Performing advanced audio analysis: Videos\meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:14:42,575 - INFO - Extracted advanced audio features: ['bassLevel', 'midLevel', 'trebleLevel', 'beatLevel', 'kickLevel', 'rmsLevel', 'brightnessLevel', 'energyLevel', 'percussiveLevel', 'tempoBeatLevel']
+2025-06-08 19:14:42,576 - INFO - Bass range: 0.000 - 1.000
+2025-06-08 19:14:42,577 - INFO - Mid range: 0.000 - 1.000
+2025-06-08 19:14:42,577 - INFO - Treble range: 0.000 - 1.000
+2025-06-08 19:14:42,577 - INFO - Detected 425 beats, 175 kicks
+2025-06-08 19:14:42,578 - INFO - Estimated tempo: 120.0 BPM, 193 tempo beats
+2025-06-08 19:14:42,578 - INFO - Audio reactivity settings: {'reactivity_preset': 'moderate', 'beat_sensitivity': 1.0, 'bass_response': 1.0, 'mid_response': 1.0, 'treble_response': 1.0}
+2025-06-08 19:14:42,603 - INFO - Shader compiled successfully
+2025-06-08 19:14:42,869 - INFO - Rendered frame 1/150
+2025-06-08 19:14:49,463 - INFO - Rendered frame 31/150
+2025-06-08 19:14:53,857 - INFO -    Progress: 45% - processing
+2025-06-08 19:14:56,034 - INFO - Rendered frame 61/150
+2025-06-08 19:15:03,469 - INFO - Rendered frame 91/150
+2025-06-08 19:15:09,513 - INFO -    Progress: 65% - processing
+2025-06-08 19:15:15,071 - INFO - Rendered frame 121/150
+2025-06-08 19:15:28,112 - INFO - Rendering complete: 150 frames
+2025-06-08 19:15:28,115 - INFO - Combining frames with audio
+2025-06-08 19:15:43,316 - INFO - Video combination completed successfully
+2025-06-08 19:15:43,317 - INFO -    Progress: 100% - complete
+2025-06-08 19:15:43,318 - INFO - Processing complete! Output: Outputs\VideoFilters.mp4
+2025-06-08 19:15:43,427 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_h0f40kmm
+2025-06-08 19:15:43,569 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_pozpok6q
+2025-06-08 19:15:43,581 - INFO -    Output: VideoFilters.mp4
+2025-06-08 19:15:43,581 - INFO -    Size: 3.4 MB
+2025-06-08 19:15:43,582 - INFO -    Duration: 82.5 seconds
+2025-06-08 19:15:44,597 - INFO - 
+[9/20] Testing Warping.glsl
+2025-06-08 19:15:44,599 - INFO - 
+============================================================
+2025-06-08 19:15:44,600 - INFO - TESTING SHADER: Warping.glsl
+2025-06-08 19:15:44,600 - INFO - ============================================================
+2025-06-08 19:15:44,602 - INFO - Video input: 20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4
+2025-06-08 19:15:44,603 - INFO - Audio input: You can kiss me.mp3
+2025-06-08 19:15:44,611 - INFO - Using defaults for Warping.glsl: {'warpMode': 0.0, 'warpIntensity': 0.5, 'warpFrequency': 3.0, 'warpSpeed': 1.0, 'timeSpeed': 1.0, 'layer1Amp': 0.5, 'layer2Amp': 0.25, 'layer3Amp': 0.125, 'layer4Amp': 0.0625}
+2025-06-08 19:15:44,620 - INFO - Loaded configuration for shader: Warping.glsl
+2025-06-08 19:15:44,635 - INFO - Starting processing...
+2025-06-08 19:15:44,636 - INFO - Starting video processing pipeline
+2025-06-08 19:15:44,639 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_yjf4c30r
+2025-06-08 19:15:44,640 - INFO - Preview mode: limiting to 250 frames
+2025-06-08 19:16:06,328 - INFO - Extracted 150 frames
+2025-06-08 19:16:06,328 - INFO -    Progress: 25% - rendering
+2025-06-08 19:16:06,359 - INFO - Created OpenGL context successfully
+2025-06-08 19:16:06,360 - INFO - Loading shader: Shaders\Warping.glsl
+2025-06-08 19:16:06,361 - INFO - Performing advanced audio analysis for audio-reactive shader...
+2025-06-08 19:16:06,361 - INFO - Performing advanced audio analysis: Videos\You can kiss me.mp3
+2025-06-08 19:16:10,101 - INFO - Extracted advanced audio features: ['bassLevel', 'midLevel', 'trebleLevel', 'beatLevel', 'kickLevel', 'rmsLevel', 'brightnessLevel', 'energyLevel', 'percussiveLevel', 'tempoBeatLevel']
+2025-06-08 19:16:10,102 - INFO - Bass range: 0.000 - 1.000
+2025-06-08 19:16:10,103 - INFO - Mid range: 0.000 - 1.000
+2025-06-08 19:16:10,103 - INFO - Treble range: 0.000 - 1.000
+2025-06-08 19:16:10,104 - INFO - Detected 495 beats, 208 kicks
+2025-06-08 19:16:10,104 - INFO - Estimated tempo: 120.0 BPM, 229 tempo beats
+2025-06-08 19:16:10,104 - INFO - Audio reactivity settings: {'reactivity_preset': 'moderate', 'beat_sensitivity': 1.0, 'bass_response': 1.0, 'mid_response': 1.0, 'treble_response': 1.0}
+2025-06-08 19:16:10,128 - INFO - Shader compiled successfully
+2025-06-08 19:16:10,467 - INFO - Rendered frame 1/150
+2025-06-08 19:16:19,970 - INFO - Rendered frame 31/150
+2025-06-08 19:16:25,286 - INFO -    Progress: 45% - processing
+2025-06-08 19:16:28,902 - INFO - Rendered frame 61/150
+2025-06-08 19:16:34,973 - INFO - Rendered frame 91/150
+2025-06-08 19:16:37,131 - INFO -    Progress: 65% - processing
+2025-06-08 19:16:42,580 - INFO - Rendered frame 121/150
+2025-06-08 19:16:49,394 - INFO - Rendering complete: 150 frames
+2025-06-08 19:16:49,395 - INFO - Combining frames with audio
+2025-06-08 19:17:08,546 - INFO - Video combination completed successfully
+2025-06-08 19:17:08,547 - INFO -    Progress: 100% - complete
+2025-06-08 19:17:08,547 - INFO - Processing complete! Output: Outputs\Warping.mp4
+2025-06-08 19:17:08,606 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_yjf4c30r
+2025-06-08 19:17:08,698 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_6813a5je
+2025-06-08 19:17:08,708 - INFO -    Output: Warping.mp4
+2025-06-08 19:17:08,708 - INFO -    Size: 5.5 MB
+2025-06-08 19:17:08,709 - INFO -    Duration: 84.1 seconds
+2025-06-08 19:17:09,712 - INFO - 
+[10/20] Testing Webby.glsl
+2025-06-08 19:17:09,712 - INFO - 
+============================================================
+2025-06-08 19:17:09,713 - INFO - TESTING SHADER: Webby.glsl
+2025-06-08 19:17:09,714 - INFO - ============================================================
+2025-06-08 19:17:09,716 - INFO - Video input: 20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4
+2025-06-08 19:17:09,717 - INFO - Audio input: meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:17:09,717 - INFO - Using defaults for Webby.glsl: {'webIntensity': 1.0, 'webFrequency': 15.0, 'webSpeed': 0.25, 'timeSpeed': 1.0, 'horizontalWarp': 1.0, 'verticalWarp': 1.0, 'colorPower': 1.0, 'colorFrequency': 15.0}
+2025-06-08 19:17:09,721 - INFO - Loaded configuration for shader: Webby.glsl
+2025-06-08 19:17:09,722 - INFO - Starting processing...
+2025-06-08 19:17:09,722 - INFO - Starting video processing pipeline
+2025-06-08 19:17:09,724 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_gair_dln
+2025-06-08 19:17:09,730 - INFO - Preview mode: limiting to 250 frames
+2025-06-08 19:17:23,073 - INFO - Extracted 150 frames
+2025-06-08 19:17:23,074 - INFO -    Progress: 25% - rendering
+2025-06-08 19:17:23,121 - INFO - Created OpenGL context successfully
+2025-06-08 19:17:23,122 - INFO - Loading shader: Shaders\Webby.glsl
+2025-06-08 19:17:23,124 - INFO - Performing advanced audio analysis for audio-reactive shader...
+2025-06-08 19:17:23,125 - INFO - Performing advanced audio analysis: Videos\meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:17:27,918 - INFO - Extracted advanced audio features: ['bassLevel', 'midLevel', 'trebleLevel', 'beatLevel', 'kickLevel', 'rmsLevel', 'brightnessLevel', 'energyLevel', 'percussiveLevel', 'tempoBeatLevel']
+2025-06-08 19:17:27,919 - INFO - Bass range: 0.000 - 1.000
+2025-06-08 19:17:27,920 - INFO - Mid range: 0.000 - 1.000
+2025-06-08 19:17:27,921 - INFO - Treble range: 0.000 - 1.000
+2025-06-08 19:17:27,921 - INFO - Detected 425 beats, 175 kicks
+2025-06-08 19:17:27,922 - INFO - Estimated tempo: 120.0 BPM, 193 tempo beats
+2025-06-08 19:17:27,922 - INFO - Audio reactivity settings: {'reactivity_preset': 'moderate', 'beat_sensitivity': 1.0, 'bass_response': 1.0, 'mid_response': 1.0, 'treble_response': 1.0}
+2025-06-08 19:17:27,941 - INFO - Shader compiled successfully
+2025-06-08 19:17:28,270 - INFO - Rendered frame 1/150
+2025-06-08 19:17:38,926 - INFO - Rendered frame 31/150
+2025-06-08 19:17:43,420 - INFO -    Progress: 45% - processing
+2025-06-08 19:17:45,952 - INFO - Rendered frame 61/150
+2025-06-08 19:17:52,803 - INFO - Rendered frame 91/150
+2025-06-08 19:17:55,078 - INFO -    Progress: 65% - processing
+2025-06-08 19:17:59,602 - INFO - Rendered frame 121/150
+2025-06-08 19:18:10,619 - INFO - Rendering complete: 150 frames
+2025-06-08 19:18:10,621 - INFO - Combining frames with audio
+2025-06-08 19:18:33,274 - INFO - Video combination completed successfully
+2025-06-08 19:18:33,275 - INFO -    Progress: 100% - complete
+2025-06-08 19:18:33,277 - INFO - Processing complete! Output: Outputs\Webby.mp4
+2025-06-08 19:18:33,390 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_gair_dln
+2025-06-08 19:18:33,536 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_o9j38eac
+2025-06-08 19:18:33,545 - INFO -    Output: Webby.mp4
+2025-06-08 19:18:33,546 - INFO -    Size: 32.6 MB
+2025-06-08 19:18:33,546 - INFO -    Duration: 83.8 seconds
+2025-06-08 19:18:34,548 - INFO - 
+[11/20] Testing ColorCycle.glsl
+2025-06-08 19:18:34,548 - INFO - 
+============================================================
+2025-06-08 19:18:34,549 - INFO - TESTING SHADER: ColorCycle.glsl
+2025-06-08 19:18:34,550 - INFO - ============================================================
+2025-06-08 19:18:34,550 - INFO - Video input: torchered1.mp4
+2025-06-08 19:18:34,551 - INFO - Audio input: You can kiss me.mp3
+2025-06-08 19:18:34,552 - INFO - Using defaults for ColorCycle.glsl: {'bassLevel': 0.7, 'midLevel': 0.6, 'trebleLevel': 0.5, 'cycleSpeed': 0.2, 'audioReactivity': 1.0, 'spatialFrequency': 10.0, 'hueRange': 1.0, 'bassHueShift': 0.8, 'midSaturation': 0.5, 'trebleBrightness': 0.3, 'timeSpeed': 1.0}
+2025-06-08 19:18:34,554 - INFO - Loaded configuration for shader: ColorCycle.glsl
+2025-06-08 19:18:34,554 - INFO - Starting processing...
+2025-06-08 19:18:34,555 - INFO - Starting video processing pipeline
+2025-06-08 19:18:34,556 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_x4zg5ibk
+2025-06-08 19:18:34,557 - INFO - Preview mode: limiting to 250 frames
+2025-06-08 19:18:54,726 - INFO - Extracted 250 frames
+2025-06-08 19:18:54,726 - INFO -    Progress: 25% - rendering
+2025-06-08 19:18:54,760 - INFO - Created OpenGL context successfully
+2025-06-08 19:18:54,761 - INFO - Loading shader: Shaders\ColorCycle.glsl
+2025-06-08 19:18:54,764 - INFO - Performing advanced audio analysis for audio-reactive shader...
+2025-06-08 19:18:54,764 - INFO - Performing advanced audio analysis: Videos\You can kiss me.mp3
+2025-06-08 19:18:57,743 - INFO - Extracted advanced audio features: ['bassLevel', 'midLevel', 'trebleLevel', 'beatLevel', 'kickLevel', 'rmsLevel', 'brightnessLevel', 'energyLevel', 'percussiveLevel', 'tempoBeatLevel']
+2025-06-08 19:18:57,744 - INFO - Bass range: 0.000 - 1.000
+2025-06-08 19:18:57,745 - INFO - Mid range: 0.000 - 1.000
+2025-06-08 19:18:57,745 - INFO - Treble range: 0.000 - 1.000
+2025-06-08 19:18:57,745 - INFO - Detected 495 beats, 208 kicks
+2025-06-08 19:18:57,746 - INFO - Estimated tempo: 120.0 BPM, 229 tempo beats
+2025-06-08 19:18:57,746 - INFO - Audio reactivity settings: {'reactivity_preset': 'moderate', 'beat_sensitivity': 1.0, 'bass_response': 1.0, 'mid_response': 1.0, 'treble_response': 1.0}
+2025-06-08 19:18:57,771 - INFO - Shader compiled successfully
+2025-06-08 19:18:57,981 - INFO - Rendered frame 1/250
+2025-06-08 19:19:03,961 - INFO - Rendered frame 31/250
+2025-06-08 19:19:10,556 - INFO - Rendered frame 61/250
+2025-06-08 19:19:17,146 - INFO -    Progress: 47% - processing
+2025-06-08 19:19:17,146 - INFO - Rendered frame 91/250
+2025-06-08 19:19:26,172 - INFO - Rendered frame 121/250
+2025-06-08 19:19:33,482 - INFO - Rendered frame 151/250
+2025-06-08 19:19:41,974 - INFO -    Progress: 68% - processing
+2025-06-08 19:19:41,974 - INFO - Rendered frame 181/250
+2025-06-08 19:19:54,004 - INFO - Rendered frame 211/250
+2025-06-08 19:20:02,165 - INFO - Rendered frame 241/250
+2025-06-08 19:20:04,061 - INFO - Rendering complete: 250 frames
+2025-06-08 19:20:04,063 - INFO - Combining frames with audio
+2025-06-08 19:20:24,283 - INFO - Video combination completed successfully
+2025-06-08 19:20:24,284 - INFO -    Progress: 100% - complete
+2025-06-08 19:20:24,284 - INFO - Processing complete! Output: Outputs\ColorCycle.mp4
+2025-06-08 19:20:24,392 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_x4zg5ibk
+2025-06-08 19:20:24,537 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_uloksilr
+2025-06-08 19:20:24,550 - INFO -    Output: ColorCycle.mp4
+2025-06-08 19:20:24,551 - INFO -    Size: 8.4 MB
+2025-06-08 19:20:24,551 - INFO -    Duration: 110.0 seconds
+2025-06-08 19:20:25,553 - INFO - 
+[12/20] Testing ColorCycle2.glsl
+2025-06-08 19:20:25,554 - INFO - 
+============================================================
+2025-06-08 19:20:25,554 - INFO - TESTING SHADER: ColorCycle2.glsl
+2025-06-08 19:20:25,555 - INFO - ============================================================
+2025-06-08 19:20:25,555 - INFO - Video input: 20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4
+2025-06-08 19:20:25,555 - INFO - Audio input: You can kiss me.mp3
+2025-06-08 19:20:25,556 - INFO - Using defaults for ColorCycle2.glsl: {'bassLevel': 0.8, 'midLevel': 0.7, 'trebleLevel': 0.6, 'vibrateIntensity': 1.5, 'rainbowSpeed': 0.3, 'rainbowFrequency': 8.0, 'bassVibration': 1.0, 'midPulse': 0.8, 'trebleFlash': 1.2, 'audioReactivity': 1.0, 'timeSpeed': 1.0, 'colorMix': 0.7}
+2025-06-08 19:20:25,559 - INFO - Loaded configuration for shader: ColorCycle2.glsl
+2025-06-08 19:20:25,559 - INFO - Starting processing...
+2025-06-08 19:20:25,560 - INFO - Starting video processing pipeline
+2025-06-08 19:20:25,560 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_4nfpelbo
+2025-06-08 19:20:25,561 - INFO - Preview mode: limiting to 250 frames
+2025-06-08 19:20:36,392 - INFO - Extracted 150 frames
+2025-06-08 19:20:36,393 - INFO -    Progress: 25% - rendering
+2025-06-08 19:20:36,423 - INFO - Created OpenGL context successfully
+2025-06-08 19:20:36,423 - INFO - Loading shader: Shaders\ColorCycle2.glsl
+2025-06-08 19:20:36,425 - INFO - Performing advanced audio analysis for audio-reactive shader...
+2025-06-08 19:20:36,425 - INFO - Performing advanced audio analysis: Videos\You can kiss me.mp3
+2025-06-08 19:20:39,076 - INFO - Extracted advanced audio features: ['bassLevel', 'midLevel', 'trebleLevel', 'beatLevel', 'kickLevel', 'rmsLevel', 'brightnessLevel', 'energyLevel', 'percussiveLevel', 'tempoBeatLevel']
+2025-06-08 19:20:39,076 - INFO - Bass range: 0.000 - 1.000
+2025-06-08 19:20:39,077 - INFO - Mid range: 0.000 - 1.000
+2025-06-08 19:20:39,077 - INFO - Treble range: 0.000 - 1.000
+2025-06-08 19:20:39,077 - INFO - Detected 495 beats, 208 kicks
+2025-06-08 19:20:39,078 - INFO - Estimated tempo: 120.0 BPM, 229 tempo beats
+2025-06-08 19:20:39,078 - INFO - Audio reactivity settings: {'reactivity_preset': 'moderate', 'beat_sensitivity': 1.0, 'bass_response': 1.0, 'mid_response': 1.0, 'treble_response': 1.0}
+2025-06-08 19:20:39,110 - INFO - Shader compiled successfully
+2025-06-08 19:20:39,649 - INFO - Rendered frame 1/150
+2025-06-08 19:20:45,980 - INFO - Rendered frame 31/150
+2025-06-08 19:20:50,825 - INFO -    Progress: 45% - processing
+2025-06-08 19:20:53,206 - INFO - Rendered frame 61/150
+2025-06-08 19:21:02,501 - INFO - Rendered frame 91/150
+2025-06-08 19:21:05,493 - INFO -    Progress: 65% - processing
+2025-06-08 19:21:11,099 - INFO - Rendered frame 121/150
+2025-06-08 19:21:18,529 - INFO - Rendering complete: 150 frames
+2025-06-08 19:21:18,531 - INFO - Combining frames with audio
+2025-06-08 19:21:38,455 - INFO - Video combination completed successfully
+2025-06-08 19:21:38,456 - INFO -    Progress: 100% - complete
+2025-06-08 19:21:38,458 - INFO - Processing complete! Output: Outputs\ColorCycle2.mp4
+2025-06-08 19:21:38,593 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_4nfpelbo
+2025-06-08 19:21:38,860 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_thbq1e48
+2025-06-08 19:21:38,924 - INFO -    Output: ColorCycle2.mp4
+2025-06-08 19:21:38,927 - INFO -    Size: 7.1 MB
+2025-06-08 19:21:38,929 - INFO -    Duration: 73.3 seconds
+2025-06-08 19:21:39,938 - INFO - 
+[13/20] Testing CandyFlipping.glsl
+2025-06-08 19:21:39,939 - INFO - 
+============================================================
+2025-06-08 19:21:39,940 - INFO - TESTING SHADER: CandyFlipping.glsl
+2025-06-08 19:21:39,941 - INFO - ============================================================
+2025-06-08 19:21:39,943 - INFO - Video input: 20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4
+2025-06-08 19:21:39,944 - INFO - Audio input: You can kiss me.mp3
+2025-06-08 19:21:39,944 - INFO - Using defaults for CandyFlipping.glsl: {'bassLevel': 0.8, 'midLevel': 0.6, 'trebleLevel': 0.7, 'flowIntensity': 1.0, 'waveFrequency': 10.0, 'pulseSpeed': 1.0, 'viscosity': 0.5, 'chromaticShift': 0.01, 'audioReactivity': 1.0, 'timeSpeed': 1.0, 'beatSensitivity': 1.0}
+2025-06-08 19:21:39,947 - INFO - Loaded configuration for shader: CandyFlipping.glsl
+2025-06-08 19:21:39,948 - INFO - Starting processing...
+2025-06-08 19:21:39,949 - INFO - Starting video processing pipeline
+2025-06-08 19:21:39,951 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_l92pm7ky
+2025-06-08 19:21:39,952 - INFO - Preview mode: limiting to 250 frames
+2025-06-08 19:21:58,982 - INFO - Extracted 150 frames
+2025-06-08 19:21:58,984 - INFO -    Progress: 25% - rendering
+2025-06-08 19:21:59,044 - INFO - Created OpenGL context successfully
+2025-06-08 19:21:59,044 - INFO - Loading shader: Shaders\CandyFlipping.glsl
+2025-06-08 19:21:59,051 - INFO - Performing advanced audio analysis for audio-reactive shader...
+2025-06-08 19:21:59,052 - INFO - Performing advanced audio analysis: Videos\You can kiss me.mp3
+2025-06-08 19:22:02,958 - INFO - Extracted advanced audio features: ['bassLevel', 'midLevel', 'trebleLevel', 'beatLevel', 'kickLevel', 'rmsLevel', 'brightnessLevel', 'energyLevel', 'percussiveLevel', 'tempoBeatLevel']
+2025-06-08 19:22:02,959 - INFO - Bass range: 0.000 - 1.000
+2025-06-08 19:22:02,961 - INFO - Mid range: 0.000 - 1.000
+2025-06-08 19:22:02,963 - INFO - Treble range: 0.000 - 1.000
+2025-06-08 19:22:02,964 - INFO - Detected 495 beats, 208 kicks
+2025-06-08 19:22:02,964 - INFO - Estimated tempo: 120.0 BPM, 229 tempo beats
+2025-06-08 19:22:02,965 - INFO - Audio reactivity settings: {'reactivity_preset': 'moderate', 'beat_sensitivity': 1.0, 'bass_response': 1.0, 'mid_response': 1.0, 'treble_response': 1.0}
+2025-06-08 19:22:02,996 - INFO - Shader compiled successfully
+2025-06-08 19:22:03,247 - INFO - Rendered frame 1/150
+2025-06-08 19:22:10,383 - INFO - Rendered frame 31/150
+2025-06-08 19:22:15,319 - INFO -    Progress: 45% - processing
+2025-06-08 19:22:17,544 - INFO - Rendered frame 61/150
+2025-06-08 19:22:29,956 - INFO - Rendered frame 91/150
+2025-06-08 19:22:33,837 - INFO -    Progress: 65% - processing
+2025-06-08 19:22:39,664 - INFO - Rendered frame 121/150
+2025-06-08 19:22:50,683 - INFO - Rendering complete: 150 frames
+2025-06-08 19:22:50,686 - INFO - Combining frames with audio
+2025-06-08 19:23:14,263 - INFO - Video combination completed successfully
+2025-06-08 19:23:14,263 - INFO -    Progress: 100% - complete
+2025-06-08 19:23:14,266 - INFO - Processing complete! Output: Outputs\CandyFlipping.mp4
+2025-06-08 19:23:14,817 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_l92pm7ky
+2025-06-08 19:23:15,530 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_ssi61i16
+2025-06-08 19:23:15,543 - INFO -    Output: CandyFlipping.mp4
+2025-06-08 19:23:15,544 - INFO -    Size: 9.6 MB
+2025-06-08 19:23:15,591 - INFO -    Duration: 95.6 seconds
+2025-06-08 19:23:16,611 - INFO - 
+[14/20] Testing 3DRaymarching1.glsl
+2025-06-08 19:23:16,611 - INFO - 
+============================================================
+2025-06-08 19:23:16,633 - INFO - TESTING SHADER: 3DRaymarching1.glsl
+2025-06-08 19:23:16,634 - INFO - ============================================================
+2025-06-08 19:23:16,661 - INFO - Video input: torchered2.mp4
+2025-06-08 19:23:16,696 - INFO - Audio input: meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:23:16,697 - INFO - Using defaults for 3DRaymarching1.glsl: {'cameraSpeed': 1.0, 'rotationAmount': 1.0, 'fovVariation': 0.3, 'colorIntensity': 1.2, 'glowStrength': 1.0, 'timeSpeed': 1.0, 'starDensity': 1.0, 'boxSize': 0.5}
+2025-06-08 19:23:16,730 - INFO - Loaded configuration for shader: 3DRaymarching1.glsl
+2025-06-08 19:23:16,731 - INFO - Starting processing...
+2025-06-08 19:23:16,731 - INFO - Starting video processing pipeline
+2025-06-08 19:23:16,734 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames__t0f8j5n
+2025-06-08 19:23:16,735 - INFO - Preview mode: limiting to 250 frames
+2025-06-08 19:23:42,766 - INFO - Extracted 250 frames
+2025-06-08 19:23:42,767 - INFO -    Progress: 25% - rendering
+2025-06-08 19:23:42,815 - INFO - Created OpenGL context successfully
+2025-06-08 19:23:42,815 - INFO - Loading shader: Shaders\3DRaymarching1.glsl
+2025-06-08 19:23:42,818 - INFO - Performing advanced audio analysis for audio-reactive shader...
+2025-06-08 19:23:42,820 - INFO - Performing advanced audio analysis: Videos\meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:23:46,731 - INFO - Extracted advanced audio features: ['bassLevel', 'midLevel', 'trebleLevel', 'beatLevel', 'kickLevel', 'rmsLevel', 'brightnessLevel', 'energyLevel', 'percussiveLevel', 'tempoBeatLevel']
+2025-06-08 19:23:46,731 - INFO - Bass range: 0.000 - 1.000
+2025-06-08 19:23:46,733 - INFO - Mid range: 0.000 - 1.000
+2025-06-08 19:23:46,734 - INFO - Treble range: 0.000 - 1.000
+2025-06-08 19:23:46,739 - INFO - Detected 425 beats, 175 kicks
+2025-06-08 19:23:46,740 - INFO - Estimated tempo: 120.0 BPM, 193 tempo beats
+2025-06-08 19:23:46,740 - INFO - Audio reactivity settings: {'reactivity_preset': 'moderate', 'beat_sensitivity': 1.0, 'bass_response': 1.0, 'mid_response': 1.0, 'treble_response': 1.0}
+2025-06-08 19:23:46,829 - INFO - Shader compiled successfully
+2025-06-08 19:23:47,055 - INFO - Rendered frame 1/250
+2025-06-08 19:23:53,720 - INFO - Rendered frame 31/250
+2025-06-08 19:24:01,370 - INFO - Rendered frame 61/250
+2025-06-08 19:24:10,105 - INFO -    Progress: 47% - processing
+2025-06-08 19:24:10,105 - INFO - Rendered frame 91/250
+2025-06-08 19:24:17,142 - INFO - Rendered frame 121/250
+2025-06-08 19:24:25,566 - INFO - Rendered frame 151/250
+2025-06-08 19:24:32,465 - INFO -    Progress: 68% - processing
+2025-06-08 19:24:32,465 - INFO - Rendered frame 181/250
+2025-06-08 19:24:38,833 - INFO - Rendered frame 211/250
+2025-06-08 19:24:46,612 - INFO - Rendered frame 241/250
+2025-06-08 19:24:48,797 - INFO - Rendering complete: 250 frames
+2025-06-08 19:24:48,799 - INFO - Combining frames with audio
+2025-06-08 19:25:10,070 - INFO - Video combination completed successfully
+2025-06-08 19:25:10,071 - INFO -    Progress: 100% - complete
+2025-06-08 19:25:10,074 - INFO - Processing complete! Output: Outputs\3DRaymarching1.mp4
+2025-06-08 19:25:10,240 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames__t0f8j5n
+2025-06-08 19:25:10,436 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_h6xol2k5
+2025-06-08 19:25:10,454 - INFO -    Output: 3DRaymarching1.mp4
+2025-06-08 19:25:10,460 - INFO -    Size: 6.3 MB
+2025-06-08 19:25:10,461 - INFO -    Duration: 113.7 seconds
+2025-06-08 19:25:11,462 - INFO - 
+[15/20] Testing 3DRaymarching2.glsl
+2025-06-08 19:25:11,463 - INFO - 
+============================================================
+2025-06-08 19:25:11,465 - INFO - TESTING SHADER: 3DRaymarching2.glsl
+2025-06-08 19:25:11,466 - INFO - ============================================================
+2025-06-08 19:25:11,468 - INFO - Video input: 20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4
+2025-06-08 19:25:11,469 - INFO - Audio input: meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:25:11,470 - INFO - Using defaults for 3DRaymarching2.glsl: {'cameraSpeed': 1.0, 'rotationAmount': 1.0, 'fovVariation': 0.3, 'colorIntensity': 1.2, 'glowStrength': 1.0, 'timeSpeed': 1.0, 'starDensity': 1.0, 'boxSize': 0.5}
+2025-06-08 19:25:11,474 - INFO - Loaded configuration for shader: 3DRaymarching2.glsl
+2025-06-08 19:25:11,475 - INFO - Starting processing...
+2025-06-08 19:25:11,476 - INFO - Starting video processing pipeline
+2025-06-08 19:25:11,477 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_1jdglvzv
+2025-06-08 19:25:11,478 - INFO - Preview mode: limiting to 250 frames
+2025-06-08 19:25:22,419 - INFO - Extracted 150 frames
+2025-06-08 19:25:22,420 - INFO -    Progress: 25% - rendering
+2025-06-08 19:25:22,449 - INFO - Created OpenGL context successfully
+2025-06-08 19:25:22,449 - INFO - Loading shader: Shaders\3DRaymarching2.glsl
+2025-06-08 19:25:22,451 - INFO - Performing advanced audio analysis for audio-reactive shader...
+2025-06-08 19:25:22,452 - INFO - Performing advanced audio analysis: Videos\meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:25:25,626 - INFO - Extracted advanced audio features: ['bassLevel', 'midLevel', 'trebleLevel', 'beatLevel', 'kickLevel', 'rmsLevel', 'brightnessLevel', 'energyLevel', 'percussiveLevel', 'tempoBeatLevel']
+2025-06-08 19:25:25,626 - INFO - Bass range: 0.000 - 1.000
+2025-06-08 19:25:25,628 - INFO - Mid range: 0.000 - 1.000
+2025-06-08 19:25:25,629 - INFO - Treble range: 0.000 - 1.000
+2025-06-08 19:25:25,633 - INFO - Detected 425 beats, 175 kicks
+2025-06-08 19:25:25,634 - INFO - Estimated tempo: 120.0 BPM, 193 tempo beats
+2025-06-08 19:25:25,634 - INFO - Audio reactivity settings: {'reactivity_preset': 'moderate', 'beat_sensitivity': 1.0, 'bass_response': 1.0, 'mid_response': 1.0, 'treble_response': 1.0}
+2025-06-08 19:25:25,671 - INFO - Shader compiled successfully
+2025-06-08 19:25:25,862 - INFO - Rendered frame 1/150
+2025-06-08 19:25:31,978 - INFO - Rendered frame 31/150
+2025-06-08 19:25:37,051 - INFO -    Progress: 45% - processing
+2025-06-08 19:25:39,482 - INFO - Rendered frame 61/150
+2025-06-08 19:25:47,042 - INFO - Rendered frame 91/150
+2025-06-08 19:25:49,834 - INFO -    Progress: 65% - processing
+2025-06-08 19:25:57,932 - INFO - Rendered frame 121/150
+2025-06-08 19:26:06,298 - INFO - Rendering complete: 150 frames
+2025-06-08 19:26:06,300 - INFO - Combining frames with audio
+2025-06-08 19:26:19,983 - INFO - Video combination completed successfully
+2025-06-08 19:26:19,984 - INFO -    Progress: 100% - complete
+2025-06-08 19:26:19,986 - INFO - Processing complete! Output: Outputs\3DRaymarching2.mp4
+2025-06-08 19:26:20,109 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_1jdglvzv
+2025-06-08 19:26:20,248 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_8o4m99l7
+2025-06-08 19:26:20,273 - INFO -    Output: 3DRaymarching2.mp4
+2025-06-08 19:26:20,274 - INFO -    Size: 3.7 MB
+2025-06-08 19:26:20,278 - INFO -    Duration: 68.8 seconds
+2025-06-08 19:26:21,281 - INFO - 
+[16/20] Testing RayBalls.glsl
+2025-06-08 19:26:21,281 - INFO - 
+============================================================
+2025-06-08 19:26:21,283 - INFO - TESTING SHADER: RayBalls.glsl
+2025-06-08 19:26:21,284 - INFO - ============================================================
+2025-06-08 19:26:21,288 - INFO - Video input: 20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4
+2025-06-08 19:26:21,288 - INFO - Audio input: meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:26:21,289 - INFO - Using defaults for RayBalls.glsl: {'ballSpeed': 1.0, 'ballSize': 1.0, 'videoReflectivity': 0.3}
+2025-06-08 19:26:21,295 - INFO - Loaded configuration for shader: RayBalls.glsl
+2025-06-08 19:26:21,296 - INFO - Starting processing...
+2025-06-08 19:26:21,297 - INFO - Starting video processing pipeline
+2025-06-08 19:26:21,299 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_zewzknse
+2025-06-08 19:26:21,300 - INFO - Preview mode: limiting to 250 frames
+2025-06-08 19:26:35,079 - INFO - Extracted 150 frames
+2025-06-08 19:26:35,080 - INFO -    Progress: 25% - rendering
+2025-06-08 19:26:35,120 - INFO - Created OpenGL context successfully
+2025-06-08 19:26:35,121 - INFO - Loading shader: Shaders\RayBalls.glsl
+2025-06-08 19:26:35,126 - INFO - Skipping audio analysis for non-audio-reactive shader
+2025-06-08 19:26:35,334 - INFO - Shader compiled successfully
+2025-06-08 19:26:35,507 - INFO - Rendered frame 1/150
+2025-06-08 19:26:41,749 - INFO - Rendered frame 31/150
+2025-06-08 19:26:46,087 - INFO -    Progress: 45% - processing
+2025-06-08 19:26:48,409 - INFO - Rendered frame 61/150
+2025-06-08 19:26:53,270 - INFO - Rendered frame 91/150
+2025-06-08 19:26:56,421 - INFO -    Progress: 65% - processing
+2025-06-08 19:26:59,982 - INFO - Rendered frame 121/150
+2025-06-08 19:27:06,559 - INFO - Rendering complete: 150 frames
+2025-06-08 19:27:06,560 - INFO - Combining frames with audio
+2025-06-08 19:27:21,119 - INFO - Video combination completed successfully
+2025-06-08 19:27:21,119 - INFO -    Progress: 100% - complete
+2025-06-08 19:27:21,121 - INFO - Processing complete! Output: Outputs\RayBalls.mp4
+2025-06-08 19:27:21,238 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_zewzknse
+2025-06-08 19:27:21,364 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_l90k8u0g
+2025-06-08 19:27:21,375 - INFO -    Output: RayBalls.mp4
+2025-06-08 19:27:21,376 - INFO -    Size: 6.8 MB
+2025-06-08 19:27:21,376 - INFO -    Duration: 60.1 seconds
+2025-06-08 19:27:22,377 - INFO - 
+[17/20] Testing TVZoom.glsl
+2025-06-08 19:27:22,378 - INFO - 
+============================================================
+2025-06-08 19:27:22,379 - INFO - TESTING SHADER: TVZoom.glsl
+2025-06-08 19:27:22,379 - INFO - ============================================================
+2025-06-08 19:27:22,380 - INFO - Video input: 20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4
+2025-06-08 19:27:22,380 - INFO - Audio input: meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:27:22,381 - INFO - Using defaults for TVZoom.glsl: {'animationSpeed': 1.0, 'pauseDuration': 3.0, 'cameraHeight': 0.0, 'zoomIntensity': 1.0, 'enableVideoTransparency': 1.0, 'transparencyThreshold': 0.0}
+2025-06-08 19:27:22,383 - INFO - Loaded configuration for shader: TVZoom.glsl
+2025-06-08 19:27:22,383 - INFO - Starting processing...
+2025-06-08 19:27:22,383 - INFO - Starting video processing pipeline
+2025-06-08 19:27:22,385 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_yiyk6qgd
+2025-06-08 19:27:22,386 - INFO - Preview mode: limiting to 250 frames
+2025-06-08 19:27:35,580 - INFO - Extracted 150 frames
+2025-06-08 19:27:35,580 - INFO -    Progress: 25% - rendering
+2025-06-08 19:27:35,626 - INFO - Created OpenGL context successfully
+2025-06-08 19:27:35,627 - INFO - Loading shader: Shaders\TVZoom.glsl
+2025-06-08 19:27:35,630 - INFO - Skipping audio analysis for non-audio-reactive shader
+2025-06-08 19:27:35,786 - INFO - Shader compiled successfully
+2025-06-08 19:27:35,859 - INFO - Loaded and cached texture tablet_texture.jpg for iChannel1
+2025-06-08 19:27:35,885 - INFO - Loaded and cached texture wood_texture.jpg for iChannel3
+2025-06-08 19:27:36,334 - INFO - Rendered frame 1/150
+2025-06-08 19:27:45,460 - INFO - Rendered frame 31/150
+2025-06-08 19:27:51,011 - INFO -    Progress: 45% - processing
+2025-06-08 19:27:53,724 - INFO - Rendered frame 61/150
+2025-06-08 19:28:03,253 - INFO - Rendered frame 91/150
+2025-06-08 19:28:06,540 - INFO -    Progress: 65% - processing
+2025-06-08 19:28:12,740 - INFO - Rendered frame 121/150
+2025-06-08 19:28:27,877 - INFO - Rendering complete: 150 frames
+2025-06-08 19:28:27,879 - INFO - Combining frames with audio
+2025-06-08 19:28:47,015 - INFO - Video combination completed successfully
+2025-06-08 19:28:47,015 - INFO -    Progress: 100% - complete
+2025-06-08 19:28:47,016 - INFO - Processing complete! Output: Outputs\TVZoom.mp4
+2025-06-08 19:28:47,177 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_yiyk6qgd
+2025-06-08 19:28:47,343 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_syxaamwm
+2025-06-08 19:28:47,356 - INFO -    Output: TVZoom.mp4
+2025-06-08 19:28:47,359 - INFO -    Size: 6.9 MB
+2025-06-08 19:28:47,360 - INFO -    Duration: 85.0 seconds
+2025-06-08 19:28:48,363 - INFO - 
+[18/20] Testing EasyBeats.glsl
+2025-06-08 19:28:48,363 - INFO - 
+============================================================
+2025-06-08 19:28:48,364 - INFO - TESTING SHADER: EasyBeats.glsl
+2025-06-08 19:28:48,364 - INFO - ============================================================
+2025-06-08 19:28:48,366 - INFO - Video input: 20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4
+2025-06-08 19:28:48,366 - INFO - Audio input: You can kiss me.mp3
+2025-06-08 19:28:48,367 - INFO - Using defaults for EasyBeats.glsl: {'intensity': 1.0, 'shakeAmount': 0.8, 'colorPop': 1.0}
+2025-06-08 19:28:48,371 - INFO - Loaded configuration for shader: EasyBeats.glsl
+2025-06-08 19:28:48,371 - INFO - Using oversized rendering for screen shake: (1536, 864)
+2025-06-08 19:28:48,372 - INFO - Starting processing...
+2025-06-08 19:28:48,372 - INFO - Starting video processing pipeline
+2025-06-08 19:28:48,374 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_ke8447qr
+2025-06-08 19:28:48,374 - INFO - Preview mode: limiting to 250 frames
+2025-06-08 19:29:08,340 - INFO - Extracted 150 frames
+2025-06-08 19:29:08,340 - INFO -    Progress: 25% - rendering
+2025-06-08 19:29:08,366 - INFO - Created OpenGL context successfully
+2025-06-08 19:29:08,366 - INFO - Loading shader: Shaders\EasyBeats.glsl
+2025-06-08 19:29:08,368 - INFO - Performing advanced audio analysis for audio-reactive shader...
+2025-06-08 19:29:08,368 - INFO - Performing advanced audio analysis: Videos\You can kiss me.mp3
+2025-06-08 19:29:12,605 - INFO - Extracted advanced audio features: ['bassLevel', 'midLevel', 'trebleLevel', 'beatLevel', 'kickLevel', 'rmsLevel', 'brightnessLevel', 'energyLevel', 'percussiveLevel', 'tempoBeatLevel']
+2025-06-08 19:29:12,605 - INFO - Bass range: 0.000 - 1.000
+2025-06-08 19:29:12,606 - INFO - Mid range: 0.000 - 1.000
+2025-06-08 19:29:12,607 - INFO - Treble range: 0.000 - 1.000
+2025-06-08 19:29:12,607 - INFO - Detected 495 beats, 208 kicks
+2025-06-08 19:29:12,608 - INFO - Estimated tempo: 120.0 BPM, 229 tempo beats
+2025-06-08 19:29:12,608 - INFO - Audio reactivity settings: {'reactivity_preset': 'moderate', 'beat_sensitivity': 1.0, 'bass_response': 1.0, 'mid_response': 1.0, 'treble_response': 1.0}
+2025-06-08 19:29:12,629 - INFO - Shader compiled successfully
+2025-06-08 19:29:13,075 - INFO - Rendered frame 1/150
+2025-06-08 19:29:22,794 - INFO - Rendered frame 31/150
+2025-06-08 19:29:29,695 - INFO -    Progress: 45% - processing
+2025-06-08 19:29:32,608 - INFO - Rendered frame 61/150
+2025-06-08 19:29:43,649 - INFO - Rendered frame 91/150
+2025-06-08 19:29:46,965 - INFO -    Progress: 65% - processing
+2025-06-08 19:29:55,402 - INFO - Rendered frame 121/150
+2025-06-08 19:30:15,569 - INFO - Rendering complete: 150 frames
+2025-06-08 19:30:15,571 - INFO - Combining frames with audio
+2025-06-08 19:30:15,572 - INFO - Scaling oversized frames back to 1280x720
+2025-06-08 19:30:44,140 - INFO - Video combination completed successfully
+2025-06-08 19:30:44,141 - INFO -    Progress: 100% - complete
+2025-06-08 19:30:44,141 - INFO - Processing complete! Output: Outputs\EasyBeats.mp4
+2025-06-08 19:30:44,267 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_ke8447qr
+2025-06-08 19:30:44,430 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_0_m273fn
+2025-06-08 19:30:44,444 - INFO -    Output: EasyBeats.mp4
+2025-06-08 19:30:44,445 - INFO -    Size: 6.4 MB
+2025-06-08 19:30:44,445 - INFO -    Duration: 116.1 seconds
+2025-06-08 19:30:45,446 - INFO - 
+[19/20] Testing BeatDropShake.glsl
+2025-06-08 19:30:45,447 - INFO - 
+============================================================
+2025-06-08 19:30:45,447 - INFO - TESTING SHADER: BeatDropShake.glsl
+2025-06-08 19:30:45,448 - INFO - ============================================================
+2025-06-08 19:30:45,452 - INFO - Video input: torchered1.mp4
+2025-06-08 19:30:45,452 - INFO - Audio input: meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:30:45,453 - INFO - Using defaults for BeatDropShake.glsl: {'bassLevel': 0.8, 'kickLevel': 0.9, 'subBassLevel': 0.7, 'beatThreshold': 0.6, 'explosionStrength': 2.0, 'dampenRate': 8.0, 'randomSeed': 1.0, 'shakeDecay': 5.0, 'oversizeAmount': 1.3, 'timeSpeed': 1.0}
+2025-06-08 19:30:45,458 - INFO - Loaded configuration for shader: BeatDropShake.glsl
+2025-06-08 19:30:45,458 - INFO - Using oversized rendering for screen shake: (1536, 864)
+2025-06-08 19:30:45,459 - INFO - Starting processing...
+2025-06-08 19:30:45,459 - INFO - Starting video processing pipeline
+2025-06-08 19:30:45,460 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_qrebtp7_
+2025-06-08 19:30:45,460 - INFO - Preview mode: limiting to 250 frames
+2025-06-08 19:31:31,822 - INFO - Extracted 250 frames
+2025-06-08 19:31:31,822 - INFO -    Progress: 25% - rendering
+2025-06-08 19:31:32,077 - INFO - Created OpenGL context successfully
+2025-06-08 19:31:32,104 - INFO - Loading shader: Shaders\BeatDropShake.glsl
+2025-06-08 19:31:32,128 - INFO - Performing advanced audio analysis for audio-reactive shader...
+2025-06-08 19:31:32,129 - INFO - Performing advanced audio analysis: Videos\meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-08 19:31:36,229 - INFO - Extracted advanced audio features: ['bassLevel', 'midLevel', 'trebleLevel', 'beatLevel', 'kickLevel', 'rmsLevel', 'brightnessLevel', 'energyLevel', 'percussiveLevel', 'tempoBeatLevel']
+2025-06-08 19:31:36,230 - INFO - Bass range: 0.000 - 1.000
+2025-06-08 19:31:36,230 - INFO - Mid range: 0.000 - 1.000
+2025-06-08 19:31:36,230 - INFO - Treble range: 0.000 - 1.000
+2025-06-08 19:31:36,231 - INFO - Detected 425 beats, 175 kicks
+2025-06-08 19:31:36,231 - INFO - Estimated tempo: 120.0 BPM, 193 tempo beats
+2025-06-08 19:31:36,231 - INFO - Audio reactivity settings: {'reactivity_preset': 'moderate', 'beat_sensitivity': 1.0, 'bass_response': 1.0, 'mid_response': 1.0, 'treble_response': 1.0}
+2025-06-08 19:31:36,257 - INFO - Shader compiled successfully
+2025-06-08 19:31:36,650 - INFO - Rendered frame 1/250
+2025-06-08 19:31:49,152 - INFO - Rendered frame 31/250
+2025-06-08 19:32:03,695 - INFO - Rendered frame 61/250
+2025-06-08 19:32:18,016 - INFO -    Progress: 47% - processing
+2025-06-08 19:32:18,016 - INFO - Rendered frame 91/250
+2025-06-08 19:32:45,892 - INFO - Rendered frame 121/250
+2025-06-08 19:33:05,682 - INFO - Rendered frame 151/250
+2025-06-08 19:33:24,894 - INFO -    Progress: 68% - processing
+2025-06-08 19:33:24,894 - INFO - Rendered frame 181/250
+2025-06-08 19:33:36,386 - INFO - Rendered frame 211/250
+2025-06-08 19:33:53,364 - INFO - Rendered frame 241/250
+2025-06-08 19:34:00,650 - INFO - Rendering complete: 250 frames
+2025-06-08 19:34:00,653 - INFO - Combining frames with audio
+2025-06-08 19:34:00,653 - INFO - Scaling oversized frames back to 1280x720
+2025-06-08 19:34:33,996 - INFO - Video combination completed successfully
+2025-06-08 19:34:33,997 - INFO -    Progress: 100% - complete
+2025-06-08 19:34:33,998 - INFO - Processing complete! Output: Outputs\BeatDropShake.mp4
+2025-06-08 19:34:34,107 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_qrebtp7_
+2025-06-08 19:34:34,231 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_mrm8diix
+2025-06-08 19:34:34,244 - INFO -    Output: BeatDropShake.mp4
+2025-06-08 19:34:34,244 - INFO -    Size: 6.1 MB
+2025-06-08 19:34:34,244 - INFO -    Duration: 228.8 seconds
+2025-06-08 19:34:35,245 - INFO - 
+[20/20] Testing BeatFlash.glsl
+2025-06-08 19:34:35,246 - INFO - 
+============================================================
+2025-06-08 19:34:35,247 - INFO - TESTING SHADER: BeatFlash.glsl
+2025-06-08 19:34:35,247 - INFO - ============================================================
+2025-06-08 19:34:35,247 - INFO - Video input: 20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4
+2025-06-08 19:34:35,247 - INFO - Audio input: You can kiss me.mp3
+2025-06-08 19:34:35,248 - INFO - Using defaults for BeatFlash.glsl: {'beatAmplitude': 0.8, 'kickLevel': 0.9, 'bassLevel': 0.7, 'beatSensitivity': 0.5, 'flashStrength': 1.5, 'flashDecay': 6.0, 'chromaticOffset': 0.005, 'exposureBoost': 1.0, 'bloomIntensity': 0.3, 'posterizeLevel': 8.0, 'timeSpeed': 1.0}
+2025-06-08 19:34:35,252 - INFO - Loaded configuration for shader: BeatFlash.glsl
+2025-06-08 19:34:35,253 - INFO - Starting processing...
+2025-06-08 19:34:35,253 - INFO - Starting video processing pipeline
+2025-06-08 19:34:35,254 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_ipk6dix8
+2025-06-08 19:34:35,254 - INFO - Preview mode: limiting to 250 frames

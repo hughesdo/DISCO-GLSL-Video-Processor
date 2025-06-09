@@ -7,8 +7,31 @@
 
 ### First and foremost...
 
-This was an experiment in *vibe coding*.  
+This was an experiment in *vibe coding*.
 All credit for the original shader goes to [ScratchDev on ShaderToy](https://www.shadertoy.com/view/mdcBRl), created on 2023-10-17. I was merely poking around, seeing if layering vibe-driven tweaks could make it more interesting. It was mostly a failed attempt — but sometimes failure teaches us what not to do, and that’s still a step forward.
+
+---
+
+## 🤖 Development & Attribution
+
+### Experiment Context
+This project was an experiment in "vibe coding" conducted in collaboration with [Augment Code](http://augmentedcode.com/). The development process involved exploring creative coding techniques and shader development through an AI-assisted workflow.
+
+### Development Approach
+The work involved both expanding existing GLSL shaders from the community and creating original new shader effects. The project grew from a simple shader experiment into a comprehensive video processing application with multiple visual effects and audio-reactive capabilities.
+
+### Attribution Challenge & Resolution
+During the AI-assisted development process, attribution comments were sometimes inadvertently removed from GLSL files during code modifications and optimizations. Recognizing the importance of proper credit to the original shader creators, approximately 1-2 hours were dedicated to manually recompiling and restoring proper credits and attributions.
+
+All known attributions have been documented in the `attributions.txt` file, and original creator credits are preserved wherever possible. The community's creative contributions form the foundation of this project's visual effects.
+
+### Ongoing Commitment
+If any attributions were missed or incorrectly documented, they will be amended in future updates. The goal is to maintain complete transparency about the origins of all shader code and ensure proper credit to the original creators.
+
+### Community Feedback
+We encourage the community to report any missing attributions or credits. If you recognize shader code that should be attributed or notice any missing credits, please reach out so we can correct the documentation.
+
+**Contact for Attribution Issues**: [@OneHung](https://twitter.com/OneHung) on Twitter/X
 
 ---
 
@@ -20,11 +43,13 @@ DISCO is a web-based video processing application that applies GLSL shaders to v
 
 - 🎥 **Video Processing**: Frame-by-frame shader application with OpenGL
 - 🎵 **Audio Analysis**: Beat detection and frequency analysis with Librosa
-- 🎨 **Multiple Shaders**: Choose from various visual effect styles
+- 🎨 **Multiple Shaders**: Choose from 20 working visual effect styles
 - 📊 **Progress Tracking**: Real-time progress bars with detailed status
 - 🎬 **Video Player**: Embedded playback with download option
 - 🌐 **Web Interface**: User-friendly browser-based UI
 - 🔧 **Configurable**: Adjustable shader parameters for fine-tuning
+- 🧪 **Automated Testing**: Comprehensive shader test runner for quality assurance
+- 📺 **Professional 3D Effects**: Cinematic camera movements and chrome materials
 
 ## 🚀 Quick Start
 
@@ -77,12 +102,14 @@ Disco/
 ├── index.html                 # Frontend web interface
 ├── requirements.txt           # Python dependencies
 ├── startapp.bat               # Windows startup script
-├── Shaders/                   # GLSL shader files
+├── Shaders/                   # GLSL shader files (20 total)
 │   ├── After EffectsTik Tok Edit.glsl  # Primary trippy shader
-│   ├── DiscoLights.glsl
-│   ├── WaveDistortion.glsl
-│   ├── ParticleSystem.glsl
-│   └── shader_config.json     # Shader configuration
+│   ├── TVZoom.glsl            # 3D TV zoom with chrome spheres
+│   ├── AudioRipples.glsl      # Audio-reactive ripple effects
+│   ├── 3DRaymarching.glsl     # 3D raymarched scenes
+│   ├── [... 15 more shaders] # Complete collection
+│   ├── shader_config.json     # Shader configuration
+│   └── attributions.txt       # Proper credits and attributions
 ├── Videos/                    # Sample video files
 ├── Full Music/                # Complete audio tracks
 └── Separated/                 # Separated instrument tracks
@@ -95,23 +122,27 @@ Disco/
 - **Features**: Time-based warping, vignette effects, color saturation
 - **Best For**: Creating psychedelic music videos
 
-<!-- Future additions -->
-<!--
-### 💡 Disco Lights
-- **Style**: Disco ball lighting effects
-- **Features**: Strobe patterns, color rotation, bloom effects
-- **Best For**: Dance music and party vibes
+### 📺 TVZoom (Featured)
+- **Style**: Cinematic 3D TV zoom with chrome spheres
+- **Features**: Bezier camera animation, rotational movement, video transparency
+- **Best For**: Professional video presentations with dynamic camera work
 
-### 🌊 Wave Distortion
-- **Style**: Wave-based visual distortions
-- **Features**: Frequency-based waves, amplitude control
-- **Best For**: Electronic music and fluid effects
+### 🌊 AudioRipples
+- **Style**: Treble-reactive ripple effects
+- **Features**: Audio-reactive ripples, frequency-based distortions
+- **Best For**: Music videos with dynamic audio visualization
 
-### ✨ Particle System
-- **Style**: Particle-based visual effects
-- **Features**: Dynamic particles, explosion forces, energy levels
-- **Best For**: High-energy tracks and abstract visuals
--->
+### 🎯 3D Effects Collection
+- **3DRaymarching Series**: Multiple 3D raymarched scenes and environments
+- **RayBalls**: Video-textured spheres with orbital motion
+- **Features**: Complex 3D geometry, lighting, and materials
+
+### 🎵 Audio-Reactive Collection
+- **Beat Effects**: BeatDropShake, BeatFlash, EasyBeats
+- **Camera Effects**: CameraShake with beat-synced movement
+- **Features**: Real-time beat detection and frequency analysis
+
+*Complete collection: 20 working shaders across multiple categories*
 
 ## 🔧 Technical Details
 
