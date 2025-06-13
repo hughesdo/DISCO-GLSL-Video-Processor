@@ -889,3 +889,707 @@
 2025-06-08 19:34:35,253 - INFO - Starting video processing pipeline
 2025-06-08 19:34:35,254 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_ipk6dix8
 2025-06-08 19:34:35,254 - INFO - Preview mode: limiting to 250 frames
+2025-06-09 17:07:50,763 - INFO - Loaded configuration for 21 shaders
+2025-06-09 17:07:50,769 - INFO - Found video files: ['20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4']
+2025-06-09 17:07:50,772 - INFO - Found audio files: ['Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3', 'Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3']
+2025-06-09 17:07:50,772 - INFO - Shader Test Runner initialized
+2025-06-09 17:07:50,773 - INFO - Found 21 shaders to test
+2025-06-09 17:07:50,773 - INFO - Found 18 video files
+2025-06-09 17:07:50,773 - INFO - Found 6 audio files
+2025-06-09 17:07:50,794 - INFO - Testing 21 shaders
+2025-06-09 17:07:50,795 - INFO - Preview frames: 250
+2025-06-09 17:07:50,796 - INFO - Output directory: Outputs
+2025-06-09 17:07:50,797 - INFO - 
+[1/21] Testing After EffectsTik Tok Edit.glsl
+2025-06-09 17:07:50,797 - INFO - 
+============================================================
+2025-06-09 17:07:50,798 - INFO - TESTING SHADER: After EffectsTik Tok Edit.glsl
+2025-06-09 17:07:50,799 - INFO - ============================================================
+2025-06-09 17:07:50,799 - INFO - Video input: 20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4
+2025-06-09 17:07:50,800 - INFO - Audio input: Full Fist Part.mp3
+2025-06-09 17:07:50,801 - INFO - Using defaults for After EffectsTik Tok Edit.glsl: {'progress': 0.5, 'raySamples': 120.0, 'saturation': 0.8, 'baseIntensity': 1.0, 'colorShift': 0.0, 'waveAmplitude': 1.0, 'pulseSpeed': 1.0}
+2025-06-09 17:07:50,804 - INFO - Loaded configuration for shader: After EffectsTik Tok Edit.glsl
+2025-06-09 17:07:50,804 - INFO - Starting processing...
+2025-06-09 17:07:50,805 - INFO - Starting video processing pipeline
+2025-06-09 17:07:50,809 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_vr8lnrky
+2025-06-09 17:07:50,809 - INFO - Preview mode: limiting to 250 frames
+2025-06-09 17:07:54,725 - ERROR - FFmpeg error: ffmpeg version 2024-03-20-git-e04c638f5f-full_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers
+  built with gcc 13.2.0 (Rev5, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --pkg-config=pkgconf --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-libsnappy --enable-zlib --enable-librist --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-libbluray --enable-libcaca --enable-sdl2 --enable-libaribb24 --enable-libaribcaption --enable-libdav1d --enable-libdavs2 --enable-libuavs3d --enable-libzvbi --enable-librav1e --enable-libsvtav1 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxavs2 --enable-libxvid --enable-libaom --enable-libjxl --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-frei0r --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-liblensfun --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-ffnvcodec --enable-nvdec --enable-nvenc --enable-dxva2 --enable-d3d11va --enable-libvpl --enable-libshaderc --enable-vulkan --enable-libplacebo --enable-opencl --enable-libcdio --enable-libgme --enable-libmodplug --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libshine --enable-libtheora --enable-libtwolame --enable-libvo-amrwbenc --enable-libcodec2 --enable-libilbc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-ladspa --enable-libbs2b --enable-libflite --enable-libmysofa --enable-librubberband --enable-libsoxr --enable-chromaprint
+  libavutil      59.  3.100 / 59.  3.100
+  libavcodec     61.  2.100 / 61.  2.100
+  libavformat    61.  0.100 / 61.  0.100
+  libavdevice    61.  0.100 / 61.  0.100
+  libavfilter    10.  0.100 / 10.  0.100
+  libswscale      8.  0.100 /  8.  0.100
+  libswresample   5.  0.100 /  5.  0.100
+  libpostproc    58.  0.100 / 58.  0.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'Videos\20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.16.100
+  Duration: 00:00:05.00, start: 0.000000, bitrate: 12272 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1080x720, 12245 kb/s, 30 fps, 30 tbr, 90k tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> png (native))
+Press [q] to stop, [?] for help
+Output #0, image2, to 'C:\Users\hughe\AppData\Local\Temp\disco_frames_vr8lnrky\frame_%05d.png':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf61.0.100
+  Stream #0:0(und): Video: png, rgb24(pc, gbr/unknown/unknown, progressive), 1280x720, q=2-31, 200 kb/s, 30 fps, 30 tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.2.100 png
+frame=    4 fps=0.0 q=-0.0 size=N/A time=00:00:00.13 bitrate=N/A speed=0.257x    
+frame=   12 fps= 11 q=-0.0 size=N/A time=00:00:00.40 bitrate=N/A speed=0.365x    
+[out#0/image2 @ 000001d48e991280] video:99897KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+frame=   60 fps= 16 q=-0.0 Lsize=N/A time=00:00:02.00 bitrate=N/A dup=1 drop=0 speed=0.546x    
+Exiting normally, received signal 15.
+
+2025-06-09 20:03:30,540 - INFO - Loaded configuration for 21 shaders
+2025-06-09 20:03:30,550 - INFO - Found video files: ['20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4']
+2025-06-09 20:03:30,564 - INFO - Found audio files: ['Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3', 'Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3']
+2025-06-09 20:03:30,565 - INFO - Shader Test Runner initialized
+2025-06-09 20:03:30,566 - INFO - Found 21 shaders to test
+2025-06-09 20:03:30,566 - INFO - Found 18 video files
+2025-06-09 20:03:30,570 - INFO - Found 6 audio files
+2025-06-09 20:03:30,570 - INFO - Testing single shader: RayBalls2.glsl
+2025-06-09 20:03:30,574 - INFO - 
+============================================================
+2025-06-09 20:03:30,600 - INFO - TESTING SHADER: RayBalls2.glsl
+2025-06-09 20:03:30,614 - INFO - ============================================================
+2025-06-09 20:03:30,617 - INFO - Video input: Full First Part non transparent.mp4
+2025-06-09 20:03:30,624 - INFO - Audio input: Full Fist Part.mp3
+2025-06-09 20:03:30,646 - INFO - Using defaults for RayBalls2.glsl: {'ballSpeed': 1.0, 'ballSize': 1.0, 'videoReflectivity': 0.3}
+2025-06-09 20:03:30,664 - INFO - Loaded configuration for shader: RayBalls2.glsl
+2025-06-09 20:03:30,666 - INFO - Starting processing...
+2025-06-09 20:03:30,668 - INFO - Starting video processing pipeline
+2025-06-09 20:03:30,673 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_r01yia4b
+2025-06-09 20:03:30,682 - INFO - Preview mode: limiting to 50 frames
+2025-06-09 20:03:34,343 - INFO - Extracted 50 frames
+2025-06-09 20:03:34,343 - INFO -    Progress: 25% - rendering
+2025-06-09 20:03:34,692 - INFO - Created OpenGL context successfully
+2025-06-09 20:03:34,692 - INFO - Loading shader: Shaders\RayBalls2.glsl
+2025-06-09 20:03:34,693 - INFO - Skipping audio analysis for non-audio-reactive shader
+2025-06-09 20:03:35,179 - INFO - Shader compiled successfully
+2025-06-09 20:03:36,018 - INFO - Rendered frame 1/50
+2025-06-09 20:03:42,430 - INFO -    Progress: 50% - processing
+2025-06-09 20:03:44,062 - INFO - Rendered frame 31/50
+2025-06-09 20:03:46,071 - INFO -    Progress: 74% - processing
+2025-06-09 20:03:47,941 - INFO - Rendering complete: 50 frames
+2025-06-09 20:03:47,943 - INFO - Combining frames with audio
+2025-06-09 20:03:52,463 - INFO - Video combination completed successfully
+2025-06-09 20:03:52,463 - INFO -    Progress: 100% - complete
+2025-06-09 20:03:52,464 - INFO - Processing complete! Output: Outputs\RayBalls2.mp4
+2025-06-09 20:03:52,495 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_r01yia4b
+2025-06-09 20:03:52,528 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render__fkcew_p
+2025-06-09 20:03:52,547 - INFO -    Output: RayBalls2.mp4
+2025-06-09 20:03:52,547 - INFO -    Size: 2.0 MB
+2025-06-09 20:03:52,547 - INFO -    Duration: 21.9 seconds
+2025-06-09 21:11:29,751 - INFO - Loaded configuration for 22 shaders
+2025-06-09 21:11:29,756 - INFO - Found video files: ['20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4']
+2025-06-09 21:11:29,766 - INFO - Found audio files: ['Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3', 'Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3']
+2025-06-09 21:11:29,769 - INFO - Shader Test Runner initialized
+2025-06-09 21:11:29,769 - INFO - Found 22 shaders to test
+2025-06-09 21:11:29,770 - INFO - Found 18 video files
+2025-06-09 21:11:29,770 - INFO - Found 6 audio files
+2025-06-09 21:11:29,771 - INFO - Testing single shader: RayBalls3.glsl
+2025-06-09 21:11:29,771 - INFO - 
+============================================================
+2025-06-09 21:11:29,772 - INFO - TESTING SHADER: RayBalls3.glsl
+2025-06-09 21:11:29,779 - INFO - ============================================================
+2025-06-09 21:11:29,781 - INFO - Video input: 20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4
+2025-06-09 21:11:29,787 - INFO - Audio input: meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-09 21:11:29,788 - INFO - Using defaults for RayBalls3.glsl: {'ballSpeed': 1.0, 'ballSize': 1.0, 'videoReflectivity': 0.3}
+2025-06-09 21:11:29,790 - INFO - Loaded configuration for shader: RayBalls3.glsl
+2025-06-09 21:11:29,798 - INFO - Starting processing...
+2025-06-09 21:11:29,807 - INFO - Starting video processing pipeline
+2025-06-09 21:11:29,820 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_etwzn0df
+2025-06-09 21:11:29,829 - INFO - Preview mode: limiting to 30 frames
+2025-06-09 21:11:33,462 - INFO - Extracted 30 frames
+2025-06-09 21:11:33,462 - INFO -    Progress: 25% - rendering
+2025-06-09 21:11:33,878 - INFO - Created OpenGL context successfully
+2025-06-09 21:11:33,878 - INFO - Loading shader: Shaders\RayBalls3.glsl
+2025-06-09 21:11:33,880 - INFO - Skipping audio analysis for non-audio-reactive shader
+2025-06-09 21:11:34,372 - INFO - Shader compiled successfully
+2025-06-09 21:11:35,064 - INFO - Rendered frame 1/30
+2025-06-09 21:11:37,882 - INFO -    Progress: 47% - processing
+2025-06-09 21:11:40,131 - INFO -    Progress: 67% - processing
+2025-06-09 21:11:41,691 - INFO - Rendering complete: 30 frames
+2025-06-09 21:11:41,692 - INFO - Combining frames with audio
+2025-06-09 21:11:44,413 - INFO - Video combination completed successfully
+2025-06-09 21:11:44,413 - INFO -    Progress: 100% - complete
+2025-06-09 21:11:44,413 - INFO - Processing complete! Output: Outputs\RayBalls3.mp4
+2025-06-09 21:11:44,439 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_etwzn0df
+2025-06-09 21:11:44,464 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_bowl4p2q
+2025-06-09 21:11:44,499 - INFO -    Output: RayBalls3.mp4
+2025-06-09 21:11:44,499 - INFO -    Size: 0.6 MB
+2025-06-09 21:11:44,509 - INFO -    Duration: 14.7 seconds
+2025-06-09 21:16:30,622 - INFO - Loaded configuration for 22 shaders
+2025-06-09 21:16:30,629 - INFO - Found video files: ['20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4']
+2025-06-09 21:16:30,635 - INFO - Found audio files: ['Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3', 'Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3']
+2025-06-09 21:16:30,636 - INFO - Shader Test Runner initialized
+2025-06-09 21:16:30,637 - INFO - Found 22 shaders to test
+2025-06-09 21:16:30,637 - INFO - Found 18 video files
+2025-06-09 21:16:30,638 - INFO - Found 6 audio files
+2025-06-09 21:16:30,638 - INFO - Testing single shader: RayBalls3.glsl
+2025-06-09 21:16:30,639 - INFO - 
+============================================================
+2025-06-09 21:16:30,639 - INFO - TESTING SHADER: RayBalls3.glsl
+2025-06-09 21:16:30,640 - INFO - ============================================================
+2025-06-09 21:16:30,644 - INFO - Video input: Full First Part non transparent.mp4
+2025-06-09 21:16:30,645 - INFO - Audio input: Full Fist Part.mp3
+2025-06-09 21:16:30,646 - INFO - Using defaults for RayBalls3.glsl: {'ballSpeed': 1.0, 'ballSize': 1.0, 'videoReflectivity': 0.3}
+2025-06-09 21:16:30,654 - INFO - Loaded configuration for shader: RayBalls3.glsl
+2025-06-09 21:16:30,661 - INFO - Starting processing...
+2025-06-09 21:16:30,662 - INFO - Starting video processing pipeline
+2025-06-09 21:16:30,690 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_igccmmkk
+2025-06-09 21:16:30,714 - INFO - Preview mode: limiting to 30 frames
+2025-06-09 21:16:33,166 - INFO - Extracted 30 frames
+2025-06-09 21:16:33,167 - INFO -    Progress: 25% - rendering
+2025-06-09 21:16:33,395 - INFO - Created OpenGL context successfully
+2025-06-09 21:16:33,396 - INFO - Loading shader: Shaders\RayBalls3.glsl
+2025-06-09 21:16:33,397 - ERROR - Error in render_frames: 'charmap' codec can't decode byte 0x90 in position 15071: character maps to <undefined>
+2025-06-09 21:16:33,397 - ERROR - Processing pipeline failed: 'charmap' codec can't decode byte 0x90 in position 15071: character maps to <undefined>
+2025-06-09 21:16:33,411 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_igccmmkk
+2025-06-09 21:17:20,953 - INFO - Loaded configuration for 22 shaders
+2025-06-09 21:17:20,957 - INFO - Found video files: ['20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4']
+2025-06-09 21:17:20,966 - INFO - Found audio files: ['Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3', 'Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3']
+2025-06-09 21:17:20,968 - INFO - Shader Test Runner initialized
+2025-06-09 21:17:20,969 - INFO - Found 22 shaders to test
+2025-06-09 21:17:20,970 - INFO - Found 18 video files
+2025-06-09 21:17:20,971 - INFO - Found 6 audio files
+2025-06-09 21:17:20,972 - INFO - Testing single shader: RayBalls3.glsl
+2025-06-09 21:17:20,972 - INFO - 
+============================================================
+2025-06-09 21:17:20,973 - INFO - TESTING SHADER: RayBalls3.glsl
+2025-06-09 21:17:20,974 - INFO - ============================================================
+2025-06-09 21:17:20,979 - INFO - Video input: 20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4
+2025-06-09 21:17:20,980 - INFO - Audio input: Full Fist Part.mp3
+2025-06-09 21:17:20,981 - INFO - Using defaults for RayBalls3.glsl: {'ballSpeed': 1.0, 'ballSize': 1.0, 'videoReflectivity': 0.3}
+2025-06-09 21:17:21,020 - INFO - Loaded configuration for shader: RayBalls3.glsl
+2025-06-09 21:17:21,022 - INFO - Starting processing...
+2025-06-09 21:17:21,024 - INFO - Starting video processing pipeline
+2025-06-09 21:17:21,047 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_0oougzli
+2025-06-09 21:17:21,053 - INFO - Preview mode: limiting to 30 frames
+2025-06-09 21:17:23,932 - INFO - Extracted 30 frames
+2025-06-09 21:17:23,933 - INFO -    Progress: 25% - rendering
+2025-06-09 21:17:24,052 - INFO - Created OpenGL context successfully
+2025-06-09 21:17:24,052 - INFO - Loading shader: Shaders\RayBalls3.glsl
+2025-06-09 21:17:24,053 - INFO - Skipping audio analysis for non-audio-reactive shader
+2025-06-09 21:17:24,446 - INFO - Shader compiled successfully
+2025-06-09 21:17:24,782 - INFO - Rendered frame 1/30
+2025-06-09 21:17:28,071 - INFO -    Progress: 47% - processing
+2025-06-09 21:17:31,530 - INFO -    Progress: 67% - processing
+2025-06-09 21:17:33,239 - INFO - Rendering complete: 30 frames
+2025-06-09 21:17:33,241 - INFO - Combining frames with audio
+2025-06-09 21:17:35,637 - INFO - Video combination completed successfully
+2025-06-09 21:17:35,638 - INFO -    Progress: 100% - complete
+2025-06-09 21:17:35,638 - INFO - Processing complete! Output: Outputs\RayBalls3.mp4
+2025-06-09 21:17:35,657 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_0oougzli
+2025-06-09 21:17:35,687 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_y0xyk9ta
+2025-06-09 21:17:35,724 - INFO -    Output: RayBalls3.mp4
+2025-06-09 21:17:35,724 - INFO -    Size: 0.7 MB
+2025-06-09 21:17:35,725 - INFO -    Duration: 14.7 seconds
+2025-06-09 21:18:04,182 - INFO - Loaded configuration for 22 shaders
+2025-06-09 21:18:04,187 - INFO - Found video files: ['20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4']
+2025-06-09 21:18:04,190 - INFO - Found audio files: ['Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3', 'Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3']
+2025-06-09 21:18:04,191 - INFO - Shader Test Runner initialized
+2025-06-09 21:18:04,191 - INFO - Found 22 shaders to test
+2025-06-09 21:18:04,191 - INFO - Found 18 video files
+2025-06-09 21:18:04,191 - INFO - Found 6 audio files
+2025-06-09 21:18:04,208 - INFO - Testing 22 shaders
+2025-06-09 21:18:04,209 - INFO - Preview frames: 250
+2025-06-09 21:18:04,213 - INFO - Output directory: Outputs
+2025-06-09 21:18:04,217 - INFO - 
+[1/22] Testing After EffectsTik Tok Edit.glsl
+2025-06-09 21:18:04,218 - INFO - 
+============================================================
+2025-06-09 21:18:04,219 - INFO - TESTING SHADER: After EffectsTik Tok Edit.glsl
+2025-06-09 21:18:04,219 - INFO - ============================================================
+2025-06-09 21:18:04,220 - INFO - Video input: torchered1.mp4
+2025-06-09 21:18:04,220 - INFO - Audio input: You can kiss me.mp3
+2025-06-09 21:18:04,221 - INFO - Using defaults for After EffectsTik Tok Edit.glsl: {'progress': 0.5, 'raySamples': 120.0, 'saturation': 0.8, 'baseIntensity': 1.0, 'colorShift': 0.0, 'waveAmplitude': 1.0, 'pulseSpeed': 1.0}
+2025-06-09 21:18:04,223 - INFO - Loaded configuration for shader: After EffectsTik Tok Edit.glsl
+2025-06-09 21:18:04,223 - INFO - Starting processing...
+2025-06-09 21:18:04,224 - INFO - Starting video processing pipeline
+2025-06-09 21:18:04,229 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_3bnv2vlo
+2025-06-09 21:18:04,230 - INFO - Preview mode: limiting to 250 frames
+2025-06-09 21:18:17,481 - ERROR - FFmpeg error: ffmpeg version 2024-03-20-git-e04c638f5f-full_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers
+  built with gcc 13.2.0 (Rev5, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --pkg-config=pkgconf --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-libsnappy --enable-zlib --enable-librist --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-libbluray --enable-libcaca --enable-sdl2 --enable-libaribb24 --enable-libaribcaption --enable-libdav1d --enable-libdavs2 --enable-libuavs3d --enable-libzvbi --enable-librav1e --enable-libsvtav1 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxavs2 --enable-libxvid --enable-libaom --enable-libjxl --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-frei0r --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-liblensfun --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-ffnvcodec --enable-nvdec --enable-nvenc --enable-dxva2 --enable-d3d11va --enable-libvpl --enable-libshaderc --enable-vulkan --enable-libplacebo --enable-opencl --enable-libcdio --enable-libgme --enable-libmodplug --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libshine --enable-libtheora --enable-libtwolame --enable-libvo-amrwbenc --enable-libcodec2 --enable-libilbc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-ladspa --enable-libbs2b --enable-libflite --enable-libmysofa --enable-librubberband --enable-libsoxr --enable-chromaprint
+  libavutil      59.  3.100 / 59.  3.100
+  libavcodec     61.  2.100 / 61.  2.100
+  libavformat    61.  0.100 / 61.  0.100
+  libavdevice    61.  0.100 / 61.  0.100
+  libavfilter    10.  0.100 / 10.  0.100
+  libswscale      8.  0.100 /  8.  0.100
+  libswresample   5.  0.100 /  5.  0.100
+  libpostproc    58.  0.100 / 58.  0.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'Videos\torchered1.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf61.0.100
+  Duration: 00:00:18.50, start: 0.000000, bitrate: 8134 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x720, 8131 kb/s, 30 fps, 30 tbr, 15360 tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.2.100 libx264
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> png (native))
+Press [q] to stop, [?] for help
+Output #0, image2, to 'C:\Users\hughe\AppData\Local\Temp\disco_frames_3bnv2vlo\frame_%05d.png':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf61.0.100
+  Stream #0:0(und): Video: png, rgb24(pc, gbr/unknown/unknown, progressive), 1280x720, q=2-31, 200 kb/s, 30 fps, 30 tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.2.100 png
+frame=    4 fps=0.0 q=-0.0 size=N/A time=00:00:00.13 bitrate=N/A speed=0.251x    
+frame=   12 fps= 11 q=-0.0 size=N/A time=00:00:00.40 bitrate=N/A speed=0.363x    
+frame=   20 fps= 12 q=-0.0 size=N/A time=00:00:00.66 bitrate=N/A speed=0.412x    
+frame=   28 fps= 13 q=-0.0 size=N/A time=00:00:00.93 bitrate=N/A speed=0.431x    
+frame=   36 fps= 13 q=-0.0 size=N/A time=00:00:01.20 bitrate=N/A speed=0.436x    
+frame=   44 fps= 13 q=-0.0 size=N/A time=00:00:01.46 bitrate=N/A speed=0.445x    
+frame=   52 fps= 13 q=-0.0 size=N/A time=00:00:01.73 bitrate=N/A speed=0.446x    
+frame=   60 fps= 14 q=-0.0 size=N/A time=00:00:01.96 bitrate=N/A speed=0.445x    
+frame=   67 fps= 13 q=-0.0 size=N/A time=00:00:02.20 bitrate=N/A speed=0.442x    
+frame=   72 fps= 13 q=-0.0 size=N/A time=00:00:02.40 bitrate=N/A speed=0.429x    
+frame=   79 fps= 13 q=-0.0 size=N/A time=00:00:02.63 bitrate=N/A speed=0.425x    
+frame=   84 fps= 12 q=-0.0 size=N/A time=00:00:02.76 bitrate=N/A speed=0.406x    
+frame=   88 fps= 12 q=-0.0 size=N/A time=00:00:02.90 bitrate=N/A speed=0.384x    
+
+2025-06-09 23:06:35,902 - INFO - Loaded configuration for 22 shaders
+2025-06-09 23:06:35,911 - INFO - Found video files: ['20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4']
+2025-06-09 23:06:35,923 - INFO - Found audio files: ['Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3', 'Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3']
+2025-06-09 23:06:35,928 - INFO - Shader Test Runner initialized
+2025-06-09 23:06:35,937 - INFO - Found 22 shaders to test
+2025-06-09 23:06:35,972 - INFO - Found 18 video files
+2025-06-09 23:06:35,987 - INFO - Found 6 audio files
+2025-06-09 23:06:36,022 - INFO - Testing single shader: RayBalls3.glsl
+2025-06-09 23:06:36,024 - INFO - 
+============================================================
+2025-06-09 23:06:36,039 - INFO - TESTING SHADER: RayBalls3.glsl
+2025-06-09 23:06:36,051 - INFO - ============================================================
+2025-06-09 23:06:36,066 - INFO - Video input: torchered1.mp4
+2025-06-09 23:06:36,083 - INFO - Audio input: meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-09 23:06:36,105 - INFO - Using defaults for RayBalls3.glsl: {'ballSpeed': 1.0, 'ballSize': 1.0, 'videoReflectivity': 0.3}
+2025-06-09 23:06:36,139 - INFO - Loaded configuration for shader: RayBalls3.glsl
+2025-06-09 23:06:36,155 - INFO - Starting processing...
+2025-06-09 23:06:36,156 - INFO - Starting video processing pipeline
+2025-06-09 23:06:36,162 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_2yov4eur
+2025-06-09 23:06:36,164 - INFO - Preview mode: limiting to 30 frames
+2025-06-09 23:06:40,212 - INFO - Extracted 30 frames
+2025-06-09 23:06:40,229 - INFO -    Progress: 25% - rendering
+2025-06-09 23:06:40,922 - INFO - Created OpenGL context successfully
+2025-06-09 23:06:40,923 - INFO - Loading shader: Shaders\RayBalls3.glsl
+2025-06-09 23:06:40,924 - INFO - Skipping audio analysis for non-audio-reactive shader
+2025-06-09 23:06:42,288 - INFO - Shader compiled successfully
+2025-06-09 23:06:43,567 - INFO - Rendered frame 1/30
+2025-06-09 23:06:47,849 - INFO -    Progress: 47% - processing
+2025-06-09 23:06:50,688 - INFO -    Progress: 67% - processing
+2025-06-09 23:06:52,140 - INFO - Rendering complete: 30 frames
+2025-06-09 23:06:52,144 - INFO - Combining frames with audio
+2025-06-09 23:06:54,463 - INFO - Video combination completed successfully
+2025-06-09 23:06:54,467 - INFO -    Progress: 100% - complete
+2025-06-09 23:06:54,469 - INFO - Processing complete! Output: Outputs\RayBalls3.mp4
+2025-06-09 23:06:54,501 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_2yov4eur
+2025-06-09 23:06:54,657 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_njafwam_
+2025-06-09 23:06:54,902 - INFO -    Output: RayBalls3.mp4
+2025-06-09 23:06:54,904 - INFO -    Size: 0.7 MB
+2025-06-09 23:06:54,905 - INFO -    Duration: 18.5 seconds
+2025-06-10 22:12:48,640 - INFO - Loaded configuration for 23 shaders
+2025-06-10 22:12:48,645 - INFO - Found video files: ['20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4']
+2025-06-10 22:12:48,650 - INFO - Found audio files: ['Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3', 'Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3']
+2025-06-10 22:12:48,651 - INFO - Shader Test Runner initialized
+2025-06-10 22:12:48,654 - INFO - Found 23 shaders to test
+2025-06-10 22:12:48,655 - INFO - Found 18 video files
+2025-06-10 22:12:48,655 - INFO - Found 6 audio files
+2025-06-10 22:12:48,656 - INFO - Testing single shader: RayBalls4.glsl
+2025-06-10 22:12:48,656 - INFO - 
+============================================================
+2025-06-10 22:12:48,657 - INFO - TESTING SHADER: RayBalls4.glsl
+2025-06-10 22:12:48,658 - INFO - ============================================================
+2025-06-10 22:12:48,658 - INFO - Video input: Full First Part non transparent.mp4
+2025-06-10 22:12:48,658 - INFO - Audio input: Full Fist Part.mp3
+2025-06-10 22:12:48,659 - INFO - Using defaults for RayBalls4.glsl: {'ballSpeed': 1.0, 'ballSize': 1.0, 'videoReflectivity': 0.3}
+2025-06-10 22:12:48,662 - INFO - Loaded configuration for shader: RayBalls4.glsl
+2025-06-10 22:12:48,671 - INFO - Starting processing...
+2025-06-10 22:12:48,674 - INFO - Starting video processing pipeline
+2025-06-10 22:12:48,679 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_1sooltam
+2025-06-10 22:12:48,681 - INFO - Preview mode: limiting to 30 frames
+2025-06-10 22:12:51,349 - INFO - Extracted 30 frames
+2025-06-10 22:12:51,350 - INFO -    Progress: 25% - rendering
+2025-06-10 22:12:51,951 - INFO - Created OpenGL context successfully
+2025-06-10 22:12:51,957 - INFO - Loading shader: Shaders\RayBalls4.glsl
+2025-06-10 22:12:51,960 - INFO - Skipping audio analysis for non-audio-reactive shader
+2025-06-10 22:12:52,388 - INFO - Shader compiled successfully
+2025-06-10 22:12:52,984 - INFO - Rendered frame 1/30
+2025-06-10 22:12:55,375 - INFO -    Progress: 47% - processing
+2025-06-10 22:12:57,149 - INFO -    Progress: 67% - processing
+2025-06-10 22:12:58,423 - INFO - Rendering complete: 30 frames
+2025-06-10 22:12:58,425 - INFO - Combining frames with audio
+2025-06-10 22:13:00,845 - INFO - Video combination completed successfully
+2025-06-10 22:13:00,859 - INFO -    Progress: 100% - complete
+2025-06-10 22:13:00,859 - INFO - Processing complete! Output: Outputs\RayBalls4.mp4
+2025-06-10 22:13:00,881 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_1sooltam
+2025-06-10 22:13:00,896 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_776wux92
+2025-06-10 22:13:00,924 - INFO -    Output: RayBalls4.mp4
+2025-06-10 22:13:00,924 - INFO -    Size: 0.7 MB
+2025-06-10 22:13:00,925 - INFO -    Duration: 12.2 seconds
+2025-06-11 23:28:46,606 - INFO - Loaded configuration for 22 shaders
+2025-06-11 23:28:46,612 - INFO - Found video files: ['20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4']
+2025-06-11 23:28:46,625 - INFO - Found audio files: ['Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3', 'Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3']
+2025-06-11 23:28:46,633 - INFO - Shader Test Runner initialized
+2025-06-11 23:28:46,644 - INFO - Found 22 shaders to test
+2025-06-11 23:28:46,691 - INFO - Found 18 video files
+2025-06-11 23:28:46,694 - INFO - Found 6 audio files
+2025-06-11 23:28:46,709 - INFO - Testing single shader: RayBalls3.glsl
+2025-06-11 23:28:46,712 - INFO - 
+============================================================
+2025-06-11 23:28:46,726 - INFO - TESTING SHADER: RayBalls3.glsl
+2025-06-11 23:28:46,728 - INFO - ============================================================
+2025-06-11 23:28:46,742 - INFO - Video input: 20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4
+2025-06-11 23:28:46,755 - INFO - Audio input: You can kiss me.mp3
+2025-06-11 23:28:46,773 - INFO - Using defaults for RayBalls3.glsl: {'ballSpeed': 1.0, 'ballSize': 1.0, 'videoReflectivity': 0.3}
+2025-06-11 23:28:46,805 - INFO - Loaded configuration for shader: RayBalls3.glsl
+2025-06-11 23:28:46,813 - INFO - Starting processing...
+2025-06-11 23:28:46,822 - INFO - Starting video processing pipeline
+2025-06-11 23:28:46,827 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_bjjrtln4
+2025-06-11 23:28:46,827 - INFO - Preview mode: limiting to 30 frames
+2025-06-11 23:28:53,396 - INFO - Extracted 30 frames
+2025-06-11 23:28:53,405 - INFO -    Progress: 25% - rendering
+2025-06-11 23:28:54,224 - INFO - Created OpenGL context successfully
+2025-06-11 23:28:54,228 - INFO - Loading shader: Shaders\RayBalls3.glsl
+2025-06-11 23:28:54,245 - INFO - Skipping audio analysis for non-audio-reactive shader
+2025-06-11 23:28:55,361 - INFO - Shader compiled successfully
+2025-06-11 23:28:56,006 - INFO - Rendered frame 1/30
+2025-06-11 23:29:01,760 - INFO -    Progress: 47% - processing
+2025-06-11 23:29:05,450 - INFO -    Progress: 67% - processing
+2025-06-11 23:29:07,928 - INFO - Rendering complete: 30 frames
+2025-06-11 23:29:07,930 - INFO - Combining frames with audio
+2025-06-11 23:29:14,011 - INFO - Video combination completed successfully
+2025-06-11 23:29:14,013 - INFO -    Progress: 100% - complete
+2025-06-11 23:29:14,013 - INFO - Processing complete! Output: Outputs\RayBalls3.mp4
+2025-06-11 23:29:14,037 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_bjjrtln4
+2025-06-11 23:29:14,069 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_ee8xl2sx
+2025-06-11 23:29:14,122 - INFO -    Output: RayBalls3.mp4
+2025-06-11 23:29:14,127 - INFO -    Size: 0.6 MB
+2025-06-11 23:29:14,128 - INFO -    Duration: 27.3 seconds
+2025-06-11 23:50:40,732 - INFO - Loaded configuration for 22 shaders
+2025-06-11 23:50:40,742 - INFO - Found video files: ['20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4']
+2025-06-11 23:50:40,756 - INFO - Found audio files: ['Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3', 'Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3']
+2025-06-11 23:50:40,758 - INFO - Shader Test Runner initialized
+2025-06-11 23:50:40,758 - INFO - Found 22 shaders to test
+2025-06-11 23:50:40,759 - INFO - Found 18 video files
+2025-06-11 23:50:40,760 - INFO - Found 6 audio files
+2025-06-11 23:50:40,761 - INFO - Testing single shader: RayBalls3.glsl
+2025-06-11 23:50:40,779 - INFO - 
+============================================================
+2025-06-11 23:50:40,794 - INFO - TESTING SHADER: RayBalls3.glsl
+2025-06-11 23:50:40,797 - INFO - ============================================================
+2025-06-11 23:50:40,802 - INFO - Video input: 20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4
+2025-06-11 23:50:40,818 - INFO - Audio input: Full Fist Part.mp3
+2025-06-11 23:50:40,829 - INFO - Using defaults for RayBalls3.glsl: {'ballSpeed': 1.0, 'ballSize': 1.0, 'videoReflectivity': 0.3}
+2025-06-11 23:50:40,832 - INFO - Loaded configuration for shader: RayBalls3.glsl
+2025-06-11 23:50:40,836 - INFO - Starting processing...
+2025-06-11 23:50:40,850 - INFO - Starting video processing pipeline
+2025-06-11 23:50:40,869 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_7h3q06jb
+2025-06-11 23:50:40,876 - INFO - Preview mode: limiting to 30 frames
+2025-06-11 23:50:45,069 - INFO - Extracted 30 frames
+2025-06-11 23:50:45,074 - INFO -    Progress: 25% - rendering
+2025-06-11 23:50:45,932 - INFO - Created OpenGL context successfully
+2025-06-11 23:50:45,943 - INFO - Loading shader: Shaders\RayBalls3.glsl
+2025-06-11 23:50:45,953 - INFO - Skipping audio analysis for non-audio-reactive shader
+2025-06-11 23:50:48,340 - INFO - Shader compiled successfully
+2025-06-11 23:50:49,547 - INFO - Rendered frame 1/30
+2025-06-11 23:50:54,958 - INFO -    Progress: 47% - processing
+2025-06-11 23:50:58,750 - INFO -    Progress: 67% - processing
+2025-06-11 23:51:01,417 - INFO - Rendering complete: 30 frames
+2025-06-11 23:51:01,419 - INFO - Combining frames with audio
+2025-06-11 23:51:09,199 - INFO - Video combination completed successfully
+2025-06-11 23:51:09,203 - INFO -    Progress: 100% - complete
+2025-06-11 23:51:09,313 - INFO - Processing complete! Output: Outputs\RayBalls3.mp4
+2025-06-11 23:51:09,486 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_7h3q06jb
+2025-06-11 23:51:09,609 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_881mc_ip
+2025-06-11 23:51:10,045 - INFO -    Output: RayBalls3.mp4
+2025-06-11 23:51:10,046 - INFO -    Size: 0.7 MB
+2025-06-11 23:51:10,048 - INFO -    Duration: 28.9 seconds
+2025-06-12 00:12:41,172 - INFO - Loaded configuration for 22 shaders
+2025-06-12 00:12:41,221 - INFO - Found video files: ['20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4']
+2025-06-12 00:12:41,246 - INFO - Found audio files: ['Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3', 'Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3']
+2025-06-12 00:12:41,268 - INFO - Shader Test Runner initialized
+2025-06-12 00:12:41,271 - INFO - Found 22 shaders to test
+2025-06-12 00:12:41,272 - INFO - Found 18 video files
+2025-06-12 00:12:41,274 - INFO - Found 6 audio files
+2025-06-12 00:12:41,274 - INFO - Testing single shader: RayBalls3.glsl
+2025-06-12 00:12:41,302 - INFO - 
+============================================================
+2025-06-12 00:12:41,305 - INFO - TESTING SHADER: RayBalls3.glsl
+2025-06-12 00:12:41,306 - INFO - ============================================================
+2025-06-12 00:12:41,308 - INFO - Video input: 20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4
+2025-06-12 00:12:41,318 - INFO - Audio input: Full Fist Part.mp3
+2025-06-12 00:12:41,323 - INFO - Using defaults for RayBalls3.glsl: {'ballSpeed': 1.0, 'ballSize': 1.0, 'videoReflectivity': 0.3}
+2025-06-12 00:12:41,331 - INFO - Loaded configuration for shader: RayBalls3.glsl
+2025-06-12 00:12:41,334 - INFO - Starting processing...
+2025-06-12 00:12:41,335 - INFO - Starting video processing pipeline
+2025-06-12 00:12:41,339 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_4ft5v_qu
+2025-06-12 00:12:41,340 - INFO - Preview mode: limiting to 30 frames
+2025-06-12 00:12:48,323 - INFO - Extracted 30 frames
+2025-06-12 00:12:48,341 - INFO -    Progress: 25% - rendering
+2025-06-12 00:12:49,108 - INFO - Created OpenGL context successfully
+2025-06-12 00:12:49,119 - INFO - Loading shader: Shaders\RayBalls3.glsl
+2025-06-12 00:12:49,122 - INFO - Skipping audio analysis for non-audio-reactive shader
+2025-06-12 00:12:50,151 - INFO - Shader compiled successfully
+2025-06-12 00:12:50,731 - INFO - Rendered frame 1/30
+2025-06-12 00:12:54,331 - INFO -    Progress: 47% - processing
+2025-06-12 00:12:57,263 - INFO -    Progress: 67% - processing
+2025-06-12 00:12:59,215 - INFO - Rendering complete: 30 frames
+2025-06-12 00:12:59,217 - INFO - Combining frames with audio
+2025-06-12 00:13:03,100 - INFO - Video combination completed successfully
+2025-06-12 00:13:03,101 - INFO -    Progress: 100% - complete
+2025-06-12 00:13:03,101 - INFO - Processing complete! Output: Outputs\RayBalls3.mp4
+2025-06-12 00:13:03,128 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_4ft5v_qu
+2025-06-12 00:13:03,168 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_vh9udpxl
+2025-06-12 00:13:03,219 - INFO -    Output: RayBalls3.mp4
+2025-06-12 00:13:03,220 - INFO -    Size: 0.7 MB
+2025-06-12 00:13:03,223 - INFO -    Duration: 21.8 seconds
+2025-06-12 00:27:30,496 - INFO - Loaded configuration for 22 shaders
+2025-06-12 00:27:30,507 - INFO - Found video files: ['20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4']
+2025-06-12 00:27:30,526 - INFO - Found audio files: ['Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3', 'Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3']
+2025-06-12 00:27:30,528 - INFO - Shader Test Runner initialized
+2025-06-12 00:27:30,529 - INFO - Found 22 shaders to test
+2025-06-12 00:27:30,529 - INFO - Found 18 video files
+2025-06-12 00:27:30,531 - INFO - Found 6 audio files
+2025-06-12 00:27:30,538 - INFO - Testing single shader: RayBalls3.glsl
+2025-06-12 00:27:30,539 - INFO - 
+============================================================
+2025-06-12 00:27:30,540 - INFO - TESTING SHADER: RayBalls3.glsl
+2025-06-12 00:27:30,540 - INFO - ============================================================
+2025-06-12 00:27:30,541 - INFO - Video input: 20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4
+2025-06-12 00:27:30,543 - INFO - Audio input: meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-12 00:27:30,547 - INFO - Using defaults for RayBalls3.glsl: {'ballSpeed': 1.0, 'ballSize': 1.0, 'videoReflectivity': 0.3}
+2025-06-12 00:27:30,549 - INFO - Loaded configuration for shader: RayBalls3.glsl
+2025-06-12 00:27:30,550 - INFO - Starting processing...
+2025-06-12 00:27:30,550 - INFO - Starting video processing pipeline
+2025-06-12 00:27:30,556 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_se4ob2q0
+2025-06-12 00:27:30,557 - INFO - Preview mode: limiting to 30 frames
+2025-06-12 00:27:35,932 - INFO - Extracted 30 frames
+2025-06-12 00:27:35,934 - INFO -    Progress: 25% - rendering
+2025-06-12 00:27:37,098 - INFO - Created OpenGL context successfully
+2025-06-12 00:27:37,113 - INFO - Loading shader: Shaders\RayBalls3.glsl
+2025-06-12 00:27:37,115 - INFO - Skipping audio analysis for non-audio-reactive shader
+2025-06-12 00:27:41,534 - INFO - Shader compiled successfully
+2025-06-12 00:27:42,296 - INFO - Rendered frame 1/30
+2025-06-12 00:27:48,558 - INFO -    Progress: 47% - processing
+2025-06-12 00:27:52,966 - INFO -    Progress: 67% - processing
+2025-06-12 00:27:55,778 - INFO - Rendering complete: 30 frames
+2025-06-12 00:27:55,782 - INFO - Combining frames with audio
+2025-06-12 00:28:07,189 - INFO - Video combination completed successfully
+2025-06-12 00:28:07,191 - INFO -    Progress: 100% - complete
+2025-06-12 00:28:07,192 - INFO - Processing complete! Output: Outputs\RayBalls3.mp4
+2025-06-12 00:28:07,215 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_se4ob2q0
+2025-06-12 00:28:07,276 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_qlwutmuk
+2025-06-12 00:28:07,383 - INFO -    Output: RayBalls3.mp4
+2025-06-12 00:28:07,383 - INFO -    Size: 0.7 MB
+2025-06-12 00:28:07,384 - INFO -    Duration: 36.7 seconds
+2025-06-12 00:46:49,594 - INFO - Loaded configuration for 22 shaders
+2025-06-12 00:46:49,603 - INFO - Found video files: ['20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4']
+2025-06-12 00:46:49,620 - INFO - Found audio files: ['Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3', 'Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3']
+2025-06-12 00:46:49,719 - INFO - Shader Test Runner initialized
+2025-06-12 00:46:49,764 - INFO - Found 22 shaders to test
+2025-06-12 00:46:49,767 - INFO - Found 18 video files
+2025-06-12 00:46:49,769 - INFO - Found 6 audio files
+2025-06-12 00:46:49,770 - INFO - Testing single shader: RayBalls3.glsl
+2025-06-12 00:46:49,835 - INFO - 
+============================================================
+2025-06-12 00:46:49,848 - INFO - TESTING SHADER: RayBalls3.glsl
+2025-06-12 00:46:49,850 - INFO - ============================================================
+2025-06-12 00:46:49,852 - INFO - Video input: 20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4
+2025-06-12 00:46:49,869 - INFO - Audio input: You can kiss me.mp3
+2025-06-12 00:46:49,881 - INFO - Using defaults for RayBalls3.glsl: {'ballSpeed': 1.0, 'ballSize': 1.0, 'videoReflectivity': 0.3}
+2025-06-12 00:46:49,911 - INFO - Loaded configuration for shader: RayBalls3.glsl
+2025-06-12 00:46:49,913 - INFO - Starting processing...
+2025-06-12 00:46:49,914 - INFO - Starting video processing pipeline
+2025-06-12 00:46:49,918 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames__79av9v_
+2025-06-12 00:46:49,922 - INFO - Preview mode: limiting to 30 frames
+2025-06-12 00:46:58,810 - INFO - Extracted 30 frames
+2025-06-12 00:46:58,811 - INFO -    Progress: 25% - rendering
+2025-06-12 00:47:02,170 - INFO - Created OpenGL context successfully
+2025-06-12 00:47:02,213 - INFO - Loading shader: Shaders\RayBalls3.glsl
+2025-06-12 00:47:02,250 - INFO - Skipping audio analysis for non-audio-reactive shader
+2025-06-12 00:47:04,452 - INFO - Shader compiled successfully
+2025-06-12 00:47:05,181 - INFO - Rendered frame 1/30
+2025-06-12 00:47:12,170 - INFO -    Progress: 47% - processing
+2025-06-12 00:47:15,932 - INFO -    Progress: 67% - processing
+2025-06-12 00:47:19,469 - INFO - Rendering complete: 30 frames
+2025-06-12 00:47:19,473 - INFO - Combining frames with audio
+2025-06-12 00:47:23,640 - INFO - Video combination completed successfully
+2025-06-12 00:47:23,641 - INFO -    Progress: 100% - complete
+2025-06-12 00:47:23,642 - INFO - Processing complete! Output: Outputs\RayBalls3.mp4
+2025-06-12 00:47:23,688 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames__79av9v_
+2025-06-12 00:47:23,726 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_f0_51mnd
+2025-06-12 00:47:23,764 - INFO -    Output: RayBalls3.mp4
+2025-06-12 00:47:23,764 - INFO -    Size: 0.6 MB
+2025-06-12 00:47:23,766 - INFO -    Duration: 33.8 seconds
+2025-06-12 17:26:21,457 - INFO - Loaded configuration for 23 shaders
+2025-06-12 17:26:21,462 - INFO - Found video files: ['20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4']
+2025-06-12 17:26:21,470 - INFO - Found audio files: ['Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3', 'Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3']
+2025-06-12 17:26:21,471 - INFO - Shader Test Runner initialized
+2025-06-12 17:26:21,472 - INFO - Found 23 shaders to test
+2025-06-12 17:26:21,473 - INFO - Found 18 video files
+2025-06-12 17:26:21,473 - INFO - Found 6 audio files
+2025-06-12 17:26:21,473 - INFO - Testing single shader: RayBalls4.glsl
+2025-06-12 17:26:21,474 - INFO - 
+============================================================
+2025-06-12 17:26:21,474 - INFO - TESTING SHADER: RayBalls4.glsl
+2025-06-12 17:26:21,475 - INFO - ============================================================
+2025-06-12 17:26:21,476 - INFO - Video input: 20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4
+2025-06-12 17:26:21,476 - INFO - Audio input: Full Fist Part.mp3
+2025-06-12 17:26:21,477 - INFO - Using defaults for RayBalls4.glsl: {'ballSpeed': 1.0, 'ballSize': 1.0, 'videoReflectivity': 0.3}
+2025-06-12 17:26:21,478 - INFO - Loaded configuration for shader: RayBalls4.glsl
+2025-06-12 17:26:21,480 - INFO - Starting processing...
+2025-06-12 17:26:21,480 - INFO - Starting video processing pipeline
+2025-06-12 17:26:21,490 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_163y36ya
+2025-06-12 17:26:21,495 - INFO - Preview mode: limiting to 30 frames
+2025-06-12 17:26:24,289 - INFO - Extracted 30 frames
+2025-06-12 17:26:24,289 - INFO -    Progress: 25% - rendering
+2025-06-12 17:26:24,608 - INFO - Created OpenGL context successfully
+2025-06-12 17:26:24,608 - INFO - Loading shader: Shaders\RayBalls4.glsl
+2025-06-12 17:26:24,610 - INFO - Skipping audio analysis for non-audio-reactive shader
+2025-06-12 17:26:25,068 - INFO - Shader compiled successfully
+2025-06-12 17:26:25,442 - INFO - Rendered frame 1/30
+2025-06-12 17:26:27,781 - INFO -    Progress: 47% - processing
+2025-06-12 17:26:29,768 - INFO -    Progress: 67% - processing
+2025-06-12 17:26:31,084 - INFO - Rendering complete: 30 frames
+2025-06-12 17:26:31,085 - INFO - Combining frames with audio
+2025-06-12 17:26:33,507 - INFO - Video combination completed successfully
+2025-06-12 17:26:33,508 - INFO -    Progress: 100% - complete
+2025-06-12 17:26:33,508 - INFO - Processing complete! Output: Outputs\RayBalls4.mp4
+2025-06-12 17:26:33,526 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_163y36ya
+2025-06-12 17:26:33,551 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_eipimw_9
+2025-06-12 17:26:33,578 - INFO -    Output: RayBalls4.mp4
+2025-06-12 17:26:33,578 - INFO -    Size: 0.6 MB
+2025-06-12 17:26:33,579 - INFO -    Duration: 12.1 seconds
+2025-06-13 11:23:39,208 - INFO - Loaded configuration for 24 shaders
+2025-06-13 11:23:39,213 - INFO - Found video files: ['20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4']
+2025-06-13 11:23:39,223 - INFO - Found audio files: ['Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3', 'Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3']
+2025-06-13 11:23:39,224 - INFO - Shader Test Runner initialized
+2025-06-13 11:23:39,225 - INFO - Found 24 shaders to test
+2025-06-13 11:23:39,225 - INFO - Found 18 video files
+2025-06-13 11:23:39,226 - INFO - Found 6 audio files
+2025-06-13 11:23:39,227 - INFO - Testing single shader: Waveform.glsl
+2025-06-13 11:23:39,227 - INFO - 
+============================================================
+2025-06-13 11:23:39,228 - INFO - TESTING SHADER: Waveform.glsl
+2025-06-13 11:23:39,228 - INFO - ============================================================
+2025-06-13 11:23:39,230 - INFO - Video input: 20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4
+2025-06-13 11:23:39,234 - INFO - Audio input: Full Fist Part.mp3
+2025-06-13 11:23:39,248 - INFO - Using defaults for Waveform.glsl: {'bassLevel': 0.8, 'midLevel': 0.6, 'trebleLevel': 0.7, 'beatLevel': 0.9, 'kickLevel': 0.8, 'rmsLevel': 0.5, 'waveformIntensity': 1.0, 'audioSensitivity': 1.2, 'timeSpeed': 1.0}
+2025-06-13 11:23:39,266 - INFO - Loaded configuration for shader: Waveform.glsl
+2025-06-13 11:23:39,268 - INFO - Starting processing...
+2025-06-13 11:23:39,271 - INFO - Starting video processing pipeline
+2025-06-13 11:23:39,289 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_8fds9vy0
+2025-06-13 11:23:39,291 - INFO - Preview mode: limiting to 250 frames
+2025-06-13 11:23:51,618 - INFO - Extracted 150 frames
+2025-06-13 11:23:51,618 - INFO -    Progress: 25% - rendering
+2025-06-13 11:23:51,983 - INFO - Created OpenGL context successfully
+2025-06-13 11:23:51,984 - INFO - Loading shader: Shaders\Waveform.glsl
+2025-06-13 11:23:51,986 - INFO - Performing advanced audio analysis for audio-reactive shader...
+2025-06-13 11:23:51,988 - INFO - Performing advanced audio analysis: Videos\Full Fist Part.mp3
+2025-06-13 11:24:35,418 - INFO - Extracted advanced audio features: ['bassLevel', 'midLevel', 'trebleLevel', 'beatLevel', 'kickLevel', 'rmsLevel', 'brightnessLevel', 'energyLevel', 'percussiveLevel', 'tempoBeatLevel']
+2025-06-13 11:24:35,419 - INFO - Bass range: 0.000 - 1.000
+2025-06-13 11:24:35,422 - INFO - Mid range: 0.000 - 1.000
+2025-06-13 11:24:35,423 - INFO - Treble range: 0.000 - 1.000
+2025-06-13 11:24:35,424 - INFO - Detected 87 beats, 27 kicks
+2025-06-13 11:24:35,424 - INFO - Estimated tempo: 120.0 BPM, 26 tempo beats
+2025-06-13 11:24:35,425 - INFO - Audio reactivity settings: {'reactivity_preset': 'moderate', 'beat_sensitivity': 1.0, 'bass_response': 1.0, 'mid_response': 1.0, 'treble_response': 1.0}
+2025-06-13 11:24:35,462 - ERROR - Shader compilation error: GLSL Linker failed
+
+Program
+=======
+Vertex and fragment shaders in GLSL ES3.0 must have both the same version.
+
+
+2025-06-13 11:24:35,465 - ERROR - Error in render_frames: GLSL Linker failed
+
+Program
+=======
+Vertex and fragment shaders in GLSL ES3.0 must have both the same version.
+
+
+2025-06-13 11:24:35,468 - ERROR - Processing pipeline failed: GLSL Linker failed
+
+Program
+=======
+Vertex and fragment shaders in GLSL ES3.0 must have both the same version.
+
+
+2025-06-13 11:24:35,625 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_8fds9vy0
+2025-06-13 11:25:07,903 - INFO - Loaded configuration for 24 shaders
+2025-06-13 11:25:07,914 - INFO - Found video files: ['20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv77ew6vmswj76scn5g2.mp4', '20250528_1912_Rockstar Urban Vibes_simple_compose_01jwcjpv7vf55ttd4v65x9qr7p.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65t0ftwt95jcx4s48ywy.mp4', '20250528_1921_Urban Rebel Vibes_simple_compose_01jwck65tcfm8ay7hc8nphb9px.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf65ey4r68qe6cryvn8g.mp4', '20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4', 'Full First Part non transparent.mp4', 'torchered1.mp4', 'torchered2.mp4']
+2025-06-13 11:25:07,941 - INFO - Found audio files: ['Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3', 'Full Fist Part.mp3', 'meditation-binaural-5-hz-short-pixabay-316516.mp3', 'You can kiss me.mp3']
+2025-06-13 11:25:07,945 - INFO - Shader Test Runner initialized
+2025-06-13 11:25:07,947 - INFO - Found 24 shaders to test
+2025-06-13 11:25:07,947 - INFO - Found 18 video files
+2025-06-13 11:25:07,949 - INFO - Found 6 audio files
+2025-06-13 11:25:07,963 - INFO - Testing single shader: Waveform.glsl
+2025-06-13 11:25:07,964 - INFO - 
+============================================================
+2025-06-13 11:25:07,966 - INFO - TESTING SHADER: Waveform.glsl
+2025-06-13 11:25:07,969 - INFO - ============================================================
+2025-06-13 11:25:07,975 - INFO - Video input: 20250528_1934_Urban Cool Vibes_simple_compose_01jwckyf6betks786tvbt7hrww.mp4
+2025-06-13 11:25:07,977 - INFO - Audio input: meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-13 11:25:07,979 - INFO - Using defaults for Waveform.glsl: {'bassLevel': 0.8, 'midLevel': 0.6, 'trebleLevel': 0.7, 'beatLevel': 0.9, 'kickLevel': 0.8, 'rmsLevel': 0.5, 'waveformIntensity': 1.0, 'audioSensitivity': 1.2, 'timeSpeed': 1.0}
+2025-06-13 11:25:07,983 - INFO - Loaded configuration for shader: Waveform.glsl
+2025-06-13 11:25:07,984 - INFO - Starting processing...
+2025-06-13 11:25:07,986 - INFO - Starting video processing pipeline
+2025-06-13 11:25:07,998 - INFO - Extracting frames to: C:\Users\hughe\AppData\Local\Temp\disco_frames_foaf5udm
+2025-06-13 11:25:07,998 - INFO - Preview mode: limiting to 250 frames
+2025-06-13 11:25:19,814 - INFO - Extracted 150 frames
+2025-06-13 11:25:19,815 - INFO -    Progress: 25% - rendering
+2025-06-13 11:25:20,000 - INFO - Created OpenGL context successfully
+2025-06-13 11:25:20,001 - INFO - Loading shader: Shaders\Waveform.glsl
+2025-06-13 11:25:20,002 - INFO - Performing advanced audio analysis for audio-reactive shader...
+2025-06-13 11:25:20,002 - INFO - Performing advanced audio analysis: Videos\meditation-binaural-5-hz-short-pixabay-316516.mp3
+2025-06-13 11:25:34,729 - INFO - Extracted advanced audio features: ['bassLevel', 'midLevel', 'trebleLevel', 'beatLevel', 'kickLevel', 'rmsLevel', 'brightnessLevel', 'energyLevel', 'percussiveLevel', 'tempoBeatLevel']
+2025-06-13 11:25:34,729 - INFO - Bass range: 0.000 - 1.000
+2025-06-13 11:25:34,730 - INFO - Mid range: 0.000 - 1.000
+2025-06-13 11:25:34,730 - INFO - Treble range: 0.000 - 1.000
+2025-06-13 11:25:34,731 - INFO - Detected 425 beats, 175 kicks
+2025-06-13 11:25:34,731 - INFO - Estimated tempo: 120.0 BPM, 193 tempo beats
+2025-06-13 11:25:34,731 - INFO - Audio reactivity settings: {'reactivity_preset': 'moderate', 'beat_sensitivity': 1.0, 'bass_response': 1.0, 'mid_response': 1.0, 'treble_response': 1.0}
+2025-06-13 11:25:34,761 - INFO - Shader compiled successfully
+2025-06-13 11:25:35,734 - INFO - Rendered frame 1/150
+2025-06-13 11:25:45,325 - INFO - Rendered frame 31/150
+2025-06-13 11:25:51,503 - INFO -    Progress: 45% - processing
+2025-06-13 11:25:54,783 - INFO - Rendered frame 61/150
+2025-06-13 11:26:04,740 - INFO - Rendered frame 91/150
+2025-06-13 11:26:08,278 - INFO -    Progress: 65% - processing
+2025-06-13 11:26:15,128 - INFO - Rendered frame 121/150
+2025-06-13 11:26:24,643 - INFO - Rendering complete: 150 frames
+2025-06-13 11:26:24,644 - INFO - Combining frames with audio
+2025-06-13 11:26:38,782 - INFO - Video combination completed successfully
+2025-06-13 11:26:38,783 - INFO -    Progress: 100% - complete
+2025-06-13 11:26:38,783 - INFO - Processing complete! Output: Outputs\Waveform.mp4
+2025-06-13 11:26:38,883 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_frames_foaf5udm
+2025-06-13 11:26:38,978 - INFO - Cleaned up temp dir: C:\Users\hughe\AppData\Local\Temp\disco_render_c7c7cst0
+2025-06-13 11:26:38,989 - INFO -    Output: Waveform.mp4
+2025-06-13 11:26:38,994 - INFO -    Size: 5.0 MB
+2025-06-13 11:26:38,997 - INFO -    Duration: 91.0 seconds

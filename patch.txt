@@ -1,0 +1,93 @@
+diff --git a/shader_video_processor.py b/shader_video_processor.py
+index 1a885c384921f39d5e062d414dd74d80b79349ad..ac2f6ee22109733207b4361855e6bf02b2a4d582 100644
+--- a/shader_video_processor.py
++++ b/shader_video_processor.py
+@@ -418,77 +418,79 @@ void main() {
+                     fragment_shader=shader_code
+                 )
+                 logger.info("Shader compiled successfully")
+             except Exception as e:
+                 logger.error(f"Shader compilation error: {e}")
+                 raise
+ 
+             # Create vertex buffer for full-screen quad
+             vbo = self.ctx.buffer(np.array([
+                 -1.0, -1.0,
+                  1.0, -1.0,
+                 -1.0,  1.0,
+                 -1.0,  1.0,
+                  1.0, -1.0,
+                  1.0,  1.0,
+             ], dtype='f4'))
+ 
+             vao = self.ctx.simple_vertex_array(prog, vbo, 'in_vert')
+             fbo = self.ctx.simple_framebuffer(self.resolution)
+             fbo.use()
+ 
+             # Render each frame with audio-reactive features
+             for i, frame_path in enumerate(input_frames):
+                 try:
+                     # Load input frame as texture (iChannel0 for video)
+-                    img = Image.open(frame_path).convert("RGB")
+-                    tex = self.ctx.texture(self.resolution, 3, img.tobytes())
++                    with Image.open(frame_path) as img_file:
++                        img_rgb = img_file.convert("RGB")
++                        tex = self.ctx.texture(self.resolution, 3, img_rgb.tobytes())
+                     tex.use(0)
+ 
+                     # Load additional textures if specified in shader config (with caching)
+                     texture_units = {0: tex}  # iChannel0 is the video
+                     if hasattr(self, 'shader_config') and 'textures' in self.shader_config:
+                         for channel, filename in self.shader_config['textures'].items():
+                             if channel != 'iChannel0':  # Skip video channel
+                                 channel_num = int(channel.replace('iChannel', ''))
+                                 texture_path = Path("Textures") / filename
+ 
+                                 # Check cache first
+                                 cache_key = f"{channel}_{filename}"
+                                 if cache_key in self.texture_cache:
+                                     tex_obj = self.texture_cache[cache_key]
+                                     tex_obj.use(channel_num)
+                                     texture_units[channel_num] = tex_obj
+                                 elif texture_path.exists():
+                                     try:
+-                                        tex_img = Image.open(texture_path).convert("RGB")
+-                                        tex_obj = self.ctx.texture(tex_img.size, 3, tex_img.tobytes())
+-                                        tex_obj.use(channel_num)
+-                                        texture_units[channel_num] = tex_obj
+-                                        # Cache the texture for future frames
+-                                        self.texture_cache[cache_key] = tex_obj
+-                                        logger.info(f"Loaded and cached texture {filename} for {channel}")
++                                        with Image.open(texture_path) as tex_img_file:
++                                            tex_img = tex_img_file.convert("RGB")
++                                            tex_obj = self.ctx.texture(tex_img.size, 3, tex_img.tobytes())
++                                            tex_obj.use(channel_num)
++                                            texture_units[channel_num] = tex_obj
++                                            # Cache the texture for future frames
++                                            self.texture_cache[cache_key] = tex_obj
++                                            logger.info(f"Loaded and cached texture {filename} for {channel}")
+                                     except Exception as e:
+                                         logger.warning(f"Failed to load texture {filename}: {e}")
+                                 else:
+                                     logger.warning(f"Texture file not found: {texture_path}")
+ 
+                     # Set standard uniforms
+                     if 'iResolution' in prog:
+                         prog['iResolution'].value = tuple(self.resolution)
+                     if 'iTime' in prog:
+                         prog['iTime'].value = i / self.frame_rate
+ 
+                     # Set texture channel uniforms
+                     for channel_num in texture_units.keys():
+                         channel_name = f'iChannel{channel_num}'
+                         if channel_name in prog:
+                             prog[channel_name].value = channel_num
+ 
+                     # Set audio-reactive uniforms (automatically provide audio data)
+                     for audio_name, audio_data in audio_features.items():
+                         if audio_name in prog and i < len(audio_data):
+                             prog[audio_name].value = float(audio_data[i])
+ 
+                     # Set extra uniforms from config (these can override audio uniforms)
+                     for name, val in self.extra_uniforms.items():
+                         if name in prog:

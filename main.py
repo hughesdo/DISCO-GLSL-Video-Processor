@@ -226,7 +226,7 @@ async def process_video_background(form, tracker: ProgressTracker):
         # Handle preview mode
         max_frames = None
         if form.get('preview_mode') == 'true':
-            max_frames = int(form.get('max_frames', 250))
+            max_frames = int(form.get('max_frames', 240))
             logger.info(f"Preview mode enabled: {max_frames} frames")
 
         # Process video with progress tracking and audio settings

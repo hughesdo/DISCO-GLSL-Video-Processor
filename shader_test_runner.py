@@ -32,7 +32,7 @@ class ShaderTestRunner:
         self.config_file = self.shader_dir / "shader_config.json"
         
         # Test settings
-        self.preview_frames = 250
+        self.preview_frames = 240
         self.test_resolution = (1280, 720)
         
         # Create outputs directory

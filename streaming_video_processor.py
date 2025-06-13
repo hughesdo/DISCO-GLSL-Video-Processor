@@ -451,7 +451,6 @@ class StreamingVideoProcessor:
                 # Critical sync options
                 vsync='cfr',  # Constant frame rate
                 async_=1,     # Audio sync
-                shortest=None,  # Don't cut short
                 # Additional sync options
                 **{'avoid_negative_ts': 'make_zero'}
             ).overwrite_output().run_async(pipe_stdin=True)

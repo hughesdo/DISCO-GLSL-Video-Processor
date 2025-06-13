@@ -8,20 +8,22 @@
 ### First and foremost...
 
 This was an experiment in *vibe coding*.
-All credit for the original shader goes to [ScratchDev on ShaderToy](https://www.shadertoy.com/view/mdcBRl), created on 2023-10-17. I was merely poking around, seeing if layering vibe-driven tweaks could make it more interesting. It was mostly a failed attempt — but sometimes failure teaches us what not to do, and that’s still a step forward.
+Most credit for the original shader goes to [ShaderToy](https://www.shadertoy.com/). I was merely poking around, seeing if layering vibe-driven tweaks could make it more interesting.  Also see attributions.txt for other glsl shaders that I either outright used or borrowed from.  I'm trying now to keep attributions.txt in the root cause AI tends to remove comments in code as it see fit. 
+
+[![Watch the video](https://img.youtube.com/vi/zvIya7i-uOA/0.jpg)](https://www.youtube.com/watch?v=zvIya7i-uOA)
 
 ---
 
 ## 🤖 Development & Attribution
 
 ### Experiment Context
-This project was an experiment in "vibe coding" conducted in collaboration with [Augment Code](http://augmentedcode.com/). The development process involved exploring creative coding techniques and shader development through an AI-assisted workflow.
+This project was an experiment in "vibe coding" conducted in collaboration with [Augment Code](https://www.augmentcode.com/). The development process involved exploring creative coding techniques and shader development through an AI-assisted workflow.
 
 ### Development Approach
 The work involved both expanding existing GLSL shaders from the community and creating original new shader effects. The project grew from a simple shader experiment into a comprehensive video processing application with multiple visual effects and audio-reactive capabilities.
 
 ### Attribution Challenge & Resolution
-During the AI-assisted development process, attribution comments were sometimes inadvertently removed from GLSL files during code modifications and optimizations. Recognizing the importance of proper credit to the original shader creators, approximately 1-2 hours were dedicated to manually recompiling and restoring proper credits and attributions.
+During the AI-assisted development process, attribution comments were sometimes inadvertently removed from GLSL files during code modifications and optimizations. Recognizing the importance of proper credit to the original shader creators, approximately 2-3 hours were dedicated to manually recompiling and restoring proper credits and attributions.
 
 All known attributions have been documented in the `attributions.txt` file, and original creator credits are preserved wherever possible. The community's creative contributions form the foundation of this project's visual effects.
 
@@ -252,11 +254,6 @@ This is a working version optimized for creating trippy visual effects. Future e
 This project is open source. Feel free to modify and distribute according to your needs.
 
 ---
-
-## ⚠️ Minor UI Issue
-
-One small thing: the buttons under the video sometimes display strange placeholder text instead of emojis. Honestly, emojis aren’t necessary here — either replace them with something clean or just remove them. Function matters more than flair.
-
 Examples:
 - `Download Video`
 - `Process Another Video`

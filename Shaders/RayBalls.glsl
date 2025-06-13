@@ -51,9 +51,9 @@ struct Plane {
 
 const float epsilon = 0.001;
 const int iterations = 6;
-const float exposure = 0.01;  // Increased from 0.001 - was making everything too dim
-const float gamma = 2.2;
-const float intensity = 120.0;  // Increased from 100.0 to restore original brightness
+const float exposure = 0.001;  // restored original low baseline  0.002
+const float gamma = 2.2;   // 2.0 - 2.6
+const float intensity = 100.0;  // optional: you can leave at 100 if you like
 const vec3 ambient = vec3(0.6, 0.8, 1.0) * intensity / gamma;
 
 Light light;
@@ -244,9 +244,12 @@ vec3 radiance(Ray ray) {
         } else {
             // Sharp black horizon - only add spotlight if looking directly at sun
             spotLight = vec3(1e6) * pow(abs(dot(ray.direction, light.direction)), 250.0);
+
+	    // Bad inject here:
             // Balanced ambient for black horizon while maintaining scene brightness
-            vec3 backgroundAmbient = ambient * 0.15;  // Slightly higher for better overall brightness
-            color += mask * (backgroundAmbient + spotLight);
+            // vec3 backgroundAmbient = ambient * 0.15;  // Slightly higher for better overall brightness
+            // color += mask * (backgroundAmbient + spotLight);
+	    color *= mask * (ambient + spotLight);
             break;
         }
     }

@@ -424,6 +424,52 @@
       "videoReflectivity": "Video ball surface reflectivity (0.0-1.0)"
     }
   },
+
+  "RayBalls2.glsl": {
+    "category": "3d-effects",
+    "description": "Clean ray-traced spheres with simple fullscreen video intro - 2 seconds of normal video then orbital motion",
+    "audioReactive": false,
+    "uniforms": {
+      "ballSpeed": 1.0,
+      "ballSize": 1.0,
+      "videoReflectivity": 0.3
+    },
+    "uniformDescriptions": {
+      "ballSpeed": "Speed of video ball animation cycle (0.1-3.0)",
+      "ballSize": "Size multiplier for video ball (0.5-2.0)",
+      "videoReflectivity": "Video ball surface reflectivity (0.0-1.0)"
+    }
+  },
+  "RayBalls3.glsl": {
+    "category": "3d-effects",
+    "description": "Tweaking version of RayBalls2 - complete video morphing with scaling and positioning transitions",
+    "audioReactive": false,
+    "uniforms": {
+      "ballSpeed": 1.0,
+      "ballSize": 1.0,
+      "videoReflectivity": 0.3
+    },
+    "uniformDescriptions": {
+      "ballSpeed": "Speed of video ball animation cycle (0.1-3.0)",
+      "ballSize": "Size multiplier for video ball (0.5-2.0)",
+      "videoReflectivity": "Video ball surface reflectivity (0.0-1.0)"
+    }
+  },
+  "RayBalls4.glsl": {
+    "category": "3d-effects",
+    "description": "Latest RayBalls iteration - enhanced video morphing and camera tracking",
+    "audioReactive": false,
+    "uniforms": {
+      "ballSpeed": 1.0,
+      "ballSize": 1.0,
+      "videoReflectivity": 0.3
+    },
+    "uniformDescriptions": {
+      "ballSpeed": "Speed of video ball animation cycle (0.1-3.0)",
+      "ballSize": "Size multiplier for video ball (0.5-2.0)",
+      "videoReflectivity": "Video ball surface reflectivity (0.0-1.0)"
+    }
+  },
   "TVZoom.glsl": {
     "category": "3d-effects",
     "description": "Cinematic 3D TV zoom with Bezier camera animation, rotational movement, chrome spheres, and video transparency controls",
@@ -555,6 +601,44 @@
       "exposureBoost",
       "bloomIntensity",
       "posterizeLevel",
+      "timeSpeed"
+    ]
+  },
+  "Waveform.glsl": {
+    "category": "audio-reactive",
+    "description": "3D audio waveform visualization - creates flowing waveforms that react to bass, mid, and treble frequencies",
+    "audioReactive": true,
+    "uniforms": {
+      "bassLevel": 0.8,
+      "midLevel": 0.6,
+      "trebleLevel": 0.7,
+      "beatLevel": 0.9,
+      "kickLevel": 0.8,
+      "rmsLevel": 0.5,
+      "waveformIntensity": 1.0,
+      "audioSensitivity": 1.2,
+      "timeSpeed": 1.0
+    },
+    "uniformDescriptions": {
+      "bassLevel": "Bass frequency energy (0.0-1.0)",
+      "midLevel": "Mid frequency energy (0.0-1.0)",
+      "trebleLevel": "Treble frequency energy (0.0-1.0)",
+      "beatLevel": "Beat detection level (0.0-1.0)",
+      "kickLevel": "Kick drum energy (0.0-1.0)",
+      "rmsLevel": "Overall audio level (0.0-1.0)",
+      "waveformIntensity": "Waveform displacement strength (0.0-3.0)",
+      "audioSensitivity": "Audio reactivity multiplier (0.1-3.0)",
+      "timeSpeed": "Animation speed multiplier (0.1-3.0)"
+    },
+    "audioEffects": [
+      "bassLevel",
+      "midLevel",
+      "trebleLevel",
+      "beatLevel",
+      "kickLevel",
+      "rmsLevel",
+      "waveformIntensity",
+      "audioSensitivity",
       "timeSpeed"
     ]
   }
