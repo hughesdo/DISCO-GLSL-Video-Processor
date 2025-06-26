@@ -9,6 +9,7 @@ import subprocess
 import shutil
 import logging
 import json
+from scipy.interpolate import interp1d
 
 logger = logging.getLogger(__name__)
 
@@ -436,20 +437,83 @@ void main() {
             fbo = self.ctx.simple_framebuffer(self.resolution)
             fbo.use()
 
+            # Check if shader needs audio texture instead of video texture
+            needs_audio_texture = self.shader_config.get('needsAudioTexture', False)
+
+            # Create audio texture if needed
+            audio_texture = None
+            fft_data = None
+            if needs_audio_texture:
+                # For RayBalls5, get real FFT data
+                if 'RayBalls5' in str(self.shader_path):
+                    logger.info(f"Creating real FFT data for {self.shader_path.name}")
+                    fft_data = self.get_real_fft_audio_analysis(self.audio_path, total_frames)
+                elif audio_features:
+                    audio_texture = self._create_audio_texture(audio_features, total_frames)
+
             # Render each frame with audio-reactive features
             for i, frame_path in enumerate(input_frames):
                 try:
-                    # Load input frame as texture (iChannel0 for video)
+                    # Load user input video frame
                     img = Image.open(frame_path).convert("RGB")
-                    tex = self.ctx.texture(self.resolution, 3, img.tobytes())
-                    tex.use(0)
+
+                    # Special handling for shaders that use different video channels
+                    if 'VagasDome' in str(self.shader_path):
+                        # VagasDome: user video goes to iChannel2 (Y-flipped)
+                        img_flipped = img.transpose(Image.FLIP_TOP_BOTTOM)
+                        user_video_tex = self.ctx.texture(self.resolution, 3, img_flipped.tobytes())
+                        user_video_tex.use(2)
+                        texture_units = {2: user_video_tex}
+                        if i == 0:
+                            logger.info(f"VagasDome: User input video (Y-flipped) assigned to iChannel2 ({img.size})")
+                    elif 'TVZoom' in str(self.shader_path):
+                        # TVZoom: user video goes to iChannel2 (no flip)
+                        user_video_tex = self.ctx.texture(self.resolution, 3, img.tobytes())
+                        user_video_tex.use(2)
+                        texture_units = {2: user_video_tex}
+                        if i == 0:
+                            logger.info(f"TVZoom: User input video assigned to iChannel2 ({img.size})")
+                    else:
+                        # For other shaders: user video goes to iChannel0 as usual (no flip)
+                        user_video_tex = self.ctx.texture(self.resolution, 3, img.tobytes())
+                        user_video_tex.use(0)
+                        texture_units = {0: user_video_tex}
+                        if i == 0:
+                            logger.info(f"Texture assignment for {self.shader_path.name}: iChannel0 = video ({img.size})")
+
+                    # Add audio texture to iChannel1 if needed
+                    if needs_audio_texture:
+                        if fft_data is not None:
+                            # For RayBalls5 shader: FFT data goes to iChannel1
+                            audio_tex = self._create_fft_texture(fft_data, i)
+                            audio_tex.use(1)
+                            texture_units[1] = audio_tex  # iChannel1 is FFT audio data
+                            if i == 0:  # Log on first frame
+                                logger.info(f"Texture assignment: iChannel1 = FFT audio data ({fft_data.shape[0]}x1)")
+                        elif audio_texture:
+                            # For other audio shaders: simplified audio data in iChannel1
+                            audio_data = self._get_audio_frame_data(audio_features, i)
+                            audio_tex = self._create_frame_audio_texture(audio_data)
+                            audio_tex.use(1)
+                            texture_units[1] = audio_tex  # iChannel1 is audio data
+                            logger.debug(f"Frame {i}: Video in iChannel0, simple audio in iChannel1")
 
                     # Load additional textures if specified in shader config (with caching)
-                    texture_units = {0: tex}  # iChannel0 is the video
                     if hasattr(self, 'shader_config') and 'textures' in self.shader_config:
                         for channel, filename in self.shader_config['textures'].items():
-                            if channel != 'iChannel0':  # Skip video channel
-                                channel_num = int(channel.replace('iChannel', ''))
+                            channel_num = int(channel.replace('iChannel', ''))
+
+                            # Special handling for VagasDome ping-pong video
+                            if 'VagasDome' in str(self.shader_path) and channel == 'iChannel0':
+                                # Load ping-pong video texture
+                                video_tex = self._load_pingpong_video_texture(filename, i)
+                                if video_tex:
+                                    video_tex.use(channel_num)
+                                    texture_units[channel_num] = video_tex
+                                    if i == 0:
+                                        logger.info(f"Loaded ping-pong video texture {filename} for {channel}")
+                            elif channel != 'iChannel0' or 'VagasDome' not in str(self.shader_path):
+                                # Regular texture loading for non-video channels or non-VagasDome shaders
                                 texture_path = Path("Textures") / filename
 
                                 # Check cache first
@@ -471,6 +535,10 @@ void main() {
                                         logger.warning(f"Failed to load texture {filename}: {e}")
                                 else:
                                     logger.warning(f"Texture file not found: {texture_path}")
+
+
+
+
 
                     # Set standard uniforms
                     if 'iResolution' in prog:
@@ -532,6 +600,242 @@ void main() {
         except Exception as e:
             logger.error(f"Error in render_frames: {e}")
             raise
+
+    def _create_audio_texture(self, audio_features, total_frames):
+        """Create a texture containing audio frequency data for shaders that need it"""
+        try:
+            # Create a 1D texture with audio frequency data
+            # Use a simple approach: create a texture with frequency bins
+            freq_bins = 256  # Standard FFT size
+            audio_data = []
+
+            # Extract frequency data from audio features (use RMS as a simple approach)
+            rms_data = audio_features.get('rmsLevel', [0.0] * total_frames)
+
+            # Create frequency-like data from available audio features
+            for i in range(total_frames):
+                frame_data = []
+                for bin_idx in range(freq_bins):
+                    # Simple mapping: distribute audio energy across frequency bins
+                    if i < len(rms_data):
+                        # Create a simple frequency distribution
+                        freq_val = rms_data[i] * (1.0 - abs(bin_idx - freq_bins//2) / (freq_bins//2))
+                        frame_data.append(int(freq_val * 255))
+                    else:
+                        frame_data.append(0)
+                audio_data.extend(frame_data)
+
+            # Create texture
+            audio_bytes = bytes(audio_data)
+            texture = self.ctx.texture((freq_bins, total_frames), 1, audio_bytes)
+            return texture
+
+        except Exception as e:
+            logger.warning(f"Failed to create audio texture: {e}")
+            return None
+
+    def _get_audio_frame_data(self, audio_features, frame_index):
+        """Get audio data for a specific frame"""
+        frame_data = {}
+        for feature_name, feature_data in audio_features.items():
+            if frame_index < len(feature_data):
+                frame_data[feature_name] = feature_data[frame_index]
+            else:
+                frame_data[feature_name] = 0.0
+        return frame_data
+
+    def _create_frame_audio_texture(self, audio_data):
+        """Create a simple audio texture for a single frame"""
+        try:
+            # Create a simple 1D texture with audio frequency data
+            freq_bins = 256
+            texture_data = []
+
+            # Use audio levels to create a simple frequency distribution
+            bass = audio_data.get('bassLevel', 0.0)
+            mid = audio_data.get('midLevel', 0.0)
+            treble = audio_data.get('trebleLevel', 0.0)
+
+            for i in range(freq_bins):
+                # Create frequency distribution based on audio features
+                freq_pos = i / freq_bins
+                if freq_pos < 0.33:  # Bass range
+                    val = bass * (1.0 - freq_pos * 3)
+                elif freq_pos < 0.66:  # Mid range
+                    val = mid * (1.0 - abs(freq_pos - 0.5) * 2)
+                else:  # Treble range
+                    val = treble * (freq_pos - 0.66) * 3
+
+                texture_data.append(int(val * 255))
+
+            # Create 1D texture
+            texture_bytes = bytes(texture_data)
+            texture = self.ctx.texture((freq_bins, 1), 1, texture_bytes)
+            return texture
+
+        except Exception as e:
+            logger.warning(f"Failed to create frame audio texture: {e}")
+            # Fallback: create empty texture
+            empty_data = bytes([0] * 256)
+            return self.ctx.texture((256, 1), 1, empty_data)
+
+    def get_real_fft_audio_analysis(self, audio_file, total_frames):
+        """Extract real FFT frequency data for Waveform shader"""
+        try:
+            logger.info(f"Performing FFT audio analysis for Waveform: {audio_file}")
+            y, sr = librosa.load(str(audio_file), sr=None)
+
+            # Calculate hop length to match video frame rate
+            hop_length = int(sr / self.frame_rate)
+
+            # Perform STFT to get frequency data
+            stft = librosa.stft(y, hop_length=hop_length, n_fft=512)  # 512 FFT size gives us 256 frequency bins
+            magnitude = np.abs(stft)
+
+            # Get frequency bins (we'll use first 256 bins)
+            freq_bins = min(256, magnitude.shape[0])
+            magnitude = magnitude[:freq_bins, :]
+
+            # Normalize each frequency bin across time with safety checks
+            for i in range(freq_bins):
+                if magnitude[i].max() > 0:
+                    magnitude[i] = magnitude[i] / magnitude[i].max()
+                    # Extra safety: ensure all values are in 0-1 range
+                    magnitude[i] = np.clip(magnitude[i], 0.0, 1.0)
+
+            # Resize to match total frames
+            if magnitude.shape[1] != total_frames:
+                # Interpolate to match frame count
+                old_indices = np.linspace(0, magnitude.shape[1] - 1, magnitude.shape[1])
+                new_indices = np.linspace(0, magnitude.shape[1] - 1, total_frames)
+
+                resized_magnitude = np.zeros((freq_bins, total_frames))
+                for i in range(freq_bins):
+                    if magnitude.shape[1] > 1:
+                        f = interp1d(old_indices, magnitude[i], kind='linear', fill_value='extrapolate')
+                        resized_magnitude[i] = f(new_indices)
+                    else:
+                        resized_magnitude[i] = magnitude[i, 0]
+
+                magnitude = resized_magnitude
+
+            logger.info(f"FFT analysis complete: {freq_bins} frequency bins, {total_frames} frames")
+            return magnitude
+
+        except Exception as e:
+            logger.error(f"FFT audio analysis failed: {e}")
+            # Return zero array if analysis fails
+            return np.zeros((256, total_frames))
+
+
+
+    def _create_fft_texture(self, audio_data, frame_index):
+        """Create a texture with audio data (FFT or time domain) for the current frame"""
+        try:
+            # Get audio data for this frame
+            data_bins = audio_data.shape[0]  # Could be 256 (FFT) or 128 (time domain)
+            frame_data = audio_data[:, frame_index] if frame_index < audio_data.shape[1] else audio_data[:, -1]
+
+            # Convert to texture format (0-255)
+            texture_data = []
+            for audio_val in frame_data:
+                # Clamp and convert to byte with proper range checking
+                val = max(0.0, min(1.0, float(audio_val)))  # Ensure it's a float and clamped
+                byte_val = int(val * 255.0)
+                # Extra safety: ensure byte value is in valid range
+                byte_val = max(0, min(255, byte_val))
+                texture_data.append(byte_val)
+
+
+
+            # Create 1D texture with audio data (size depends on data type)
+            texture_bytes = bytes(texture_data)
+            texture = self.ctx.texture((data_bins, 1), 1, texture_bytes)
+            return texture
+
+        except Exception as e:
+            logger.warning(f"Failed to create audio texture: {e}")
+            # Fallback: create empty texture (use common size)
+            fallback_size = 256 if audio_data.shape[0] > 200 else 128
+            empty_data = bytes([0] * fallback_size)
+            return self.ctx.texture((fallback_size, 1), 1, empty_data)
+
+
+
+    def _load_pingpong_video_texture(self, filename, current_frame):
+        """Load ping-pong video texture for VagasDome shader"""
+        try:
+            video_path = Path("Textures") / filename
+            if not video_path.exists():
+                logger.warning(f"Ping-pong video not found: {video_path}")
+                return None
+
+            cache_key = f"pingpong_{filename}"
+
+            # Extract video frames if not cached
+            if cache_key not in self.texture_cache:
+                logger.info(f"Extracting ping-pong video frames: {video_path}")
+
+                # Create temporary directory for video frames
+                temp_dir = Path(tempfile.mkdtemp(prefix="disco_pingpong_"))
+
+                try:
+                    # Extract all frames from the video
+                    cmd = [
+                        "ffmpeg", "-y", "-i", str(video_path),
+                        "-vf", f"scale={self.resolution[0]}:{self.resolution[1]}",
+                        str(temp_dir / "frame_%05d.png")
+                    ]
+
+                    subprocess.run(cmd, capture_output=True, text=True, check=True)
+
+                    # Load all frames into memory
+                    frame_files = sorted(temp_dir.glob("frame_*.png"))
+                    video_frames = []
+
+                    for frame_file in frame_files:
+                        img = Image.open(frame_file).convert("RGB")
+                        # Flip Y to fix upside-down video
+                        img = img.transpose(Image.FLIP_TOP_BOTTOM)
+                        video_frames.append(img)
+
+                    # Cache the frames
+                    self.texture_cache[cache_key] = video_frames
+                    logger.info(f"Cached {len(video_frames)} ping-pong frames for {filename}")
+
+                finally:
+                    # Clean up temporary directory
+                    import shutil
+                    shutil.rmtree(temp_dir, ignore_errors=True)
+
+            # Get cached frames
+            video_frames = self.texture_cache[cache_key]
+            if not video_frames:
+                return None
+
+            # Calculate ping-pong frame index
+            video_frame_count = len(video_frames)
+            cycle_length = (video_frame_count - 1) * 2  # -1 to avoid duplicating end frames
+            cycle_position = current_frame % cycle_length
+
+            if cycle_position < video_frame_count:
+                # Forward direction
+                frame_index = cycle_position
+            else:
+                # Backward direction
+                frame_index = video_frame_count - 1 - (cycle_position - video_frame_count + 1)
+
+            frame_index = max(0, min(video_frame_count - 1, frame_index))
+
+            # Create texture from the selected frame
+            selected_frame = video_frames[frame_index]
+            texture = self.ctx.texture(selected_frame.size, 3, selected_frame.tobytes())
+
+            return texture
+
+        except Exception as e:
+            logger.warning(f"Failed to load ping-pong video texture: {e}")
+            return None
 
     def combine_video(self, frames_folder):
         """Combine rendered frames with audio using FFmpeg"""
