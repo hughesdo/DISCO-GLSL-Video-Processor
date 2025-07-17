@@ -10,7 +10,8 @@
 This was an experiment in *vibe coding*.
 Most credit for the original shader goes to [ShaderToy](https://www.shadertoy.com/). I was merely poking around, seeing if layering vibe-driven tweaks could make it more interesting.  Also see attributions.txt for other glsl shaders that I either outright used or borrowed from.  I'm trying now to keep attributions.txt in the root cause AI tends to remove comments in code as it see fit. 
 
-[![Watch the video](https://www.youtube.com/watch?v=Jx3ZVeltu3k)
+[![Watch the video](https://img.youtube.com/vi/Jx3ZVeltu3k/0.jpg)](https://www.youtube.com/watch?v=Jx3ZVeltu3k)
+
 
 ---
 
