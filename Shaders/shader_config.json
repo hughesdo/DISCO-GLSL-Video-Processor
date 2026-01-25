@@ -1,4 +1,118 @@
 {
+  "PsychedelicTrails": {
+    "category": "audio-reactive",
+    "description": "Psychedelic edge-detection trails with audio-reactive color cycling (multi-buffer effect)",
+    "audioReactive": true,
+    "needsAudioTexture": false,
+    "multiBuffer": true,
+    "buffers": {
+      "BufferA": {
+        "file": "PsychedelicTrails/BufferA.glsl",
+        "channels": {
+          "iChannel0": "video"
+        }
+      },
+      "BufferB": {
+        "file": "PsychedelicTrails/BufferB.glsl",
+        "channels": {
+          "iChannel0": "BufferB",
+          "iChannel1": "BufferA"
+        }
+      },
+      "Image": {
+        "file": "PsychedelicTrails/Image.glsl",
+        "channels": {
+          "iChannel0": "BufferA",
+          "iChannel1": "BufferB"
+        }
+      }
+    },
+    "renderOrder": ["BufferA", "BufferB", "Image"],
+    "uniforms": {
+      "bassLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "midLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "trebleLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "trailLength": {"value": 0.96, "min": 0.0, "max": 0.99, "step": 0.01},
+      "colorSpeed": {"value": 0.15, "min": 0.0, "max": 1.0, "step": 0.01},
+      "colorSpread": {"value": 0.3, "min": 0.0, "max": 2.0, "step": 0.05},
+      "effectIntensity": {"value": 0.275, "min": 0.0, "max": 1.0, "step": 0.025},
+      "saturation": {"value": 0.9, "min": 0.0, "max": 1.0, "step": 0.05},
+      "bassBrightness": {"value": 0.4, "min": 0.0, "max": 2.0, "step": 0.1},
+      "bassHueShift": {"value": 0.5, "min": 0.0, "max": 2.0, "step": 0.1},
+      "highSaturation": {"value": 0.3, "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "bassLevel": "Bass audio level (auto-updated by DISCO)",
+      "midLevel": "Mid audio level (auto-updated by DISCO)",
+      "trebleLevel": "Treble audio level (auto-updated by DISCO)",
+      "trailLength": "How long trails persist (0=no trails, 0.99=very long trails)",
+      "colorSpeed": "How fast rainbow colors cycle",
+      "colorSpread": "How much color varies by vertical position",
+      "effectIntensity": "Brightness of new tracer pixels",
+      "saturation": "Base color saturation",
+      "bassBrightness": "How much bass boosts pixel brightness",
+      "bassHueShift": "How much bass shifts the color hue",
+      "highSaturation": "How much high frequencies boost saturation"
+    },
+    "audioEffects": [
+      "bassLevel",
+      "midLevel",
+      "trebleLevel"
+    ]
+  },
+  "Twist-FMSCat1.glsl": {
+    "category": "audio-reactive",
+    "description": "3D raymarched cube with video texture mapping, audio-reactive twist and deformation effects",
+    "audioReactive": true,
+    "needsAudioTexture": false,
+    "uniforms": {
+      "bassLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "midLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "trebleLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "cubeSize": {"value": 0.9, "min": 0.3, "max": 1.5, "step": 0.05},
+      "rotationSpeed": {"value": 1.2, "min": 0.0, "max": 3.0, "step": 0.1},
+      "twistAmount": {"value": 0.7, "min": 0.0, "max": 2.0, "step": 0.1},
+      "twistSpeed": {"value": 0.5, "min": 0.1, "max": 2.0, "step": 0.1},
+      "audioTwistStrength": {"value": 2.0, "min": 0.0, "max": 5.0, "step": 0.1},
+      "kickEnabled": {"value": 0.0, "min": 0.0, "max": 1.0, "step": 1.0},
+      "kickStrength": {"value": 0.1, "min": 0.0, "max": 0.5, "step": 0.05},
+      "deformAmount": {"value": 0.01, "min": 0.0, "max": 0.1, "step": 0.005},
+      "fractalEnabled": {"value": 1.0, "min": 0.0, "max": 1.0, "step": 1.0},
+      "fractalIntensity": {"value": 1.0, "min": 0.0, "max": 1.0, "step": 0.05},
+      "edgeGlow": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "fovPulse": {"value": 0.9, "min": 0.0, "max": 2.0, "step": 0.1},
+      "fogDensity": {"value": 0.2, "min": 0.0, "max": 1.0, "step": 0.05},
+      "bpm": {"value": 170.0, "min": 60.0, "max": 200.0, "step": 1.0}
+    },
+    "uniformDescriptions": {
+      "bassLevel": "Bass audio level (auto-updated by DISCO)",
+      "midLevel": "Mid audio level (auto-updated by DISCO)",
+      "trebleLevel": "Treble audio level (auto-updated by DISCO)",
+      "cubeSize": "Size of the cube (0.3-1.5)",
+      "rotationSpeed": "Main rotation speed (0-3)",
+      "twistAmount": "Base twist intensity (0-2)",
+      "twistSpeed": "How fast twist oscillates (0.1-2)",
+      "audioTwistStrength": "How much mids affect twist (0-5)",
+      "kickEnabled": "Enable kick pulse effect (0=off, 1=on)",
+      "kickStrength": "Kick pulse intensity (0-0.5)",
+      "deformAmount": "Noise deformation amount (0-0.1)",
+      "fractalEnabled": "Enable fractal cubes (0=off, 1=on)",
+      "fractalIntensity": "Fractal effect intensity (0-1)",
+      "edgeGlow": "Edge glow brightness (0-3)",
+      "fovPulse": "FOV pulse with beat (0-2)",
+      "fogDensity": "Fog thickness (0-1)",
+      "bpm": "Beats per minute for timing (60-200)"
+    },
+    "audioEffects": [
+      "bassLevel",
+      "midLevel",
+      "trebleLevel"
+    ],
+    "textures": {},
+    "textureDescriptions": {
+      "iChannel0": "Video texture mapped onto cube faces"
+    }
+  },
   "After EffectsTik Tok Edit.glsl": {
     "uniforms": {
       "progress": 0.5,
@@ -650,5 +764,1507 @@
     "audioEffects": [
       "midLevel"
     ]
+  },
+  "AmigaSinus1.glsl": {
+    "category": "audio-reactive",
+    "description": "Classic Amiga demo scene with sinus scrolling text and bouncing balls - pure retro vibes",
+    "audioReactive": false,
+    "needsAudioTexture": false,
+    "uniforms": {
+      "ballSpeed": 1.0,
+      "sinusAmplitude": 1.0,
+      "scrollSpeed": 1.0
+    },
+    "uniformDescriptions": {
+      "ballSpeed": "Ball animation speed multiplier (0.1-3.0)",
+      "sinusAmplitude": "Sinus wave amplitude for text (0.0-2.0)",
+      "scrollSpeed": "Text scrolling speed (0.1-3.0)"
+    },
+    "audioEffects": [],
+    "textInputs": {
+      "scrollText": {
+        "label": "Scroll Text",
+        "placeholder": "Enter your scroll text here...",
+        "maxLength": 2000,
+        "default": "Hello DISCO!! Amiga scene vibes with classic sinus scrolling and balls :) ..."
+      }
+    },
+    "textures": {
+      "iChannel0": "amiga_font.png"
+    },
+    "textureDescriptions": {
+      "iChannel0": "16x16 Amiga-style bitmap font texture",
+      "iChannel1": "Ball physics buffer (simplified for DISCO)"
+    }
+  },
+  "AmigaSinus2.glsl": {
+    "category": "audio-reactive",
+    "description": "Advanced multi-layer sinus scroller with 3D lighting and user-controlled wave amplitude",
+    "audioReactive": false,
+    "needsAudioTexture": false,
+    "uniforms": {
+      "sinusAmplitude": 1.0,
+      "use3DLighting": 1.0,
+      "scrollSpeed": 1.0
+    },
+    "uniformDescriptions": {
+      "sinusAmplitude": "Sinus wave amplitude - controls text wave height (0.0-2.0)",
+      "use3DLighting": "3D lighting mode - 0.0=flat 2D, 1.0=3D shaded (0.0-1.0)",
+      "scrollSpeed": "Text scrolling speed multiplier (0.1-3.0)"
+    },
+    "audioEffects": [],
+    "textInputs": {
+      "scrollText1": {
+        "label": "Header Text",
+        "placeholder": "Header text (small, top)",
+        "maxLength": 500,
+        "default": "Sinus Scroller v2.2"
+      },
+      "scrollText2": {
+        "label": "Main Scroll Text",
+        "placeholder": "Main scrolling text with sinus wave",
+        "maxLength": 3000,
+        "default": "Hello DISCO!! This is a multi layer sinus scroller with antialiased 3d bitmap font and user controls :) ...."
+      },
+      "scrollText3": {
+        "label": "Bottom Text",
+        "placeholder": "Bottom text (credits/info)",
+        "maxLength": 2000,
+        "default": "*** DISCO Amiga vibes music from the scene Amiga demo style ***"
+      }
+    },
+    "textures": {
+      "iChannel2": "amiga_font.png"
+    },
+    "textureDescriptions": {
+      "iChannel2": "16x16 Amiga-style bitmap font texture with 3D lighting data"
+    }
+  },
+  "AmigaSinus3.glsl": {
+    "category": "audio-reactive",
+    "description": "Complete Amiga demo collection with audio-reactive sinus scrollers, multiple demo modes, and user controls",
+    "audioReactive": true,
+    "needsAudioTexture": false,
+    "uniforms": {
+      "sinusAmplitude": 1.0,
+      "use3DLighting": 1.0,
+      "demoMode": 0.0,
+      "backgroundMode": 0.0,
+      "autoSwitchSpeed": 1.0,
+      "bassLevel": 0.2,
+      "midLevel": 0.2,
+      "trebleLevel": 0.2,
+      "beatLevel": 0.2,
+      "kickLevel": 0.2,
+      "audioIntensity": 0.2
+    },
+    "uniformDescriptions": {
+      "sinusAmplitude": "Base sinus wave amplitude (0.0-2.0)",
+      "use3DLighting": "3D lighting mode - 0.0=flat 2D, 1.0=3D shaded (0.0-1.0)",
+      "demoMode": "Demo selection - 0.0=auto, 1.0=RGB bars, 2.0=copper, 3.0=plasma, 4.0=audio viz, 5.0=random every 5s (0.0-5.0)",
+      "backgroundMode": "Background selection - 0.0=auto, 1.0=black, 2.0=stars, 3.0=plasma, 4.0=frame (0.0-4.0)",
+      "autoSwitchSpeed": "Auto demo switch speed - higher=faster switching (0.1-2.0)",
+      "bassLevel": "Bass frequency energy - affects wave amplitude and colors (0.0-1.0)",
+      "midLevel": "Mid frequency energy - affects copper bars and plasma (0.0-1.0)",
+      "trebleLevel": "Treble frequency energy - affects sinus phase and colors (0.0-1.0)",
+      "beatLevel": "Beat detection level - creates pulse effects (0.0-1.0)",
+      "kickLevel": "Kick drum energy - affects copper bar movement (0.0-1.0)",
+      "audioIntensity": "Overall audio intensity - affects all demo modes (0.0-1.0)"
+    },
+    "audioEffects": [
+      "bassLevel",
+      "midLevel",
+      "trebleLevel",
+      "beatLevel",
+      "kickLevel",
+      "audioIntensity",
+      "sinusAmplitude",
+      "autoSwitchSpeed"
+    ],
+    "textInputs": {
+      "scrollText1": {
+        "label": "Main Scroll Text",
+        "placeholder": "Main scrolling text with audio-reactive sinus wave",
+        "maxLength": 4000,
+        "default": "DISCO Amiga demo collection with audio reactive 3d sinus scroller and multiple demo modes :) Use controls to switch demos"
+      },
+      "scrollText2": {
+        "label": "Bottom Text",
+        "placeholder": "Bottom credits/info text",
+        "maxLength": 3000,
+        "default": "*** Audio reactive DISCO music Amiga scene vibes with bass and beat reactivity ***"
+      }
+    },
+    "textures": {
+      "iChannel0": "amiga_font.png"
+    },
+    "textureDescriptions": {
+      "iChannel0": "16x16 Amiga-style bitmap font texture with 3D lighting data for complete demo collection"
+    }
+  },
+  "MoltenHeart.glsl": {
+    "category": "audio-reactive",
+    "description": "Dual-layer raymarching effect with molten heart visuals that pulse and morph to bass and treble frequencies",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "audioOnlyShader": true,
+    "streaming": false,
+    "uniforms": {},
+    "uniformDescriptions": {},
+    "textInputs": {}
+  },
+  "VibeDrummer1.glsl": {
+    "category": "audio-reactive",
+    "description": "Beat-reactive video effect with continuous base animation enhanced by audio-driven beat detection, scaling, and visual distortions",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "streaming": false,
+    "uniforms": {},
+    "uniformDescriptions": {},
+    "textInputs": {}
+  },
+  "GreenScreenTrailing.glsl": {
+    "category": "visual-effects",
+    "description": "Psychedelic color effect with motion trails using feedback buffer. Optional green screen removal.",
+    "audioReactive": false,
+    "needsAudioTexture": false,
+    "needsFeedbackBuffer": true,
+    "uniforms": {
+      "trailDecay": {"value": 0.85, "min": 0.50, "max": 0.99, "step": 0.01},
+      "trailStrength": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "colorIntensity": {"value": 0.0, "min": 0.0, "max": 1.0, "step": 0.05},
+      "greenScreen": {"value": 0.0, "min": 0.0, "max": 1.0, "step": 1.0},
+      "greenThreshold": {"value": 0.9, "min": 0.1, "max": 1.5, "step": 0.05},
+      "debugMode": {"value": 0.0, "min": 0.0, "max": 2.0, "step": 1.0}
+    },
+    "uniformDescriptions": {
+      "trailDecay": "How fast trails fade - higher = longer lasting trails (0.5-0.99)",
+      "trailStrength": "How visible trails are - 0 = no trails, 1 = strong trails",
+      "colorIntensity": "Color effect - 0 = full psychedelic, 1 = original colors",
+      "greenScreen": "Green screen removal - 0 = off, 1 = on",
+      "greenThreshold": "Green detection threshold - higher = more green detected",
+      "debugMode": "Debug: 0=normal, 1=show feedback buffer only, 2=red where buffer has data"
+    },
+    "audioEffects": [],
+    "textures": {},
+    "textureDescriptions": {
+      "iChannel0": "Current video frame input",
+      "iChannel1": "Previous shader output (feedback buffer for trails)"
+    }
+  },
+  "AmigaSinus3.1.glsl": {
+    "category": "audio-reactive",
+    "description": "Enhanced Amiga demo collection v3.1 with improved audio reactivity, upgraded plasma algorithm, patriotic twisted cylinder background, rubber cube raymarching effect, classic Boing ball demo, advanced sinus scrollers, and extended user controls",
+    "audioReactive": true,
+    "needsAudioTexture": false,
+    "streaming": true,
+    "uniforms": {
+      "fontSize": 3.25,
+      "scrollSpeed1": 0.50,
+      "scrollSpeed2": 0.65,
+      "textLength1": {
+        "value": 140.0,
+        "hidden": true
+      },
+      "textLength2": {
+        "value": 140.0,
+        "hidden": true
+      },
+      "textLength1_1": {
+        "value": 140.0,
+        "hidden": true
+      },
+      "textLength1_2": {
+        "value": 0.0,
+        "hidden": true
+      },
+      "textLength1_3": {
+        "value": 0.0,
+        "hidden": true
+      },
+      "textLength1_4": {
+        "value": 0.0,
+        "hidden": true
+      },
+      "textLength1_5": {
+        "value": 0.0,
+        "hidden": true
+      },
+      "textLength2_1": {
+        "value": 140.0,
+        "hidden": true
+      },
+      "textLength2_2": {
+        "value": 0.0,
+        "hidden": true
+      },
+      "textLength2_3": {
+        "value": 0.0,
+        "hidden": true
+      },
+      "textLength2_4": {
+        "value": 0.0,
+        "hidden": true
+      },
+      "textLength2_5": {
+        "value": 0.0,
+        "hidden": true
+      },
+      "sinusAmplitude": 0.75,
+      "use3DLighting": 1.0,
+      "demoMode": 0.0,
+      "backgroundMode": 0.0,
+      "autoSwitchSpeed": 1.0,
+      "bassLevel": 0.2,
+      "midLevel": 0.2,
+      "trebleLevel": 0.2,
+      "beatLevel": 0.2,
+      "kickLevel": 0.2,
+      "audioIntensity": 0.2
+    },
+    "uniformDescriptions": {
+      "fontSize": "Font size multiplier for video-inside-text effect - 5.0=large text, 10.0=extremely large (1.0-20.0)",
+      "scrollSpeed1": "Main scroll text speed - 1.0=normal, 2.0=double speed, 0.5=half speed (0.1-3.0)",
+      "scrollSpeed2": "Bottom text scroll speed - 1.0=normal, 2.0=double speed, 0.5=half speed (0.1-3.0)",
+      "textLength1": "Main text total length for dynamic scrolling - automatically calculated (internal use)",
+      "textLength2": "Bottom text total length for dynamic scrolling - automatically calculated (internal use)",
+      "textLength1_1": "Main text chunk 1 length - automatically calculated (internal use)",
+      "textLength1_2": "Main text chunk 2 length - automatically calculated (internal use)",
+      "textLength1_3": "Main text chunk 3 length - automatically calculated (internal use)",
+      "textLength1_4": "Main text chunk 4 length - automatically calculated (internal use)",
+      "textLength1_5": "Main text chunk 5 length - automatically calculated (internal use)",
+      "textLength2_1": "Bottom text chunk 1 length - automatically calculated (internal use)",
+      "textLength2_2": "Bottom text chunk 2 length - automatically calculated (internal use)",
+      "textLength2_3": "Bottom text chunk 3 length - automatically calculated (internal use)",
+      "textLength2_4": "Bottom text chunk 4 length - automatically calculated (internal use)",
+      "textLength2_5": "Bottom text chunk 5 length - automatically calculated (internal use)",
+      "sinusAmplitude": "Enhanced sinus wave amplitude with improved audio sync (0.0-2.0)",
+      "use3DLighting": "Advanced 3D lighting mode - 0.0=flat 2D, 1.0=enhanced 3D shaded (0.0-1.0)",
+      "demoMode": "Demo selection - 0.0=auto, 1.0=RGB bars, 2.0=copper, 3.0=plasma, 4.0=audio viz, 5.0=random every 5s (0.0-5.0)",
+      "backgroundMode": "Background selection - 0.0=auto, 1.0=black, 2.0=stars, 3.0=plasma, 4.0=frame (0.0-4.0)",
+      "autoSwitchSpeed": "Auto demo switch speed - higher=faster switching with beat sync (0.1-2.0)",
+      "bassLevel": "Enhanced bass frequency energy - affects wave amplitude and colors (0.0-1.0)",
+      "midLevel": "Enhanced mid frequency energy - affects copper bars and plasma (0.0-1.0)",
+      "trebleLevel": "Enhanced treble frequency energy - affects sinus phase and colors (0.0-1.0)",
+      "beatLevel": "Enhanced beat detection level - creates pulse effects (0.0-1.0)",
+      "kickLevel": "Enhanced kick drum energy - affects copper bar movement (0.0-1.0)",
+      "audioIntensity": "Enhanced overall audio intensity - affects all demo modes (0.0-1.0)"
+    },
+    "audioEffects": [
+      "bassLevel",
+      "midLevel",
+      "trebleLevel",
+      "beatLevel",
+      "kickLevel",
+      "audioIntensity",
+      "sinusAmplitude",
+      "autoSwitchSpeed"
+    ],
+    "textInputs": {
+      "scrollText1": {
+        "label": "Main Scroll Text",
+        "placeholder": "Enhanced scrolling text with improved audio-reactive sinus wave",
+        "maxLength": 4000,
+        "default": "Breaking Supreme Court hands Trump major win nationwide injunctions curbed paving way for executive orders Trump calls ruling a historic correction of judicial overreach Maga backed birthright citizenship rollback moves forward Trump we are restoring power where it belongs to the people Analysts say ruling could reshape federal power for decades Cnn says Trump has legal momentum opponents caught flatfooted"
+      },
+      "scrollText2": {
+        "label": "Bottom Text",
+        "placeholder": "Bottom credits/info text with enhanced styling",
+        "maxLength": 3000,
+        "default": "Historic deal Trump brokers peace between Drc and Rwanda ends thirty year conflict signs mineral security pact White House says America leads again African Union praises Trump diplomacy Nobel peace prize chatter begins Ford autoworker says Trumps car loan bill just saved me thousands Tax deduction proposed for American made auto loan interest Fox says Trump turns blue collar discontent into red hot support"
+      }
+    },
+    "textures": {
+      "iChannel1": "amiga_font.png"
+    },
+    "textureDescriptions": {
+      "iChannel0": "User input video for video-inside-text masking effect (automatically provided)",
+      "iChannel1": "16x16 Amiga-style bitmap font texture with enhanced 3D lighting data for complete demo collection v3.1"
+    }
+  },
+  "BassWobbleScreenShake.glsl": {
+    "category": "audio-reactive",
+    "description": "Screen shake and wobble effect triggered by bass hits - perfect for hard bass drops",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "shakeIntensity": {"value": 0.03, "min": 0.0, "max": 0.15, "step": 0.005},
+      "wobbleIntensity": {"value": 0.05, "min": 0.0, "max": 0.2, "step": 0.005},
+      "wobbleFrequency": {"value": 20.0, "min": 5.0, "max": 50.0, "step": 1.0},
+      "wobbleSpeed": {"value": 10.0, "min": 1.0, "max": 30.0, "step": 1.0},
+      "chromaticAberration": {"value": 0.015, "min": 0.0, "max": 0.05, "step": 0.001},
+      "bassThreshold": {"value": 0.1, "min": 0.0, "max": 0.8, "step": 0.05},
+      "kickThreshold": {"value": 0.3, "min": 0.0, "max": 0.9, "step": 0.05},
+      "shakeUpdateRate": {"value": 30.0, "min": 10.0, "max": 60.0, "step": 5.0}
+    },
+    "uniformDescriptions": {
+      "shakeIntensity": "Strength of screen shake effect",
+      "wobbleIntensity": "Strength of radial wobble distortion",
+      "wobbleFrequency": "Frequency of wobble waves",
+      "wobbleSpeed": "Speed of wobble animation",
+      "chromaticAberration": "RGB channel separation on heavy kicks",
+      "bassThreshold": "Bass level needed to trigger shake (lower = more sensitive)",
+      "kickThreshold": "Kick level needed for chromatic aberration",
+      "shakeUpdateRate": "Shake direction update rate (fps)"
+    }
+  },
+  "PulseVignette.glsl": {
+    "category": "audio-reactive",
+    "description": "Pulsing vignette that darkens edges on bass beats - great for beat emphasis",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "vignetteSize": {"value": 0.7, "min": 0.3, "max": 1.0, "step": 0.05},
+      "vignetteSoftness": {"value": 0.3, "min": 0.1, "max": 0.8, "step": 0.05},
+      "pulseIntensity": {"value": 2.0, "min": 0.0, "max": 5.0, "step": 0.1},
+      "vignetteStrength": {"value": 0.7, "min": 0.0, "max": 1.0, "step": 0.05},
+      "brightnessPulse": {"value": 0.3, "min": 0.0, "max": 1.0, "step": 0.05},
+      "flashThreshold": {"value": 0.6, "min": 0.3, "max": 1.0, "step": 0.05},
+      "flashIntensity": {"value": 0.3, "min": 0.0, "max": 1.0, "step": 0.05},
+      "vignetteColorR": {"value": 0.3, "min": 0.0, "max": 1.0, "step": 0.05},
+      "vignetteColorG": {"value": 0.0, "min": 0.0, "max": 1.0, "step": 0.05},
+      "vignetteColorB": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "vignetteSize": "Base size of vignette (smaller = more darkening)",
+      "vignetteSoftness": "Softness of vignette edge",
+      "pulseIntensity": "How much bass affects vignette size",
+      "vignetteStrength": "Overall vignette opacity",
+      "brightnessPulse": "Brightness boost on kicks",
+      "flashThreshold": "Kick level needed for white flash",
+      "flashIntensity": "Strength of white flash effect",
+      "vignetteColorR": "Red component of vignette color",
+      "vignetteColorG": "Green component of vignette color",
+      "vignetteColorB": "Blue component of vignette color"
+    }
+  },
+  "StrobeFlash.glsl": {
+    "category": "audio-reactive",
+    "description": "Strobe light flashes synced to bass - WARNING: Very intense, use sparingly",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "strobeThreshold": {"value": 0.5, "min": 0.2, "max": 0.9, "step": 0.05},
+      "flashSpeed": {"value": 30.0, "min": 10.0, "max": 60.0, "step": 5.0},
+      "flashIntensity": {"value": 0.7, "min": 0.0, "max": 1.0, "step": 0.05},
+      "colorInvert": {"value": 1.0, "min": 0.0, "max": 1.0, "step": 0.1},
+      "brightnessPulse": {"value": 0.3, "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "strobeThreshold": "Kick level needed to trigger strobe",
+      "flashSpeed": "Strobe flash rate in Hz",
+      "flashIntensity": "Strength of white flash overlay",
+      "colorInvert": "Amount of color inversion during flash (0=none, 1=full)",
+      "brightnessPulse": "Subtle brightness pulse on bass"
+    }
+  },
+  "ChromaticAberration.glsl": {
+    "category": "visual-effects",
+    "description": "RGB channel separation effect - simulates lens distortion",
+    "audioReactive": true,
+    "needsAudioTexture": false,
+    "uniforms": {
+      "bassLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "midLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "trebleLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "baseOffset": {"value": 0.01, "min": 0.0, "max": 0.05, "step": 0.001},
+      "audioIntensity": {"value": 0.02, "min": 0.0, "max": 0.1, "step": 0.005},
+      "offsetAngle": {"value": 0.0, "min": 0.0, "max": 6.28318, "step": 0.1}
+    },
+    "uniformDescriptions": {
+      "bassLevel": "Bass audio level (auto-updated)",
+      "midLevel": "Mid audio level (auto-updated)",
+      "trebleLevel": "Treble audio level (auto-updated)",
+      "baseOffset": "Base RGB channel separation amount",
+      "audioIntensity": "How much audio affects the separation",
+      "offsetAngle": "Direction of RGB separation (radians)"
+    },
+    "audioEffects": ["bassLevel", "midLevel", "trebleLevel"]
+  },
+  "RGBShift.glsl": {
+    "category": "visual-effects",
+    "description": "Wavy RGB channel separation with audio reactivity",
+    "audioReactive": true,
+    "needsAudioTexture": false,
+    "uniforms": {
+      "bassLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "midLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "trebleLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "waveFrequency": {"value": 20.0, "min": 5.0, "max": 50.0, "step": 1.0},
+      "waveSpeed": {"value": 2.0, "min": 0.0, "max": 10.0, "step": 0.5},
+      "baseShift": {"value": 0.01, "min": 0.0, "max": 0.05, "step": 0.001},
+      "audioShift": {"value": 0.02, "min": 0.0, "max": 0.1, "step": 0.005}
+    },
+    "uniformDescriptions": {
+      "bassLevel": "Bass audio level (auto-updated)",
+      "midLevel": "Mid audio level (auto-updated)",
+      "trebleLevel": "Treble audio level (auto-updated)",
+      "waveFrequency": "Frequency of the wave pattern",
+      "waveSpeed": "Speed of wave animation",
+      "baseShift": "Base RGB shift amount",
+      "audioShift": "Additional shift from audio"
+    },
+    "audioEffects": ["bassLevel", "midLevel", "trebleLevel"]
+  },
+  "HueRotate.glsl": {
+    "category": "visual-effects",
+    "description": "Smooth color cycling effect with audio reactivity",
+    "audioReactive": true,
+    "needsAudioTexture": false,
+    "uniforms": {
+      "bassLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "midLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "trebleLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "rotationSpeed": {"value": 1.0, "min": 0.0, "max": 5.0, "step": 0.1},
+      "audioIntensity": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1}
+    },
+    "uniformDescriptions": {
+      "bassLevel": "Bass audio level (auto-updated)",
+      "midLevel": "Mid audio level (auto-updated)",
+      "trebleLevel": "Treble audio level (auto-updated)",
+      "rotationSpeed": "Base speed of hue rotation",
+      "audioIntensity": "How much audio affects hue rotation"
+    },
+    "audioEffects": ["bassLevel", "midLevel", "trebleLevel"]
+  },
+  "Posterize.glsl": {
+    "category": "visual-effects",
+    "description": "Reduces color depth for a stylized, retro look - audio controls posterization",
+    "audioReactive": true,
+    "needsAudioTexture": false,
+    "uniforms": {
+      "bassLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "midLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "trebleLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "minLevels": {"value": 3.0, "min": 2.0, "max": 8.0, "step": 1.0},
+      "maxLevels": {"value": 15.0, "min": 8.0, "max": 32.0, "step": 1.0},
+      "audioControl": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.1}
+    },
+    "uniformDescriptions": {
+      "bassLevel": "Bass audio level (auto-updated)",
+      "midLevel": "Mid audio level (auto-updated)",
+      "trebleLevel": "Treble audio level (auto-updated)",
+      "minLevels": "Minimum color levels (more posterized)",
+      "maxLevels": "Maximum color levels (less posterized)",
+      "audioControl": "How much audio affects posterization"
+    },
+    "audioEffects": ["bassLevel", "midLevel", "trebleLevel"]
+  },
+  "ColorWaves.glsl": {
+    "category": "visual-effects",
+    "description": "Animated color waves across video with audio-reactive intensity",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "wave1Frequency": {"value": 10.0, "min": 1.0, "max": 30.0, "step": 1.0},
+      "wave1Speed": {"value": 2.0, "min": 0.0, "max": 10.0, "step": 0.5},
+      "wave2Frequency": {"value": 8.0, "min": 1.0, "max": 30.0, "step": 1.0},
+      "wave2Speed": {"value": 1.5, "min": 0.0, "max": 10.0, "step": 0.5},
+      "wave3Frequency": {"value": 6.0, "min": 1.0, "max": 30.0, "step": 1.0},
+      "wave3Speed": {"value": 3.0, "min": 0.0, "max": 10.0, "step": 0.5},
+      "hueIntensity": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "mixAmount": {"value": 0.3, "min": 0.0, "max": 1.0, "step": 0.05},
+      "colorOverlay": {"value": 0.3, "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "wave1Frequency": "Frequency of first wave (horizontal)",
+      "wave1Speed": "Speed of first wave animation",
+      "wave2Frequency": "Frequency of second wave (vertical)",
+      "wave2Speed": "Speed of second wave animation",
+      "wave3Frequency": "Frequency of third wave (diagonal)",
+      "wave3Speed": "Speed of third wave animation",
+      "hueIntensity": "Strength of hue shift effect",
+      "mixAmount": "Base mix amount with original video",
+      "colorOverlay": "Strength of frequency-based color overlay"
+    }
+  },
+  "DigitalGlitch.glsl": {
+    "category": "visual-effects",
+    "description": "Random digital glitch artifacts with scanline displacement",
+    "audioReactive": true,
+    "needsAudioTexture": false,
+    "uniforms": {
+      "bassLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "midLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "trebleLevel": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "glitchFrequency": {"value": 10.0, "min": 1.0, "max": 30.0, "step": 1.0},
+      "glitchThreshold": {"value": 0.9, "min": 0.5, "max": 1.0, "step": 0.05},
+      "displacementAmount": {"value": 0.1, "min": 0.0, "max": 0.5, "step": 0.01},
+      "chromaticShift": {"value": 0.02, "min": 0.0, "max": 0.1, "step": 0.005},
+      "audioSensitivity": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1}
+    },
+    "uniformDescriptions": {
+      "bassLevel": "Bass audio level (auto-updated)",
+      "midLevel": "Mid audio level (auto-updated)",
+      "trebleLevel": "Treble audio level (auto-updated)",
+      "glitchFrequency": "How often glitches occur (Hz)",
+      "glitchThreshold": "Random threshold for glitch trigger",
+      "displacementAmount": "Amount of horizontal scanline displacement",
+      "chromaticShift": "RGB channel separation during glitch",
+      "audioSensitivity": "How much audio affects glitch intensity"
+    },
+    "audioEffects": ["bassLevel", "midLevel", "trebleLevel"]
+  },
+  "Datamosh.glsl": {
+    "category": "audio-reactive",
+    "description": "Video compression artifacts and datamoshing effect - intense on bass drops",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "glitchThreshold": {"value": 0.6, "min": 0.3, "max": 0.9, "step": 0.05},
+      "blockSizeMin": {"value": 0.05, "min": 0.01, "max": 0.1, "step": 0.01},
+      "blockSizeMax": {"value": 0.15, "min": 0.1, "max": 0.3, "step": 0.01},
+      "displacementH": {"value": 0.2, "min": 0.0, "max": 0.5, "step": 0.05},
+      "displacementV": {"value": 0.1, "min": 0.0, "max": 0.3, "step": 0.05},
+      "smearAmount": {"value": 0.05, "min": 0.0, "max": 0.2, "step": 0.01},
+      "smearSamples": {"value": 5.0, "min": 3.0, "max": 10.0, "step": 1.0},
+      "colorShift": {"value": 0.03, "min": 0.0, "max": 0.1, "step": 0.005}
+    },
+    "uniformDescriptions": {
+      "glitchThreshold": "Bass level needed to trigger datamosh",
+      "blockSizeMin": "Minimum block size for displacement",
+      "blockSizeMax": "Maximum block size for displacement",
+      "displacementH": "Horizontal block displacement amount",
+      "displacementV": "Vertical block displacement amount",
+      "smearAmount": "Motion smear/blur amount",
+      "smearSamples": "Number of samples for motion smear",
+      "colorShift": "RGB channel shift amount"
+    }
+  },
+  "EdgeGlow.glsl": {
+    "category": "audio-reactive",
+    "description": "Detects edges and adds colorful audio-reactive glow - great for highlighting subjects",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "edgeThresholdLow": {"value": 0.1, "min": 0.0, "max": 0.5, "step": 0.05},
+      "edgeThresholdHigh": {"value": 0.5, "min": 0.2, "max": 1.0, "step": 0.05},
+      "glowIntensity": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "blurKernelBase": {"value": 3.0, "min": 1.0, "max": 10.0, "step": 0.5},
+      "blurKernelAudio": {"value": 4.0, "min": 0.0, "max": 10.0, "step": 0.5},
+      "bassColorMult": {"value": 2.0, "min": 0.0, "max": 5.0, "step": 0.1},
+      "midColorMult": {"value": 2.0, "min": 0.0, "max": 5.0, "step": 0.1},
+      "highColorMult": {"value": 2.0, "min": 0.0, "max": 5.0, "step": 0.1},
+      "pulseMult": {"value": 2.0, "min": 0.0, "max": 5.0, "step": 0.1}
+    },
+    "uniformDescriptions": {
+      "edgeThresholdLow": "Lower threshold for edge detection",
+      "edgeThresholdHigh": "Upper threshold for edge detection",
+      "glowIntensity": "Overall glow brightness",
+      "blurKernelBase": "Base blur kernel size",
+      "blurKernelAudio": "Additional blur from audio",
+      "bassColorMult": "Bass contribution to glow color (red)",
+      "midColorMult": "Mid contribution to glow color (green)",
+      "highColorMult": "High contribution to glow color (blue)",
+      "pulseMult": "Audio pulse intensity multiplier"
+    }
+  },
+  "EdgeNeon.glsl": {
+    "category": "audio-reactive",
+    "description": "Neon-style edge outlines - perfect for synthwave/tron aesthetic",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "edgeThresholdLow": {"value": 0.2, "min": 0.0, "max": 0.5, "step": 0.05},
+      "edgeThresholdHigh": {"value": 0.8, "min": 0.3, "max": 1.0, "step": 0.05},
+      "neonIntensity": {"value": 2.0, "min": 0.0, "max": 5.0, "step": 0.1},
+      "glowLayers": {"value": 3.0, "min": 1.0, "max": 5.0, "step": 1.0},
+      "glowRadius": {"value": 2.0, "min": 0.5, "max": 5.0, "step": 0.5},
+      "videoDarken": {"value": 0.3, "min": 0.0, "max": 1.0, "step": 0.05},
+      "bassNeonR": {"value": 0.8, "min": 0.0, "max": 1.0, "step": 0.05},
+      "midNeonG": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "highNeonB": {"value": 0.2, "min": 0.0, "max": 1.0, "step": 0.05},
+      "neonBaseR": {"value": 0.2, "min": 0.0, "max": 1.0, "step": 0.05},
+      "neonBaseG": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "neonBaseB": {"value": 0.8, "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "edgeThresholdLow": "Lower threshold for edge detection",
+      "edgeThresholdHigh": "Upper threshold for edge detection",
+      "neonIntensity": "Brightness of neon edges",
+      "glowLayers": "Number of glow layers (more = softer)",
+      "glowRadius": "Radius of each glow layer",
+      "videoDarken": "How much to darken original video (0=black, 1=full)",
+      "bassNeonR": "Bass contribution to red channel",
+      "midNeonG": "Mid contribution to green channel",
+      "highNeonB": "High contribution to blue channel",
+      "neonBaseR": "Base red color value",
+      "neonBaseG": "Base green color value",
+      "neonBaseB": "Base blue color value"
+    }
+  },
+  "Ripple.glsl": {
+    "category": "distortion",
+    "description": "Water ripple distortion effect emanating from center - audio-reactive amplitude",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "rippleFrequency": {"value": 30.0, "min": 5.0, "max": 100.0, "step": 1.0},
+      "rippleSpeed": {"value": 5.0, "min": 0.0, "max": 20.0, "step": 0.5},
+      "baseAmplitude": {"value": 0.02, "min": 0.0, "max": 0.1, "step": 0.001},
+      "audioAmplitude": {"value": 0.03, "min": 0.0, "max": 0.15, "step": 0.005},
+      "centerX": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.01},
+      "centerY": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.01}
+    },
+    "uniformDescriptions": {
+      "rippleFrequency": "Number of ripple waves (higher = more rings)",
+      "rippleSpeed": "Speed of ripple animation",
+      "baseAmplitude": "Base distortion strength without audio",
+      "audioAmplitude": "Additional distortion from audio",
+      "centerX": "Horizontal position of ripple center",
+      "centerY": "Vertical position of ripple center"
+    }
+  },
+  "WaveDistort.glsl": {
+    "category": "distortion",
+    "description": "Sine wave displacement effect - creates wavy distortion across the image",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "waveFrequency": {"value": 10.0, "min": 1.0, "max": 50.0, "step": 0.5},
+      "waveSpeed": {"value": 1.0, "min": 0.0, "max": 10.0, "step": 0.1},
+      "baseAmplitude": {"value": 0.05, "min": 0.0, "max": 0.2, "step": 0.005},
+      "audioAmplitude": {"value": 0.1, "min": 0.0, "max": 0.3, "step": 0.01},
+      "waveDirection": {"value": 0.0, "min": 0.0, "max": 1.0, "step": 0.01}
+    },
+    "uniformDescriptions": {
+      "waveFrequency": "Number of wave cycles",
+      "waveSpeed": "Speed of wave animation",
+      "baseAmplitude": "Base wave displacement",
+      "audioAmplitude": "Additional displacement from audio",
+      "waveDirection": "Wave orientation (0=horizontal, 1=vertical)"
+    }
+  },
+  "Twist.glsl": {
+    "category": "distortion",
+    "description": "Rotating twist distortion from center - creates spiral effect",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "twistStrength": {"value": 3.0, "min": 0.0, "max": 10.0, "step": 0.1},
+      "audioTwist": {"value": 5.0, "min": 0.0, "max": 15.0, "step": 0.5},
+      "centerX": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.01},
+      "centerY": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.01},
+      "animationSpeed": {"value": 0.0, "min": -2.0, "max": 2.0, "step": 0.1}
+    },
+    "uniformDescriptions": {
+      "twistStrength": "Base twist intensity",
+      "audioTwist": "Additional twist from audio",
+      "centerX": "Horizontal position of twist center",
+      "centerY": "Vertical position of twist center",
+      "animationSpeed": "Rotation animation speed (0=static)"
+    }
+  },
+  "BarrelDistortion.glsl": {
+    "category": "distortion",
+    "description": "Fisheye/barrel lens distortion effect - audio-reactive strength",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "baseStrength": {"value": 0.3, "min": -1.0, "max": 1.0, "step": 0.05},
+      "audioStrength": {"value": 0.5, "min": 0.0, "max": 2.0, "step": 0.1},
+      "centerX": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.01},
+      "centerY": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.01}
+    },
+    "uniformDescriptions": {
+      "baseStrength": "Base distortion (positive=barrel, negative=pincushion)",
+      "audioStrength": "Additional distortion from audio",
+      "centerX": "Horizontal position of distortion center",
+      "centerY": "Vertical position of distortion center"
+    }
+  },
+  "DollyZoom.glsl": {
+    "category": "distortion",
+    "description": "Hitchcock vertigo effect - zoom with rotation and vignette",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "zoomSpeed": {"value": 2.0, "min": 0.0, "max": 10.0, "step": 0.1},
+      "zoomIntensity": {"value": 0.3, "min": 0.0, "max": 1.0, "step": 0.05},
+      "rotationIntensity": {"value": 0.1, "min": 0.0, "max": 0.5, "step": 0.01},
+      "vignetteStrength": {"value": 0.8, "min": 0.0, "max": 1.5, "step": 0.05},
+      "vignetteSize": {"value": 0.3, "min": 0.0, "max": 1.0, "step": 0.05},
+      "centerX": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.01},
+      "centerY": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.01}
+    },
+    "uniformDescriptions": {
+      "zoomSpeed": "Speed of zoom oscillation",
+      "zoomIntensity": "Strength of zoom effect",
+      "rotationIntensity": "Amount of rotation on bass hits",
+      "vignetteStrength": "Darkness of edge vignette",
+      "vignetteSize": "Size of clear center area",
+      "centerX": "Horizontal zoom center",
+      "centerY": "Vertical zoom center"
+    }
+  },
+  "PerspectiveTilt.glsl": {
+    "category": "distortion",
+    "description": "Tilt-shift perspective effect with depth-of-field blur",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "baseTiltAngle": {"value": 0.0, "min": -1.0, "max": 1.0, "step": 0.05},
+      "audioTiltAngle": {"value": 0.5, "min": 0.0, "max": 2.0, "step": 0.1},
+      "tiltCenter": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "horizontalShift": {"value": 0.3, "min": 0.0, "max": 1.0, "step": 0.05},
+      "blurIntensity": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "blurStart": {"value": 0.1, "min": 0.0, "max": 0.5, "step": 0.05},
+      "blurEnd": {"value": 0.8, "min": 0.5, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "baseTiltAngle": "Base perspective tilt angle",
+      "audioTiltAngle": "Additional tilt from audio",
+      "tiltCenter": "Vertical center of tilt effect",
+      "horizontalShift": "Horizontal shift intensity",
+      "blurIntensity": "Strength of depth-of-field blur",
+      "blurStart": "Distance from center where blur starts",
+      "blurEnd": "Distance from center where blur is maximum"
+    }
+  },
+  "Vortex.glsl": {
+    "category": "distortion",
+    "description": "Swirling vortex pattern overlay - audio-reactive intensity",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "vortexSpeed": {"value": 2.0, "min": 0.0, "max": 10.0, "step": 0.1},
+      "vortexFrequency": {"value": 5.0, "min": 1.0, "max": 20.0, "step": 0.5},
+      "vortexRadius": {"value": 10.0, "min": 1.0, "max": 30.0, "step": 0.5},
+      "vortexIntensity": {"value": 0.5, "min": 0.0, "max": 2.0, "step": 0.05},
+      "audioBoost": {"value": 1.0, "min": 0.0, "max": 5.0, "step": 0.1},
+      "blendMode": {"value": 0.0, "min": 0.0, "max": 2.0, "step": 1.0},
+      "vortexColorR": {"value": 1.0, "min": 0.0, "max": 1.0, "step": 0.01},
+      "vortexColorG": {"value": 0.6, "min": 0.0, "max": 1.0, "step": 0.01},
+      "vortexColorB": {"value": 0.8, "min": 0.0, "max": 1.0, "step": 0.01}
+    },
+    "uniformDescriptions": {
+      "vortexSpeed": "Rotation speed of vortex",
+      "vortexFrequency": "Number of spiral arms",
+      "vortexRadius": "Tightness of spiral",
+      "vortexIntensity": "Overall brightness of vortex",
+      "audioBoost": "Audio reactivity multiplier",
+      "blendMode": "Blend with video (0=overlay, 1=multiply, 2=add)",
+      "vortexColorR": "Red channel of vortex color",
+      "vortexColorG": "Green channel of vortex color",
+      "vortexColorB": "Blue channel of vortex color"
+    }
+  },
+  "RadialBlur.glsl": {
+    "category": "blur-effects",
+    "description": "Radial blur emanating from center - audio-reactive strength with color shift",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "baseBlurStrength": {"value": 0.01, "min": 0.0, "max": 0.1, "step": 0.001},
+      "audioBlurStrength": {"value": 0.03, "min": 0.0, "max": 0.15, "step": 0.005},
+      "blurSamples": {"value": 12, "min": 4, "max": 32, "step": 1},
+      "colorShift": {"value": 0.3, "min": 0.0, "max": 1.0, "step": 0.05},
+      "vignetteStrength": {"value": 0.5, "min": 0.0, "max": 2.0, "step": 0.1},
+      "centerX": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.01},
+      "centerY": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.01}
+    },
+    "uniformDescriptions": {
+      "baseBlurStrength": "Base radial blur intensity",
+      "audioBlurStrength": "Additional blur from bass",
+      "blurSamples": "Number of blur samples (higher = smoother but slower)",
+      "colorShift": "RGB channel shift intensity with audio",
+      "vignetteStrength": "Edge darkening strength",
+      "centerX": "Horizontal center of blur",
+      "centerY": "Vertical center of blur"
+    }
+  },
+  "ZoomBlur.glsl": {
+    "category": "blur-effects",
+    "description": "Zoom/radial motion blur - creates speed effect from center",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "baseStrength": {"value": 0.05, "min": 0.0, "max": 0.3, "step": 0.01},
+      "audioStrength": {"value": 0.1, "min": 0.0, "max": 0.5, "step": 0.01},
+      "blurSamples": {"value": 10, "min": 4, "max": 24, "step": 1},
+      "centerX": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.01},
+      "centerY": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.01}
+    },
+    "uniformDescriptions": {
+      "baseStrength": "Base zoom blur strength",
+      "audioStrength": "Additional blur from audio",
+      "blurSamples": "Number of blur samples (higher = smoother)",
+      "centerX": "Horizontal zoom center",
+      "centerY": "Vertical zoom center"
+    }
+  },
+  "Bloom.glsl": {
+    "category": "blur-effects",
+    "description": "Soft glow/bloom effect - makes bright areas glow",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "baseRadius": {"value": 0.005, "min": 0.0, "max": 0.02, "step": 0.0005},
+      "audioRadius": {"value": 0.01, "min": 0.0, "max": 0.05, "step": 0.001},
+      "bloomIntensity": {"value": 0.5, "min": 0.0, "max": 2.0, "step": 0.05},
+      "audioBoost": {"value": 1.0, "min": 0.0, "max": 5.0, "step": 0.1},
+      "threshold": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "baseRadius": "Base bloom spread radius",
+      "audioRadius": "Additional radius from audio",
+      "bloomIntensity": "Overall bloom brightness",
+      "audioBoost": "Audio reactivity multiplier",
+      "threshold": "Brightness threshold for bloom (lower = more glow)"
+    }
+  },
+  "DirectionalBlur.glsl": {
+    "category": "blur-effects",
+    "description": "Motion blur in specific direction - audio controls angle and intensity",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "blurAngle": {"value": 0.0, "min": 0.0, "max": 6.28318, "step": 0.1},
+      "angleSpeed": {"value": 1.0, "min": 0.0, "max": 5.0, "step": 0.1},
+      "baseBlurStrength": {"value": 0.0, "min": 0.0, "max": 0.1, "step": 0.005},
+      "audioBlurStrength": {"value": 0.02, "min": 0.0, "max": 0.15, "step": 0.005},
+      "blurSamples": {"value": 12, "min": 4, "max": 24, "step": 1},
+      "audioAngleModulation": {"value": 6.28318, "min": 0.0, "max": 12.56636, "step": 0.1}
+    },
+    "uniformDescriptions": {
+      "blurAngle": "Base blur direction angle (radians)",
+      "angleSpeed": "Rotation speed of blur direction",
+      "baseBlurStrength": "Base blur intensity",
+      "audioBlurStrength": "Additional blur from audio",
+      "blurSamples": "Number of blur samples (higher = smoother)",
+      "audioAngleModulation": "Bass modulation of blur angle"
+    }
+  },
+  "Kaleidoscope.glsl": {
+    "category": "geometric",
+    "description": "Radial symmetry kaleidoscope effect - audio controls number of segments",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "baseSegments": {"value": 6.0, "min": 2.0, "max": 12.0, "step": 1.0},
+      "audioSegments": {"value": 6.0, "min": 0.0, "max": 12.0, "step": 1.0},
+      "rotation": {"value": 0.0, "min": 0.0, "max": 6.28318, "step": 0.1},
+      "rotationSpeed": {"value": 0.0, "min": -2.0, "max": 2.0, "step": 0.1},
+      "zoom": {"value": 1.0, "min": 0.1, "max": 3.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "baseSegments": "Base number of mirror segments",
+      "audioSegments": "Additional segments from audio",
+      "rotation": "Base rotation angle",
+      "rotationSpeed": "Rotation animation speed",
+      "zoom": "Zoom level (lower = zoomed in)"
+    }
+  },
+  "Pixelate.glsl": {
+    "category": "geometric",
+    "description": "Pixelation effect - audio-reactive pixel size",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "basePixelSize": {"value": 2.0, "min": 1.0, "max": 50.0, "step": 1.0},
+      "audioPixelSize": {"value": 20.0, "min": 0.0, "max": 100.0, "step": 1.0},
+      "aspectRatio": {"value": 0.0, "min": 0.0, "max": 1.0, "step": 1.0}
+    },
+    "uniformDescriptions": {
+      "basePixelSize": "Base pixel block size",
+      "audioPixelSize": "Additional pixelation from audio",
+      "aspectRatio": "Pixel shape (0=square, 1=preserve aspect ratio)"
+    }
+  },
+  "Mosaic.glsl": {
+    "category": "geometric",
+    "description": "Colorful mosaic tiles - blends random colors with video",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "baseTileSize": {"value": 10.0, "min": 2.0, "max": 50.0, "step": 1.0},
+      "audioTileSize": {"value": 10.0, "min": 0.0, "max": 50.0, "step": 1.0},
+      "colorIntensity": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.05},
+      "audioBoost": {"value": 0.5, "min": 0.0, "max": 2.0, "step": 0.1},
+      "videoBlend": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "animationSpeed": {"value": 1.0, "min": 0.0, "max": 5.0, "step": 0.1}
+    },
+    "uniformDescriptions": {
+      "baseTileSize": "Base size of mosaic tiles",
+      "audioTileSize": "Additional tile size from audio",
+      "colorIntensity": "Brightness of mosaic colors",
+      "audioBoost": "Audio reactivity of color intensity",
+      "videoBlend": "Blend between pure mosaic (0) and video-tinted (1)",
+      "animationSpeed": "Speed of color changes"
+    }
+  },
+  "MirrorRepeat.glsl": {
+    "category": "geometric",
+    "description": "Kaleidoscopic mirror repeat - audio controls segments and rotation",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "baseSegments": {"value": 2.0, "min": 2.0, "max": 8.0, "step": 1.0},
+      "audioSegments": {"value": 6.0, "min": 0.0, "max": 8.0, "step": 1.0},
+      "baseRotation": {"value": 0.0, "min": 0.0, "max": 6.28318, "step": 0.1},
+      "audioRotation": {"value": 3.14159, "min": 0.0, "max": 6.28318, "step": 0.1},
+      "centerX": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.01},
+      "centerY": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.01}
+    },
+    "uniformDescriptions": {
+      "baseSegments": "Base number of mirror segments",
+      "audioSegments": "Additional segments from audio",
+      "baseRotation": "Base rotation angle",
+      "audioRotation": "Bass-reactive rotation amount",
+      "centerX": "Horizontal center of effect",
+      "centerY": "Vertical center of effect"
+    }
+  },
+  "VHSTape.glsl": {
+    "category": "glitch",
+    "description": "VHS tape artifacts - tracking errors, color bleeding, noise, and dropouts",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "trackingErrorIntensity": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "colorBleedAmount": {"value": 0.003, "min": 0.0, "max": 0.02, "step": 0.0005},
+      "noiseIntensity": {"value": 0.05, "min": 0.0, "max": 0.2, "step": 0.01},
+      "desaturation": {"value": 0.2, "min": 0.0, "max": 1.0, "step": 0.05},
+      "bandIntensity": {"value": 0.05, "min": 0.0, "max": 0.2, "step": 0.01},
+      "dropoutThreshold": {"value": 0.98, "min": 0.9, "max": 1.0, "step": 0.01},
+      "chromaNoiseIntensity": {"value": 0.1, "min": 0.0, "max": 0.5, "step": 0.01},
+      "bassGlitchThreshold": {"value": 0.6, "min": 0.0, "max": 1.0, "step": 0.05},
+      "glitchIntensity": {"value": 0.1, "min": 0.0, "max": 0.5, "step": 0.01}
+    },
+    "uniformDescriptions": {
+      "trackingErrorIntensity": "Strength of horizontal tracking errors",
+      "colorBleedAmount": "RGB channel separation (VHS color bleed)",
+      "noiseIntensity": "Overall tape noise level",
+      "desaturation": "Color degradation (0=full color, 1=grayscale)",
+      "bandIntensity": "Rolling horizontal bands",
+      "dropoutThreshold": "Frequency of random dropout lines (higher=fewer)",
+      "chromaNoiseIntensity": "Color noise artifacts",
+      "bassGlitchThreshold": "Bass level needed for glitches",
+      "glitchIntensity": "Strength of bass-reactive glitches"
+    }
+  },
+  "CRTTV.glsl": {
+    "category": "color-effects",
+    "description": "CRT TV monitor effect - scanlines, curvature, chromatic aberration, and phosphor glow",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "curvatureAmount": {"value": 0.15, "min": 0.0, "max": 0.5, "step": 0.01},
+      "chromaticAberration": {"value": 0.003, "min": 0.0, "max": 0.02, "step": 0.0005},
+      "audioAberration": {"value": 0.005, "min": 0.0, "max": 0.02, "step": 0.001},
+      "scanlineIntensity": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "scanlineCount": {"value": 2.0, "min": 0.5, "max": 4.0, "step": 0.1},
+      "flickerSpeed": {"value": 60.0, "min": 10.0, "max": 200.0, "step": 10.0},
+      "flickerIntensity": {"value": 0.02, "min": 0.0, "max": 0.2, "step": 0.01},
+      "vignetteStrength": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.1},
+      "staticThreshold": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "staticIntensity": {"value": 0.3, "min": 0.0, "max": 1.0, "step": 0.05},
+      "ghostingAmount": {"value": 0.01, "min": 0.0, "max": 0.05, "step": 0.001}
+    },
+    "uniformDescriptions": {
+      "curvatureAmount": "Screen curvature (CRT bulge)",
+      "chromaticAberration": "Base RGB separation",
+      "audioAberration": "Additional aberration from audio",
+      "scanlineIntensity": "Darkness of scanlines (0=none, 1=very dark)",
+      "scanlineCount": "Scanline density multiplier",
+      "flickerSpeed": "Speed of scanline flicker",
+      "flickerIntensity": "Amount of flicker",
+      "vignetteStrength": "Edge darkening strength",
+      "staticThreshold": "Bass level needed for static",
+      "staticIntensity": "Strength of audio-reactive static",
+      "ghostingAmount": "Color ghosting/trailing"
+    }
+  },
+  "GridOverlay.glsl": {
+    "category": "overlay",
+    "description": "Pulsing grid pattern overlay - audio-reactive brightness",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "gridSize": {"value": 20.0, "min": 5.0, "max": 100.0, "step": 1.0},
+      "lineThickness": {"value": 0.1, "min": 0.01, "max": 0.5, "step": 0.01},
+      "gridIntensity": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.1},
+      "audioBoost": {"value": 0.5, "min": 0.0, "max": 2.0, "step": 0.1},
+      "gridColor": {"value": [1.0, 0.5, 0.8], "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "gridSize": "Number of grid cells",
+      "lineThickness": "Thickness of grid lines",
+      "gridIntensity": "Overall brightness of grid",
+      "audioBoost": "Audio reactivity multiplier",
+      "gridColor": "RGB color of grid lines"
+    }
+  },
+  "CheckerboardOverlay.glsl": {
+    "category": "overlay",
+    "description": "Rotating checkerboard pattern - bass-reactive rotation",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "checkerSize": {"value": 10.0, "min": 2.0, "max": 30.0, "step": 1.0},
+      "rotationSpeed": {"value": 0.5, "min": -2.0, "max": 2.0, "step": 0.1},
+      "bassRotation": {"value": 3.0, "min": 0.0, "max": 10.0, "step": 0.5},
+      "blendAmount": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "color1": {"value": [0.1, 0.2, 0.5], "min": 0.0, "max": 1.0, "step": 0.05},
+      "color2": {"value": [0.9, 0.5, 0.3], "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "checkerSize": "Size of checkerboard squares",
+      "rotationSpeed": "Base rotation speed",
+      "bassRotation": "Additional rotation from bass",
+      "blendAmount": "Blend with video (audio-reactive)",
+      "color1": "First checker color (RGB)",
+      "color2": "Second checker color (RGB)"
+    }
+  },
+  "AnimatedStripes.glsl": {
+    "category": "overlay",
+    "description": "Moving diagonal stripes - bass-reactive animation",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "stripeFrequency": {"value": 20.0, "min": 5.0, "max": 50.0, "step": 1.0},
+      "stripeSpeed": {"value": 5.0, "min": 0.0, "max": 20.0, "step": 0.5},
+      "bassModulation": {"value": 10.0, "min": 0.0, "max": 30.0, "step": 1.0},
+      "stripeIntensity": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.1},
+      "audioBoost": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "stripeColor": {"value": [0.8, 0.3, 0.9], "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "stripeFrequency": "Number of stripes",
+      "stripeSpeed": "Animation speed",
+      "bassModulation": "Bass effect on stripe movement",
+      "stripeIntensity": "Brightness of stripes",
+      "audioBoost": "Audio reactivity multiplier",
+      "stripeColor": "RGB color of stripes"
+    }
+  },
+  "ScanningLines.glsl": {
+    "category": "overlay",
+    "description": "Animated scanning lines - retro effect",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "lineFrequency": {"value": 0.5, "min": 0.1, "max": 2.0, "step": 0.1},
+      "lineSpeed": {"value": 10.0, "min": 0.0, "max": 50.0, "step": 1.0},
+      "lineSharpness": {"value": 3.0, "min": 1.0, "max": 10.0, "step": 0.5},
+      "lineIntensity": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.1},
+      "audioBoost": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "lineColor": {"value": [0.2, 1.0, 0.5], "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "lineFrequency": "Density of scanning lines",
+      "lineSpeed": "Animation speed",
+      "lineSharpness": "Edge sharpness of lines",
+      "lineIntensity": "Brightness of lines",
+      "audioBoost": "Audio reactivity multiplier",
+      "lineColor": "RGB color of lines"
+    }
+  },
+  "ConcentricRings.glsl": {
+    "category": "overlay",
+    "description": "Pulsing concentric rings - bass-reactive waves",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "ringFrequency": {"value": 20.0, "min": 5.0, "max": 50.0, "step": 1.0},
+      "ringSpeed": {"value": 3.0, "min": 0.0, "max": 10.0, "step": 0.5},
+      "bassModulation": {"value": 10.0, "min": 0.0, "max": 30.0, "step": 1.0},
+      "ringSharpness": {"value": 2.0, "min": 1.0, "max": 5.0, "step": 0.1},
+      "ringIntensity": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.1},
+      "audioBoost": {"value": 2.0, "min": 0.0, "max": 5.0, "step": 0.1},
+      "ringColor": {"value": [0.5, 0.7, 1.0], "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "ringFrequency": "Number of rings",
+      "ringSpeed": "Animation speed",
+      "bassModulation": "Bass effect on ring movement",
+      "ringSharpness": "Edge sharpness of rings",
+      "ringIntensity": "Brightness of rings",
+      "audioBoost": "Audio reactivity multiplier",
+      "ringColor": "RGB color of rings"
+    }
+  },
+  "PulsingDots.glsl": {
+    "category": "overlay",
+    "description": "Pulsing dot grid - audio-reactive dot size",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "dotGridSize": {"value": 10.0, "min": 2.0, "max": 30.0, "step": 1.0},
+      "baseDotSize": {"value": 0.2, "min": 0.05, "max": 0.5, "step": 0.01},
+      "audioDotSize": {"value": 0.2, "min": 0.0, "max": 0.5, "step": 0.01},
+      "dotSmoothness": {"value": 0.01, "min": 0.001, "max": 0.1, "step": 0.001},
+      "dotIntensity": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.1},
+      "audioBoost": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "dotColor": {"value": [1.0, 0.5, 0.8], "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "dotGridSize": "Number of dots per row/column",
+      "baseDotSize": "Base size of dots",
+      "audioDotSize": "Additional size from audio",
+      "dotSmoothness": "Edge smoothness of dots",
+      "dotIntensity": "Brightness of dots",
+      "audioBoost": "Audio reactivity multiplier",
+      "dotColor": "RGB color of dots"
+    }
+  },
+  "RadialRays.glsl": {
+    "category": "overlay",
+    "description": "Radial light beams - bass-reactive rotation",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "rayCount": {"value": 12.0, "min": 3.0, "max": 30.0, "step": 1.0},
+      "raySpeed": {"value": 1.0, "min": -5.0, "max": 5.0, "step": 0.1},
+      "bassModulation": {"value": 5.0, "min": 0.0, "max": 20.0, "step": 0.5},
+      "rayIntensity": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.1},
+      "centerFade": {"value": 1.0, "min": 0.1, "max": 5.0, "step": 0.1},
+      "audioBoost": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "rayColor": {"value": [1.0, 0.8, 0.3], "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "rayCount": "Number of radial rays",
+      "raySpeed": "Rotation speed",
+      "bassModulation": "Bass effect on rotation",
+      "rayIntensity": "Brightness of rays",
+      "centerFade": "Fade strength from center",
+      "audioBoost": "Audio reactivity multiplier",
+      "rayColor": "RGB color of rays"
+    }
+  },
+  "HexagonGrid.glsl": {
+    "category": "overlay",
+    "description": "Hexagonal grid pattern - audio-reactive blend",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "hexSize": {"value": 10.0, "min": 2.0, "max": 30.0, "step": 1.0},
+      "hexThickness": {"value": 0.4, "min": 0.1, "max": 0.8, "step": 0.05},
+      "hexSmoothness": {"value": 0.05, "min": 0.01, "max": 0.2, "step": 0.01},
+      "hexIntensity": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.1},
+      "audioBoost": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "blendAmount": {"value": 0.3, "min": 0.0, "max": 1.0, "step": 0.05},
+      "hexColor": {"value": [0.3, 0.7, 1.0], "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "hexSize": "Size of hexagon cells",
+      "hexThickness": "Thickness of hexagon edges",
+      "hexSmoothness": "Edge smoothness",
+      "hexIntensity": "Brightness of pattern",
+      "audioBoost": "Audio reactivity multiplier",
+      "blendAmount": "Blend with video",
+      "hexColor": "RGB color of hexagons"
+    }
+  },
+  "TrianglesOverlay.glsl": {
+    "category": "overlay",
+    "description": "Triangle pattern overlay - audio-reactive brightness",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "triangleSize": {"value": 10.0, "min": 2.0, "max": 30.0, "step": 1.0},
+      "triangleIntensity": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.1},
+      "audioBoost": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "blendAmount": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "triangleColor": {"value": [1.0, 0.6, 0.3], "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "triangleSize": "Size of triangle grid",
+      "triangleIntensity": "Brightness of triangles",
+      "audioBoost": "Audio reactivity multiplier",
+      "blendAmount": "Blend strength with video",
+      "triangleColor": "RGB color of triangles"
+    }
+  },
+  "StarfieldOverlay.glsl": {
+    "category": "overlay",
+    "description": "Moving starfield - audio-reactive star size",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "starDensity": {"value": 100.0, "min": 20.0, "max": 300.0, "step": 10.0},
+      "starSpeed": {"value": 1.0, "min": 0.0, "max": 5.0, "step": 0.1},
+      "starSize": {"value": 0.05, "min": 0.01, "max": 0.2, "step": 0.01},
+      "audioStarSize": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "starIntensity": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.1},
+      "audioBoost": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "blendAmount": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "starDensity": "Number of stars",
+      "starSpeed": "Star movement speed",
+      "starSize": "Base star size",
+      "audioStarSize": "Audio effect on star size",
+      "starIntensity": "Brightness of stars",
+      "audioBoost": "Audio reactivity multiplier",
+      "blendAmount": "Blend strength with video"
+    }
+  },
+  "LightRays.glsl": {
+    "category": "overlay",
+    "description": "God rays / volumetric light - audio-reactive intensity",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "lightPosX": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.01},
+      "lightPosY": {"value": 0.7, "min": 0.0, "max": 1.0, "step": 0.01},
+      "lightMovement": {"value": 0.2, "min": 0.0, "max": 0.5, "step": 0.01},
+      "rayLength": {"value": 0.3, "min": 0.0, "max": 1.0, "step": 0.05},
+      "audioRayLength": {"value": 0.3, "min": 0.0, "max": 1.0, "step": 0.05},
+      "numSamples": {"value": 50.0, "min": 10.0, "max": 100.0, "step": 5.0},
+      "rayDecay": {"value": 0.95, "min": 0.8, "max": 0.99, "step": 0.01},
+      "brightnessThreshold": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "rayIntensity": {"value": 0.5, "min": 0.0, "max": 2.0, "step": 0.1},
+      "audioBoost": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "rayColor": {"value": [1.0, 0.9, 0.7], "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "lightPosX": "Light source X position",
+      "lightPosY": "Light source Y position",
+      "lightMovement": "Amount of light position animation",
+      "rayLength": "Base length of rays",
+      "audioRayLength": "Additional ray length from audio",
+      "numSamples": "Ray quality (higher = smoother)",
+      "rayDecay": "Ray fade rate",
+      "brightnessThreshold": "Minimum brightness to create rays",
+      "rayIntensity": "Overall ray brightness",
+      "audioBoost": "Audio reactivity multiplier",
+      "rayColor": "RGB tint of rays"
+    }
+  },
+  "PlasmaOverlay.glsl": {
+    "category": "overlay",
+    "description": "Classic plasma effect - bass-reactive animation",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "plasmaScale": {"value": 10.0, "min": 2.0, "max": 30.0, "step": 1.0},
+      "plasmaSpeed": {"value": 1.0, "min": 0.0, "max": 5.0, "step": 0.1},
+      "bassModulation": {"value": 5.0, "min": 0.0, "max": 20.0, "step": 0.5},
+      "plasmaIntensity": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.1},
+      "colorShift": {"value": 0.0, "min": 0.0, "max": 6.28, "step": 0.1},
+      "blendAmount": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "audioBlend": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "plasmaScale": "Plasma pattern scale",
+      "plasmaSpeed": "Animation speed",
+      "bassModulation": "Bass effect on plasma",
+      "plasmaIntensity": "Overall brightness",
+      "colorShift": "Hue rotation of colors",
+      "blendAmount": "Base blend with video",
+      "audioBlend": "Audio-reactive blend amount"
+    }
+  },
+  "SpiralPattern.glsl": {
+    "category": "overlay",
+    "description": "Hypnotic spiral pattern - audio-reactive intensity",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "spiralArms": {"value": 8.0, "min": 2.0, "max": 20.0, "step": 1.0},
+      "spiralTightness": {"value": 20.0, "min": 5.0, "max": 50.0, "step": 1.0},
+      "spiralSpeed": {"value": 2.0, "min": 0.0, "max": 10.0, "step": 0.5},
+      "spiralIntensity": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.1},
+      "audioBoost": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "blendAmount": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "spiralColor": {"value": [0.5, 0.8, 1.0], "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "spiralArms": "Number of spiral arms",
+      "spiralTightness": "How tight the spiral is",
+      "spiralSpeed": "Rotation speed",
+      "spiralIntensity": "Brightness of spiral",
+      "audioBoost": "Audio reactivity multiplier",
+      "blendAmount": "Blend with video",
+      "spiralColor": "RGB color of spiral"
+    }
+  },
+  "VoronoiCells.glsl": {
+    "category": "overlay",
+    "description": "Voronoi cellular pattern - bass-reactive animation",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "cellScale": {"value": 5.0, "min": 1.0, "max": 20.0, "step": 0.5},
+      "audioCellScale": {"value": 5.0, "min": 0.0, "max": 20.0, "step": 0.5},
+      "cellAnimation": {"value": 1.0, "min": 0.0, "max": 5.0, "step": 0.1},
+      "bassAnimation": {"value": 5.0, "min": 0.0, "max": 20.0, "step": 0.5},
+      "cellIntensity": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.1},
+      "audioBoost": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "blendAmount": {"value": 0.3, "min": 0.0, "max": 1.0, "step": 0.05},
+      "cellColor": {"value": [0.4, 0.7, 1.0], "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "cellScale": "Base cell size",
+      "audioCellScale": "Audio effect on cell size",
+      "cellAnimation": "Cell animation speed",
+      "bassAnimation": "Bass effect on animation",
+      "cellIntensity": "Brightness of cells",
+      "audioBoost": "Audio reactivity multiplier",
+      "blendAmount": "Blend with video",
+      "cellColor": "RGB color of cells"
+    }
+  },
+  "PulsingWaves.glsl": {
+    "category": "overlay",
+    "description": "Expanding circular waves - audio-reactive pulses",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "waveFrequency": {"value": 10.0, "min": 2.0, "max": 30.0, "step": 1.0},
+      "waveSpeed": {"value": 5.0, "min": 0.0, "max": 20.0, "step": 0.5},
+      "audioModulation": {"value": 10.0, "min": 0.0, "max": 30.0, "step": 1.0},
+      "waveSharpness": {"value": 3.0, "min": 1.0, "max": 10.0, "step": 0.5},
+      "waveIntensity": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.1},
+      "audioBoost": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "blendAmount": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "waveColor": {"value": [0.3, 0.8, 1.0], "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "waveFrequency": "Number of wave rings",
+      "waveSpeed": "Wave animation speed",
+      "audioModulation": "Audio effect on waves",
+      "waveSharpness": "Edge sharpness of waves",
+      "waveIntensity": "Brightness of waves",
+      "audioBoost": "Audio reactivity multiplier",
+      "blendAmount": "Blend with video",
+      "waveColor": "RGB color of waves"
+    }
+  },
+  "MatrixRain.glsl": {
+    "category": "overlay",
+    "description": "Matrix-style falling code - audio-reactive brightness",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "columnDensity": {"value": 20.0, "min": 5.0, "max": 50.0, "step": 1.0},
+      "fallSpeed": {"value": 2.0, "min": 0.5, "max": 10.0, "step": 0.5},
+      "characterDensity": {"value": 0.8, "min": 0.5, "max": 0.99, "step": 0.01},
+      "brightness": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.1},
+      "audioBoost": {"value": 2.0, "min": 0.0, "max": 5.0, "step": 0.1},
+      "videoDarken": {"value": 0.7, "min": 0.0, "max": 1.0, "step": 0.05},
+      "rainIntensity": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.1}
+    },
+    "uniformDescriptions": {
+      "columnDensity": "Number of code columns",
+      "fallSpeed": "Speed of falling code",
+      "characterDensity": "Density of characters (higher = more)",
+      "brightness": "Brightness of code",
+      "audioBoost": "Audio reactivity multiplier",
+      "videoDarken": "How much to darken video (0=black, 1=full)",
+      "rainIntensity": "Overall effect intensity"
+    }
+  },
+  "WaveInterference.glsl": {
+    "category": "overlay",
+    "description": "Overlapping wave interference pattern",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "waveFrequency": {"value": 10.0, "min": 2.0, "max": 30.0, "step": 1.0},
+      "waveSpeed": {"value": 3.0, "min": 0.0, "max": 10.0, "step": 0.5},
+      "waveSource1X": {"value": 0.5, "min": -2.0, "max": 2.0, "step": 0.1},
+      "waveSource2X": {"value": 0.5, "min": -2.0, "max": 2.0, "step": 0.1},
+      "waveIntensity": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.1},
+      "audioBoost": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "blendAmount": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05},
+      "waveColor": {"value": [0.5, 0.8, 1.0], "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "waveFrequency": "Wave pattern frequency",
+      "waveSpeed": "Animation speed",
+      "waveSource1X": "First wave source position",
+      "waveSource2X": "Second wave source position",
+      "waveIntensity": "Brightness of pattern",
+      "audioBoost": "Audio reactivity multiplier",
+      "blendAmount": "Blend with video",
+      "waveColor": "RGB color of waves"
+    }
+  },
+  "EnergyTunnel.glsl": {
+    "category": "overlay",
+    "description": "Pulsing energy tunnel - bass-reactive depth and speed",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "tunnelSpeed": {"value": 2.0, "min": 0.0, "max": 10.0, "step": 0.5},
+      "bassTunnelSpeed": {"value": 3.0, "min": 0.0, "max": 10.0, "step": 0.5},
+      "ringSharpness": {"value": 1.0, "min": 0.5, "max": 3.0, "step": 0.1},
+      "segmentCount": {"value": 8.0, "min": 3.0, "max": 20.0, "step": 1.0},
+      "segmentSpeed": {"value": 2.0, "min": 0.0, "max": 10.0, "step": 0.5},
+      "pulseSpeed": {"value": 5.0, "min": 0.0, "max": 20.0, "step": 0.5},
+      "bassPulse": {"value": 10.0, "min": 0.0, "max": 30.0, "step": 1.0},
+      "tunnelIntensity": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "centerFade": {"value": 0.7, "min": 0.1, "max": 2.0, "step": 0.1},
+      "blendAmount": {"value": 0.7, "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "tunnelSpeed": "Base tunnel animation speed",
+      "bassTunnelSpeed": "Additional speed from bass",
+      "ringSharpness": "Edge sharpness of rings",
+      "segmentCount": "Number of rotating segments",
+      "segmentSpeed": "Segment rotation speed",
+      "pulseSpeed": "Energy pulse speed",
+      "bassPulse": "Bass effect on pulse",
+      "tunnelIntensity": "Overall brightness",
+      "centerFade": "Fade distance from center",
+      "blendAmount": "Blend strength with video"
+    }
+  },
+  "ParticleBurst.glsl": {
+    "category": "overlay",
+    "description": "Audio-reactive particle bursts - spawns on bass hits",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "burstFrequency": {"value": 2.0, "min": 0.5, "max": 10.0, "step": 0.5},
+      "numBursts": {"value": 8.0, "min": 2.0, "max": 20.0, "step": 1.0},
+      "numParticles": {"value": 30.0, "min": 10.0, "max": 100.0, "step": 5.0},
+      "particleSpeed": {"value": 0.3, "min": 0.1, "max": 1.0, "step": 0.05},
+      "particleSize": {"value": 0.005, "min": 0.001, "max": 0.02, "step": 0.001},
+      "beatThreshold": {"value": 0.4, "min": 0.0, "max": 1.0, "step": 0.05},
+      "particleIntensity": {"value": 1.0, "min": 0.0, "max": 3.0, "step": 0.1},
+      "blendAmount": {"value": 0.5, "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "burstFrequency": "How often bursts spawn",
+      "numBursts": "Number of simultaneous bursts",
+      "numParticles": "Particles per burst",
+      "particleSpeed": "Particle movement speed",
+      "particleSize": "Size of particles",
+      "beatThreshold": "Bass level needed for beat detection",
+      "particleIntensity": "Brightness of particles",
+      "blendAmount": "Blend strength with video"
+    }
+  },
+  "LiquidSplash.glsl": {
+    "category": "overlay",
+    "description": "Organic liquid splash effect - audio-reactive flow",
+    "audioReactive": true,
+    "needsAudioTexture": true,
+    "uniforms": {
+      "splashScale": {"value": 3.0, "min": 1.0, "max": 10.0, "step": 0.5},
+      "splashSpeed": {"value": 1.0, "min": 0.0, "max": 5.0, "step": 0.1},
+      "splashThreshold": {"value": 0.3, "min": 0.0, "max": 0.8, "step": 0.05},
+      "bassThreshold": {"value": 0.2, "min": 0.0, "max": 0.5, "step": 0.05},
+      "rippleFrequency": {"value": 20.0, "min": 5.0, "max": 50.0, "step": 1.0},
+      "rippleSpeed": {"value": 5.0, "min": 0.0, "max": 20.0, "step": 0.5},
+      "splashIntensity": {"value": 1.0, "min": 0.0, "max": 2.0, "step": 0.1},
+      "edgeIntensity": {"value": 2.0, "min": 0.0, "max": 5.0, "step": 0.1},
+      "blendAmount": {"value": 0.6, "min": 0.0, "max": 1.0, "step": 0.05}
+    },
+    "uniformDescriptions": {
+      "splashScale": "Size of splash pattern",
+      "splashSpeed": "Animation speed",
+      "splashThreshold": "Splash shape threshold",
+      "bassThreshold": "Bass effect on splash shape",
+      "rippleFrequency": "Ripple wave frequency",
+      "rippleSpeed": "Ripple animation speed",
+      "splashIntensity": "Brightness of splash",
+      "edgeIntensity": "Brightness of splash edges",
+      "blendAmount": "Blend strength with video"
+    }
   }
 }

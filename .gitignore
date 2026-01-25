@@ -1,7 +1,68 @@
+# Excluded Folders
+OneOffRender/
+Outputs/
+Videos/
+Shaders/New Categorized Video Effects/
+Shaders/PsychedelicTrails/
+Separated/
 
-# Ignore Python cache and virtual environment
+# Python
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
 disco_venv/
+venv/
+env/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# Ignore ZIPs and temporary files
+# Test and Junk Files
+test_*.py
+check_*.py
+shader_test_*.py
+*- Copy*.py
+*- Copy.py
+tmp.txt
+shit.txt
+patch.txt
+stream issue.txt
+
+# Archives
+*.rar
 *.zip
+*.7z
+*.tar
+*.gz
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db
+desktop.ini
+
+# Temporary Files
+*.tmp
+*.temp
+*.log

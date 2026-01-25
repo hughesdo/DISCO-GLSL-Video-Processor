@@ -45,11 +45,11 @@ DISCO is a web-based video processing application that applies GLSL shaders to v
 
 - 🎥 **Video Processing**: Frame-by-frame shader application with OpenGL
 - 🎵 **Audio Analysis**: Beat detection and frequency analysis with Librosa
-- 🎨 **Multiple Shaders**: Choose from 20 working visual effect styles
+- 🎨 **48 Audio-Reactive Shaders**: Comprehensive collection across 8 categories (Bass Reactive, Color Effects, Glitch, Edge Effects, Distortion, Blur, Geometric, Overlay)
 - 📊 **Progress Tracking**: Real-time progress bars with detailed status
 - 🎬 **Video Player**: Embedded playback with download option
-- 🌐 **Web Interface**: User-friendly browser-based UI
-- 🔧 **Configurable**: Adjustable shader parameters for fine-tuning
+- 🌐 **Web Interface**: User-friendly browser-based UI with live shader controls
+- 🔧 **300+ Configurable Parameters**: Adjustable shader uniforms with real-time sliders
 - 🧪 **Automated Testing**: Comprehensive shader test runner for quality assurance
 - 📺 **Professional 3D Effects**: Cinematic camera movements and chrome materials
 

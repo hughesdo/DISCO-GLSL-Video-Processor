@@ -15,9 +15,9 @@ logger = logging.getLogger(__name__)
 
 try:
     from streaming_video_processor import StreamingVideoProcessor
-    # Temporarily disable streaming until sync issues are resolved
-    USE_STREAMING = False  # Set to True to test streaming processor
-    logger.info("Streaming processor available but disabled for stability")
+    # Enable streaming for AmigaSinus3.1 with automatic streaming flag detection
+    USE_STREAMING = True  # Enabled for shaders with streaming flag
+    logger.info("Streaming processor available and enabled for streaming-capable shaders")
 except ImportError as e:
     logger.warning(f"Streaming processor not available: {e}")
     USE_STREAMING = False
@@ -86,9 +86,23 @@ class ProgressTracker:
 
 @app.get("/shaders/list")
 async def list_shaders():
-    """Return list of available GLSL shaders"""
+    """Return list of available GLSL shaders (single-file and multi-buffer)"""
     try:
-        shader_files = [f.name for f in SHADER_DIR.glob("*.glsl")]
+        shader_files = []
+
+        # Add single-file .glsl shaders
+        for f in SHADER_DIR.glob("*.glsl"):
+            shader_files.append(f.name)
+
+        # Add multi-buffer shader folders (folders with multiBuffer: true in config)
+        for shader_name, config in SHADER_CONFIG.items():
+            if config.get('multiBuffer', False):
+                # Multi-buffer shaders are identified by folder name, not .glsl extension
+                shader_folder = SHADER_DIR / shader_name
+                if shader_folder.is_dir():
+                    shader_files.append(shader_name)  # Add folder name as shader option
+                    logger.info(f"Found multi-buffer shader folder: {shader_name}")
+
         logger.info(f"Found shaders: {shader_files}")
         return JSONResponse(shader_files)
     except Exception as e:
@@ -176,6 +190,7 @@ async def process_video_background(form, tracker: ProgressTracker):
 
         # Parse uniforms
         uniforms = {}
+        text_inputs = {}
         for k, v in form.items():
             if k.startswith("uniform_"):
                 name = k[8:]  # Remove "uniform_" prefix
@@ -189,8 +204,12 @@ async def process_video_background(form, tracker: ProgressTracker):
                     except (ValueError, TypeError):
                         # Keep as string if all else fails
                         uniforms[name] = str(v)
+            elif k.startswith("textInput_"):
+                name = k[10:]  # Remove "textInput_" prefix
+                text_inputs[name] = str(v)
 
         logger.info(f"Parsed uniforms: {uniforms}")
+        logger.info(f"Parsed text inputs: {text_inputs}")
 
         tracker.update(progress=15, stage="analyzing", message="Analyzing audio...",
                       details="Processing audio for beat detection and frequency analysis")
@@ -229,30 +248,58 @@ async def process_video_background(form, tracker: ProgressTracker):
             max_frames = int(form.get('max_frames', 240))
             logger.info(f"Preview mode enabled: {max_frames} frames")
 
+        # Check if shader supports streaming or is multi-buffer
+        use_streaming = False
+        is_multi_buffer = False
+
+        if shader in SHADER_CONFIG:
+            use_streaming = SHADER_CONFIG[shader].get('streaming', False)
+            is_multi_buffer = SHADER_CONFIG[shader].get('multiBuffer', False)
+
+            # Multi-buffer shaders MUST use streaming processor
+            if is_multi_buffer:
+                use_streaming = True
+                logger.info(f"Shader {shader} is multi-buffer - forcing streaming processor")
+            elif use_streaming:
+                logger.info(f"Shader {shader} supports streaming - using streaming processor")
+            else:
+                logger.info(f"Shader {shader} using frame-based processor")
+        else:
+            logger.info(f"Shader {shader} not in config - using frame-based processor")
+
+        # Determine shader path - for multi-buffer shaders, it's a folder
+        shader_path = SHADER_DIR / shader
+
         # Process video with progress tracking and audio settings
-        if USE_STREAMING:
-            logger.info("Using new streaming video processor")
+        if use_streaming and USE_STREAMING:
+            logger.info(f"Using streaming video processor for: {shader_path}")
             processor = StreamingVideoProcessor(
                 video_path=video_path,
                 audio_path=audio_path,
-                shader_path=SHADER_DIR / shader,
+                shader_path=shader_path,
                 output_path=output_path,
                 extra_uniforms=uniforms,
                 progress_tracker=tracker,
                 audio_settings=audio_settings,
-                max_frames=max_frames
+                max_frames=max_frames,
+                text_inputs=text_inputs
             )
         else:
-            logger.info("Using legacy frame-based video processor")
+            if use_streaming and not USE_STREAMING:
+                logger.info("Shader supports streaming but USE_STREAMING is disabled - falling back to frame-based processor")
+            if is_multi_buffer:
+                raise Exception(f"Multi-buffer shader {shader} requires streaming processor which is not available")
+            logger.info("Using frame-based video processor")
             processor = ShaderVideoProcessor(
                 video_path=video_path,
                 audio_path=audio_path,
-                shader_path=SHADER_DIR / shader,
+                shader_path=shader_path,
                 output_path=output_path,
                 extra_uniforms=uniforms,
                 progress_tracker=tracker,
                 audio_settings=audio_settings,
-                max_frames=max_frames
+                max_frames=max_frames,
+                text_inputs=text_inputs
             )
 
         processor.run()

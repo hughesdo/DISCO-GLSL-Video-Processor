@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 class ShaderVideoProcessor:
     def __init__(self, video_path, audio_path, shader_path, output_path,
                  extra_uniforms={}, progress_tracker=None, audio_settings=None,
-                 max_frames=None):
+                 max_frames=None, text_inputs={}):
         """
         Initialize the shader video processor.
 
@@ -29,12 +29,14 @@ class ShaderVideoProcessor:
             progress_tracker: Optional progress tracker for real-time updates
             audio_settings: Dict with audio reactivity settings
             max_frames: Optional limit on number of frames to process (for preview mode)
+            text_inputs: Dict of text input name -> text value for shader text replacement
         """
         self.video_path = Path(video_path)
         self.audio_path = Path(audio_path)
         self.shader_path = Path(shader_path)
         self.output_path = Path(output_path)
         self.extra_uniforms = extra_uniforms
+        self.text_inputs = text_inputs
         self.progress_tracker = progress_tracker
         self.max_frames = max_frames  # For preview mode
         self.base_resolution = (1280, 720)
@@ -87,6 +89,125 @@ class ShaderVideoProcessor:
         except Exception as e:
             logger.warning(f"Failed to load shader configuration: {e}")
         return {}
+
+    def _process_text_replacement(self, shader_source):
+        """Replace hardcoded text in shader with user input"""
+        if not self.text_inputs:
+            return shader_source
+
+        logger.info(f"Text replacement requested for: {list(self.text_inputs.keys())}")
+
+        # Import the text conversion system (imported in function to avoid issues)
+
+        # Process AmigaSinus shaders
+        if 'AmigaSinus' in str(self.shader_path):
+            return self._process_amiga_sinus_text(shader_source)
+
+        logger.info("Text replacement not implemented for this shader type - using hardcoded text")
+        return shader_source
+
+    def _process_amiga_sinus_text(self, shader_source):
+        """Process text replacement for AmigaSinus shaders"""
+        from text_to_sinus_converter import text_to_spaced_sinus, text_to_glsl_macros
+        import re
+
+        # For AmigaSinus1: replace scrollText
+        if 'AmigaSinus1' in str(self.shader_path) and 'scrollText' in self.text_inputs:
+            user_text = self.text_inputs['scrollText']
+            logger.info(f"Converting AmigaSinus1 text: '{user_text}'")
+
+            # Convert user text to spaced format
+            spaced_text = text_to_spaced_sinus(user_text)
+            logger.info(f"Spaced text: '{spaced_text}'")
+
+            # Convert to GLSL macros
+            macro_string = text_to_glsl_macros(spaced_text)
+            logger.info(f"GLSL macros: {macro_string}")
+
+            # Replace the hardcoded text in shader
+            old_pattern = r'// Dynamic text from user input.*?\n.*?_[A-Za-z0-9_ ]*'
+            new_text = f'// Dynamic text from user input: {user_text}\n    {macro_string}'
+
+            shader_source = re.sub(old_pattern, new_text, shader_source, flags=re.DOTALL)
+            logger.info("AmigaSinus1 text replacement completed")
+
+        # For AmigaSinus2: replace 3 text layers
+        elif 'AmigaSinus2' in str(self.shader_path):
+            logger.info("Processing AmigaSinus2 text replacement")
+
+            # Replace scrollText1 (header)
+            if 'scrollText1' in self.text_inputs:
+                user_text = self.text_inputs['scrollText1']
+                spaced_text = text_to_spaced_sinus(user_text)
+                macro_string = text_to_glsl_macros(spaced_text)
+
+                # Simple placeholder pattern that should definitely match
+                old_pattern = r'// PLACEHOLDER_TEXT_1\n  _T _E _S _T'
+                new_text = f'// Header text from user: {user_text}\n  {macro_string}'
+                shader_source = re.sub(old_pattern, new_text, shader_source, flags=re.DOTALL)
+                logger.info(f"AmigaSinus2 scrollText1 replaced: '{user_text}'")
+
+            # Replace scrollText2 (main)
+            if 'scrollText2' in self.text_inputs:
+                user_text = self.text_inputs['scrollText2']
+                spaced_text = text_to_spaced_sinus(user_text)
+                macro_string = text_to_glsl_macros(spaced_text)
+
+                old_pattern = r'// Main scroll text - using macro system.*?\n.*?_H _e _l _l _o.*?_exc'
+                new_text = f'// Main text from user: {user_text}\n  {macro_string}'
+                shader_source = re.sub(old_pattern, new_text, shader_source, flags=re.DOTALL)
+                logger.info(f"AmigaSinus2 scrollText2 replaced: '{user_text}'")
+
+            # Replace scrollText3 (bottom)
+            if 'scrollText3' in self.text_inputs:
+                user_text = self.text_inputs['scrollText3']
+                spaced_text = text_to_spaced_sinus(user_text)
+                macro_string = text_to_glsl_macros(spaced_text)
+
+                old_pattern = r'// Bottom text - using macro system.*?\n.*?_D _I _S _C _O.*?_s'
+                new_text = f'// Bottom text from user: {user_text}\n  {macro_string}'
+                shader_source = re.sub(old_pattern, new_text, shader_source, flags=re.DOTALL)
+                logger.info(f"AmigaSinus2 scrollText3 replaced: '{user_text}'")
+
+        # For AmigaSinus3 and AmigaSinus3.1: replace 2 text layers
+        elif 'AmigaSinus3' in str(self.shader_path):
+            logger.info("Processing AmigaSinus3 text replacement")
+
+            # For AmigaSinus3.1, calculate dynamic text lengths
+            if 'AmigaSinus3.1' in str(self.shader_path):
+                if 'scrollText1' in self.text_inputs:
+                    text_len = len(self.text_inputs['scrollText1']) + 120  # Add 120 spaces padding
+                    self.extra_uniforms['textLength1'] = float(text_len)
+                    logger.info(f"AmigaSinus3.1 textLength1 set to: {text_len}")
+
+                if 'scrollText2' in self.text_inputs:
+                    text_len = len(self.text_inputs['scrollText2']) + 120  # Add 120 spaces padding
+                    self.extra_uniforms['textLength2'] = float(text_len)
+                    logger.info(f"AmigaSinus3.1 textLength2 set to: {text_len}")
+
+            # Replace scrollText1 (main scroll)
+            if 'scrollText1' in self.text_inputs:
+                user_text = self.text_inputs['scrollText1']
+                spaced_text = text_to_spaced_sinus(user_text)
+                macro_string = text_to_glsl_macros(spaced_text)
+
+                old_pattern = r'// PLACEHOLDER_TEXT_1\n  _D _I _S _C _O _ _R _u _l _e _s'
+                new_text = f'// Main scroll text from user: {user_text}\n  {macro_string}'
+                shader_source = re.sub(old_pattern, new_text, shader_source, flags=re.DOTALL)
+                logger.info(f"AmigaSinus3 scrollText1 replaced: '{user_text}'")
+
+            # Replace scrollText2 (bottom)
+            if 'scrollText2' in self.text_inputs:
+                user_text = self.text_inputs['scrollText2']
+                spaced_text = text_to_spaced_sinus(user_text)
+                macro_string = text_to_glsl_macros(spaced_text)
+
+                old_pattern = r'// PLACEHOLDER_TEXT_2\n  _A _u _d _i _o _ _V _i _b _e _s'
+                new_text = f'// Bottom text from user: {user_text}\n  {macro_string}'
+                shader_source = re.sub(old_pattern, new_text, shader_source, flags=re.DOTALL)
+                logger.info(f"AmigaSinus3 scrollText2 replaced: '{user_text}'")
+
+        return shader_source
 
     def _check_if_shake_shader(self):
         """Check if the current shader needs oversized rendering for screen shake"""
@@ -369,6 +490,9 @@ class ShaderVideoProcessor:
             logger.info(f"Loading shader: {self.shader_path}")
             shader_code = self.shader_path.read_text()
 
+            # Process text replacement for user input
+            shader_code = self._process_text_replacement(shader_code)
+
             # Perform advanced audio analysis only if shader is audio-reactive
             total_frames = len(input_frames)
             is_audio_reactive = self.shader_config.get('audioReactive', True)  # Default to True for backward compatibility
@@ -473,6 +597,11 @@ void main() {
                         texture_units = {2: user_video_tex}
                         if i == 0:
                             logger.info(f"TVZoom: User input video assigned to iChannel2 ({img.size})")
+                    elif self.shader_config.get('audioOnlyShader', False):
+                        # Audio-only shaders (like MoltenHeart): don't bind video to any channel
+                        texture_units = {}
+                        if i == 0:
+                            logger.info(f"Audio-only shader {self.shader_path.name}: No video texture bound")
                     else:
                         # For other shaders: user video goes to iChannel0 as usual (no flip)
                         user_video_tex = self.ctx.texture(self.resolution, 3, img.tobytes())
@@ -481,9 +610,18 @@ void main() {
                         if i == 0:
                             logger.info(f"Texture assignment for {self.shader_path.name}: iChannel0 = video ({img.size})")
 
-                    # Add audio texture to iChannel1 if needed
+                    # Add audio texture if needed
                     if needs_audio_texture:
-                        if fft_data is not None:
+                        if self.shader_config.get('audioOnlyShader', False):
+                            # Audio-only shaders: audio goes to iChannel0
+                            if audio_texture:
+                                audio_data = self._get_audio_frame_data(audio_features, i)
+                                audio_tex = self._create_frame_audio_texture(audio_data)
+                                audio_tex.use(0)
+                                texture_units[0] = audio_tex  # iChannel0 is audio data
+                                if i == 0:
+                                    logger.info(f"Audio-only shader {self.shader_path.name}: iChannel0 = audio data")
+                        elif fft_data is not None:
                             # For RayBalls5 shader: FFT data goes to iChannel1
                             audio_tex = self._create_fft_texture(fft_data, i)
                             audio_tex.use(1)
@@ -840,7 +978,15 @@ void main() {
     def combine_video(self, frames_folder):
         """Combine rendered frames with audio using FFmpeg"""
         try:
-            logger.info("Combining frames with audio")
+            logger.info(f"Combining frames with audio - Shader: {self.shader_path.name}")
+            logger.info(f"Frames folder: {frames_folder}")
+            logger.info(f"Audio path: {self.audio_path}")
+            logger.info(f"Output path: {self.output_path}")
+
+            # Check if audio file exists
+            if not self.audio_path.exists():
+                logger.error(f"Audio file not found: {self.audio_path}")
+                raise Exception(f"Audio file not found: {self.audio_path}")
 
             # Build FFmpeg command
             cmd = [
@@ -864,9 +1010,21 @@ void main() {
                 "-c:a", "aac", "-shortest",
                 str(self.output_path)
             ])
-            
+
+            logger.info(f"Running FFmpeg command: {' '.join(cmd)}")
             result = subprocess.run(cmd, capture_output=True, text=True, check=True)
             logger.info("Video combination completed successfully")
+
+            # Verify output file has audio
+            if self.output_path.exists():
+                probe_cmd = ["ffprobe", "-v", "quiet", "-show_streams", "-select_streams", "a", str(self.output_path)]
+                probe_result = subprocess.run(probe_cmd, capture_output=True, text=True)
+                if probe_result.returncode == 0 and probe_result.stdout.strip():
+                    logger.info("✅ Output video contains audio stream")
+                else:
+                    logger.warning("⚠️ Output video does not contain audio stream")
+            else:
+                logger.error("❌ Output file was not created")
             
         except subprocess.CalledProcessError as e:
             logger.error(f"FFmpeg combine error: {e.stderr}")

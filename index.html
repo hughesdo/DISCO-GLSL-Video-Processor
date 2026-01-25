@@ -200,51 +200,7 @@
     <div id="uniformsBox"></div>
   </div>
 
-  <!-- Advanced Audio Controls Section -->
-  <div class="section" id="audioControlsSection" style="display: none;">
-    <h2>Audio Reactivity Settings</h2>
 
-    <div style="margin-bottom: 20px;">
-      <label style="color: white; display: block; margin-bottom: 10px;">
-        Reactivity Preset:
-        <select id="reactivityPreset" onchange="updateReactivitySettings()" style="margin-left: 10px; padding: 5px; background-color: #333; color: white; border: 1px solid #555; border-radius: 3px;">
-          <option value="moderate">Moderate (Recommended)</option>
-          <option value="subtle">Subtle</option>
-          <option value="intense">Intense</option>
-          <option value="custom">Custom</option>
-        </select>
-      </label>
-    </div>
-
-    <div id="customReactivityControls" style="display: none;">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
-        <div>
-          <label style="color: white; display: block; margin-bottom: 5px;">
-            Beat Sensitivity: <span id="beatSensitivityValue">1.0</span>
-          </label>
-          <input type="range" id="beatSensitivity" min="0.1" max="3.0" step="0.1" value="1.0" style="width: 100%;">
-        </div>
-        <div>
-          <label style="color: white; display: block; margin-bottom: 5px;">
-            Bass Response: <span id="bassResponseValue">1.0</span>
-          </label>
-          <input type="range" id="bassResponse" min="0.1" max="2.0" step="0.1" value="1.0" style="width: 100%;">
-        </div>
-        <div>
-          <label style="color: white; display: block; margin-bottom: 5px;">
-            Mid Response: <span id="midResponseValue">1.0</span>
-          </label>
-          <input type="range" id="midResponse" min="0.1" max="2.0" step="0.1" value="1.0" style="width: 100%;">
-        </div>
-        <div>
-          <label style="color: white; display: block; margin-bottom: 5px;">
-            Treble Response: <span id="trebleResponseValue">1.0</span>
-          </label>
-          <input type="range" id="trebleResponse" min="0.1" max="2.0" step="0.1" value="1.0" style="width: 100%;">
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Enhanced Preview and Render Controls -->
   <div class="section">
@@ -261,22 +217,20 @@
             Preview Length:
             <select id="previewLength" style="margin-left: 10px; padding: 5px; background-color: #333; color: white; border: 1px solid #555; border-radius: 3px;">
               <option value="60">2 seconds (60 frames)</option>
-              <option value="120">4 seconds (120 frames)</option>
+              <option value="90">3 seconds (90 frames)</option>
               <option value="240" selected>8 seconds (240 frames)</option>
               <option value="480">16 seconds (480 frames)</option>
+              <option value="960">32 seconds (960 frames)</option>
+              <option value="1920">64 seconds (1920 frames)</option>
+              <option value="3840">128 seconds (3840 frames)</option>
+              <option value="7680">256 seconds (7680 frames)</option>
             </select>
           </label>
           <p style="color: #888; font-size: 12px; margin: 5px 0;">Preview mode renders faster for testing effects</p>
         </div>
       </div>
 
-      <div>
-        <label style="color: white; display: block; margin-bottom: 10px;">
-          <input type="checkbox" id="showAdvancedAudio" onchange="toggleAdvancedAudio()" style="margin-right: 8px;">
-          Advanced Audio Controls
-        </label>
-        <p style="color: #888; font-size: 12px; margin: 5px 0;">Fine-tune audio reactivity settings</p>
-      </div>
+
     </div>
 
     <div style="text-align: center;">
@@ -390,7 +344,15 @@
       // Group shaders by category
       const categories = {
         'audio-reactive': '🎵 Audio-Reactive',
+        'bass-reactive': '🔊 Bass Reactive',
         'visual-effects': '🎨 Visual Effects',
+        'color-effects': '🌈 Color Effects',
+        'distortion': '🌀 Distortion',
+        'blur-effects': '💫 Blur Effects',
+        'geometric': '📐 Geometric',
+        'glitch': '⚡ Glitch',
+        'edge-effects': '✨ Edge Effects',
+        'overlay': '🎭 Overlay',
         '3d-effects': '🚀 3D Effects',
         'other': '📁 Other'
       };
@@ -433,6 +395,7 @@
 
       const config = shaderConfig[sel]?.uniforms || {};
       const descriptions = shaderConfig[sel]?.uniformDescriptions || {};
+      const textInputs = shaderConfig[sel]?.textInputs || {};
       const shaderInfo = shaderConfig[sel];
 
       // Add shader description at top
@@ -449,18 +412,107 @@
         uniformsBox.appendChild(descDiv);
       }
 
-      if (Object.keys(config).length === 0) {
+      // Check if we have any configurable content
+      const hasUniforms = Object.keys(config).length > 0;
+      const hasTextInputs = Object.keys(textInputs).length > 0;
+
+      if (!hasUniforms && !hasTextInputs) {
         uniformsBox.innerHTML += '<p style="color: #666; text-align: center; padding: 20px;">No configurable uniforms for this shader.</p>';
         return;
       }
 
-      // Create uniform controls grid
-      const gridDiv = document.createElement("div");
-      gridDiv.style.display = "grid";
-      gridDiv.style.gridTemplateColumns = "repeat(auto-fit, minmax(300px, 1fr))";
-      gridDiv.style.gap = "15px";
+      // Create text inputs section first (if any)
+      if (hasTextInputs) {
+        const textSection = document.createElement("div");
+        textSection.style.marginBottom = "25px";
 
-      for (let [key, val] of Object.entries(config)) {
+        const textHeader = document.createElement("h3");
+        textHeader.textContent = "Text Inputs";
+        textHeader.style.color = "#4CAF50";
+        textHeader.style.marginBottom = "15px";
+        textHeader.style.fontSize = "18px";
+        textSection.appendChild(textHeader);
+
+        for (let key in textInputs) {
+          const textConfig = textInputs[key];
+          const textDiv = document.createElement("div");
+          textDiv.style.marginBottom = "15px";
+          textDiv.style.padding = "15px";
+          textDiv.style.backgroundColor = "rgba(76, 175, 80, 0.1)";
+          textDiv.style.borderRadius = "8px";
+          textDiv.style.border = "1px solid rgba(76, 175, 80, 0.3)";
+
+          const label = document.createElement("label");
+          label.textContent = textConfig.label || key;
+          label.style.color = "#4CAF50";
+          label.style.fontWeight = "bold";
+          label.style.display = "block";
+          label.style.marginBottom = "8px";
+
+          const textarea = document.createElement("textarea");
+          textarea.id = "textInput_" + key;
+          textarea.placeholder = textConfig.placeholder || "Enter text here...";
+          textarea.value = textConfig.default || "";
+          textarea.maxLength = textConfig.maxLength || 500;
+          textarea.style.width = "100%";
+          textarea.style.minHeight = "80px";
+          textarea.style.padding = "10px";
+          textarea.style.borderRadius = "4px";
+          textarea.style.border = "1px solid #555";
+          textarea.style.backgroundColor = "#333";
+          textarea.style.color = "white";
+          textarea.style.fontSize = "14px";
+          textarea.style.fontFamily = "monospace";
+          textarea.style.resize = "vertical";
+
+          const charCount = document.createElement("div");
+          charCount.style.color = "#888";
+          charCount.style.fontSize = "12px";
+          charCount.style.textAlign = "right";
+          charCount.style.marginTop = "5px";
+          charCount.textContent = `${textarea.value.length}/${textarea.maxLength}`;
+
+          textarea.addEventListener('input', function() {
+            charCount.textContent = `${this.value.length}/${this.maxLength}`;
+            if (this.value.length > this.maxLength * 0.9) {
+              charCount.style.color = "#ff9800";
+            } else {
+              charCount.style.color = "#888";
+            }
+          });
+
+          textDiv.appendChild(label);
+          textDiv.appendChild(textarea);
+          textDiv.appendChild(charCount);
+          textSection.appendChild(textDiv);
+        }
+
+        uniformsBox.appendChild(textSection);
+      }
+
+      // Create uniform controls grid
+      if (hasUniforms) {
+        const uniformHeader = document.createElement("h3");
+        uniformHeader.textContent = "Shader Controls";
+        uniformHeader.style.color = "#2196F3";
+        uniformHeader.style.marginBottom = "15px";
+        uniformHeader.style.fontSize = "18px";
+        if (hasTextInputs) uniformHeader.style.marginTop = "10px";
+        uniformsBox.appendChild(uniformHeader);
+
+        const gridDiv = document.createElement("div");
+        gridDiv.style.display = "grid";
+        gridDiv.style.gridTemplateColumns = "repeat(auto-fit, minmax(300px, 1fr))";
+        gridDiv.style.gap = "15px";
+
+        for (let [key, val] of Object.entries(config)) {
+          // Skip hidden uniforms (internal use only)
+          if (typeof val === 'object' && val.hidden === true) {
+            continue;
+          }
+
+          // Handle both simple values and object format
+          const actualValue = typeof val === 'object' && val.value !== undefined ? val.value : val;
         const div = document.createElement("div");
         div.style.padding = "15px";
         div.style.backgroundColor = "rgba(255,255,255,0.05)";
@@ -483,7 +535,7 @@
 
         const valueSpan = document.createElement("span");
         valueSpan.id = "value_" + key;
-        valueSpan.textContent = val;
+        valueSpan.textContent = actualValue;
         valueSpan.style.color = "#4CAF50";
         valueSpan.style.fontFamily = "monospace";
         valueSpan.style.fontSize = "13px";
@@ -507,9 +559,16 @@
           div.appendChild(desc);
         }
 
+        // Get custom range from config object (if available)
+        const configObj = typeof val === 'object' ? val : null;
+        const customMin = configObj?.min;
+        const customMax = configObj?.max;
+        const customStep = configObj?.step;
+
         // Determine if this should be a slider or number input
-        const isSliderCandidate = (val >= 0 && val <= 10) || key.toLowerCase().includes('level') ||
-                                  key.toLowerCase().includes('amount') || key.toLowerCase().includes('intensity');
+        const isSliderCandidate = (actualValue >= 0 && actualValue <= 10) || key.toLowerCase().includes('level') ||
+                                  key.toLowerCase().includes('amount') || key.toLowerCase().includes('intensity') ||
+                                  key.toLowerCase().includes('decay') || key.toLowerCase().includes('mix');
 
         if (isSliderCandidate) {
           // Create slider with number input
@@ -521,10 +580,11 @@
           const slider = document.createElement("input");
           slider.type = "range";
           slider.id = "uniform_" + key;
-          slider.min = "0";
-          slider.max = Math.max(10, val * 2).toString();
-          slider.step = "0.01";
-          slider.value = val;
+          // Use custom min/max/step if provided, otherwise use defaults
+          slider.min = (customMin !== undefined ? customMin : 0).toString();
+          slider.max = (customMax !== undefined ? customMax : Math.max(10, actualValue * 2)).toString();
+          slider.step = (customStep !== undefined ? customStep : 0.01).toString();
+          slider.value = actualValue;
           slider.style.flex = "1";
           slider.style.height = "6px";
           slider.style.background = "#333";
@@ -533,8 +593,10 @@
           const numberInput = document.createElement("input");
           numberInput.type = "number";
           numberInput.id = "uniform_num_" + key;
-          numberInput.value = val;
-          numberInput.step = "0.01";
+          numberInput.value = actualValue;
+          numberInput.step = (customStep !== undefined ? customStep : 0.01).toString();
+          numberInput.min = slider.min;
+          numberInput.max = slider.max;
           numberInput.style.width = "80px";
           numberInput.style.padding = "4px 6px";
           numberInput.style.borderRadius = "3px";
@@ -551,7 +613,10 @@
 
           numberInput.addEventListener('input', function() {
             slider.value = this.value;
-            slider.max = Math.max(slider.max, this.value);
+            // Only auto-expand max if no custom max was set
+            if (customMax === undefined) {
+              slider.max = Math.max(parseFloat(slider.max), parseFloat(this.value));
+            }
             valueSpan.textContent = this.value;
           });
 
@@ -562,7 +627,7 @@
           // Regular number input for non-slider values
           const input = document.createElement("input");
           input.id = "uniform_" + key;
-          input.value = val;
+          input.value = actualValue;
           input.style.width = "100%";
           input.style.padding = "8px";
           input.style.borderRadius = "4px";
@@ -579,20 +644,16 @@
           div.appendChild(input);
         }
 
-        gridDiv.appendChild(div);
-      }
+          gridDiv.appendChild(div);
+        }
 
-      uniformsBox.appendChild(gridDiv);
+        uniformsBox.appendChild(gridDiv);
+      }
     }
 
 
 
     // New UI helper functions
-    function toggleAdvancedAudio() {
-      const checkbox = document.getElementById("showAdvancedAudio");
-      const section = document.getElementById("audioControlsSection");
-      section.style.display = checkbox.checked ? "block" : "none";
-    }
 
     function updatePreviewControls() {
       const previewMode = document.getElementById("previewMode").checked;
@@ -651,19 +712,16 @@
         }
       }
 
-      // Add advanced audio settings if enabled
-      const showAdvancedAudio = document.getElementById("showAdvancedAudio").checked;
-      if (showAdvancedAudio) {
-        const reactivityPreset = document.getElementById("reactivityPreset").value;
-        formData.append("reactivity_preset", reactivityPreset);
-
-        if (reactivityPreset === 'custom') {
-          formData.append("beat_sensitivity", document.getElementById("beatSensitivity").value);
-          formData.append("bass_response", document.getElementById("bassResponse").value);
-          formData.append("mid_response", document.getElementById("midResponse").value);
-          formData.append("treble_response", document.getElementById("trebleResponse").value);
+      // Add text input values
+      const textInputs = shaderConfig[shaderName]?.textInputs || {};
+      for (let key in textInputs) {
+        const textInput = document.getElementById("textInput_" + key);
+        if (textInput) {
+          formData.append("textInput_" + key, textInput.value);
         }
       }
+
+
 
 
 
@@ -706,54 +764,10 @@
       });
     }
 
-    // Audio Reactivity Functions
-    function updateReactivitySettings() {
-      const preset = document.getElementById('reactivityPreset').value;
-      const customControls = document.getElementById('customReactivityControls');
 
-      if (preset === 'custom') {
-        customControls.style.display = 'block';
-      } else {
-        customControls.style.display = 'none';
-
-        // Apply preset values
-        const presets = {
-          subtle: { beat: 0.5, bass: 0.7, mid: 0.5, treble: 0.3 },
-          moderate: { beat: 1.0, bass: 1.0, mid: 1.0, treble: 1.0 },
-          intense: { beat: 1.8, bass: 1.5, mid: 1.3, treble: 1.2 }
-        };
-
-        if (presets[preset]) {
-          const p = presets[preset];
-          document.getElementById('beatSensitivity').value = p.beat;
-          document.getElementById('bassResponse').value = p.bass;
-          document.getElementById('midResponse').value = p.mid;
-          document.getElementById('trebleResponse').value = p.treble;
-          updateSliderValues();
-        }
-      }
-    }
-
-    function updateSliderValues() {
-      document.getElementById('beatSensitivityValue').textContent =
-        document.getElementById('beatSensitivity').value;
-      document.getElementById('bassResponseValue').textContent =
-        document.getElementById('bassResponse').value;
-      document.getElementById('midResponseValue').textContent =
-        document.getElementById('midResponse').value;
-      document.getElementById('trebleResponseValue').textContent =
-        document.getElementById('trebleResponse').value;
-    }
 
     // Setup event listeners
     document.addEventListener('DOMContentLoaded', function() {
-      // Audio reactivity sliders
-      ['beatSensitivity', 'bassResponse', 'midResponse', 'trebleResponse'].forEach(id => {
-        const slider = document.getElementById(id);
-        if (slider) {
-          slider.addEventListener('input', updateSliderValues);
-        }
-      });
 
       // Preview mode toggle
       const previewCheckbox = document.getElementById('previewMode');
@@ -762,9 +776,7 @@
         updatePreviewControls(); // Initialize
       }
 
-      // Initialize reactivity settings
-      updateReactivitySettings();
-      updateSliderValues();
+
     });
 
     // Enhanced progress tracking functions
@@ -1130,9 +1142,7 @@
       document.getElementById('audioFile').value = '';
       document.getElementById('shaderSelect').value = '';
 
-      // Reset advanced audio controls
-      document.getElementById('useAdvancedAudio').checked = false;
-      document.getElementById('advancedAudioControls').style.display = 'none';
+
 
       // Clear video blob
       if (currentVideoBlob) {

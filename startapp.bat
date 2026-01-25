@@ -1,16 +1,37 @@
 @echo off
+
+
+
+setlocal enabledelayedexpansion
+echo.
+echo This job uses the TEMP folder a lot.
+echo Your current TEMP is: %TEMP%
+echo.
+echo Continuing with default TEMP folder.
+
+
+
+
+
+
+
+
 title GLSL Shader Video Processor
 echo ========================================
 echo GLSL Shader Video Processor Startup
 echo ========================================
 
+REM Get the directory where this batch file is located
+set SCRIPT_DIR=%~dp0
+cd /d "%SCRIPT_DIR%"
+
 REM Use a different name to avoid conflict with existing .venv file
 set VENV_NAME=disco_venv
 
 REM Create virtual environment if needed
-if not exist "%VENV_NAME%\Scripts\activate.bat" (
+if not exist "%SCRIPT_DIR%%VENV_NAME%\Scripts\activate.bat" (
     echo Creating virtual environment...
-    python -m venv %VENV_NAME%
+    python -m venv "%SCRIPT_DIR%%VENV_NAME%"
     if errorlevel 1 (
         echo ERROR: Failed to create virtual environment
         echo Make sure Python is installed and in your PATH
@@ -22,7 +43,7 @@ if not exist "%VENV_NAME%\Scripts\activate.bat" (
 
 REM Activate virtual environment
 echo Activating virtual environment...
-call %VENV_NAME%\Scripts\activate.bat
+call "%SCRIPT_DIR%%VENV_NAME%\Scripts\activate.bat"
 
 REM Install dependencies
 if exist "requirements.txt" (
