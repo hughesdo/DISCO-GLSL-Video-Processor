@@ -38,8 +38,10 @@ class StreamingVideoProcessor:
         self.text_inputs = text_inputs
         self.progress_tracker = progress_tracker
         self.max_frames = max_frames
-        self.base_resolution = (1280, 720)
-        self.frame_rate = 30
+
+        # Get input video dimensions to match output
+        self.base_resolution = self._get_video_dimensions()
+        self.frame_rate = self._get_video_fps()
 
         # Screen shake settings
         self.enable_screen_shake = True
@@ -98,6 +100,49 @@ class StreamingVideoProcessor:
         self.cap = None
         self.total_frames = 0
         self.video_fps = 30  # Will be updated from actual video
+
+    def _get_video_dimensions(self):
+        """Get input video dimensions (width, height)"""
+        try:
+            cap = cv2.VideoCapture(str(self.video_path))
+            if cap.isOpened():
+                width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+                height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+                cap.release()
+
+                if width > 0 and height > 0:
+                    logger.info(f"Input video dimensions: {width}x{height}")
+                    return (width, height)
+                else:
+                    logger.warning(f"Invalid video dimensions: {width}x{height}, using default 1280x720")
+                    return (1280, 720)
+            else:
+                logger.warning(f"Could not open video file: {self.video_path}, using default 1280x720")
+                return (1280, 720)
+        except Exception as e:
+            logger.warning(f"Failed to get video dimensions: {e}, using default 1280x720")
+            return (1280, 720)
+
+    def _get_video_fps(self):
+        """Get input video frame rate"""
+        try:
+            cap = cv2.VideoCapture(str(self.video_path))
+            if cap.isOpened():
+                fps = cap.get(cv2.CAP_PROP_FPS)
+                cap.release()
+
+                if fps > 0 and fps <= 120:
+                    logger.info(f"Input video FPS: {fps}")
+                    return fps
+                else:
+                    logger.warning(f"Invalid video FPS: {fps}, using default 30")
+                    return 30
+            else:
+                logger.warning(f"Could not open video file: {self.video_path}, using default 30 FPS")
+                return 30
+        except Exception as e:
+            logger.warning(f"Failed to get video FPS: {e}, using default 30")
+            return 30
 
     def _load_shader_config(self):
         """Load shader configuration for texture and uniform information"""
