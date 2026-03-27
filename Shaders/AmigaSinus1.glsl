@@ -49,7 +49,7 @@ vec2 pos = vec2(0), uv = vec2(0), tp = vec2(0), normal = vec2(0);
 // Maps user text to correct texture atlas positions
 #define SPACE tp.x-=FONT_SPACE;
 
-#define S(a) c+=char(a);   tp.x-=FONT_SPACE;
+#define S(a) c+=fontChar(a);   tp.x-=FONT_SPACE;
 
 #define _note  S(10);   //
 #define _star  S(28);   // *
@@ -146,7 +146,7 @@ void getTp(float time) {
 }
 
 // Character rendering function
-float char(int ch) {
+float fontChar(int ch) {
     // Keep the working character mapping - don't change x,y calculation
     float x = float(ch - ch/16*16);  // Column (0-15)
     float y = float(ch/16);          // Row (0-15) - this gives correct chars

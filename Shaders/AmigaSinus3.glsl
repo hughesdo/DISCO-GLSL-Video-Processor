@@ -66,17 +66,36 @@ const vec2 vFontSize  = vec2(8.0, 15.0);  // multiples of 4x5 work best
 
 //----- access to the image of ascii code characters ------
 #define SPACE tp.x-=FONT_SPACE;
-#define S(a) c+=char(a);   tp.x-=FONT_SPACE;
+#define S(a) c+=fontChar(a);   tp.x-=FONT_SPACE;
 
-#define _note  S(10);   #define _star  S(28);   #define _smily S(29);
+#define _note  S(10);
+#define _star  S(28);
+#define _smily S(29);
 #define _ tp.x-=FONT_SPACE;
-#define _exc   S(33);   #define _add   S(43);   #define _comma S(44);   
-#define _sub   S(45);   #define _dot   S(46);   #define _slash S(47);
+#define _exc   S(33);
+#define _add   S(43);
+#define _comma S(44);
+#define _sub   S(45);
+#define _dot   S(46);
+#define _slash S(47);
 
-#define _0 S(48); #define _1 S(49); #define _2 S(50); #define _3 S(51); #define _4 S(52);
-#define _5 S(53); #define _6 S(54); #define _7 S(55); #define _8 S(56); #define _9 S(57);
-#define _ddot S(58); #define _sc S(59); #define _less S(60); #define _eq S(61); 
-#define _gr S(62); #define _qm S(63); #define _at S(64);
+#define _0 S(48);
+#define _1 S(49);
+#define _2 S(50);
+#define _3 S(51);
+#define _4 S(52);
+#define _5 S(53);
+#define _6 S(54);
+#define _7 S(55);
+#define _8 S(56);
+#define _9 S(57);
+#define _ddot S(58);
+#define _sc S(59);
+#define _less S(60);
+#define _eq S(61);
+#define _gr S(62);
+#define _qm S(63);
+#define _at S(64);
 
 #define _A S(65);
 #define _B S(66);
@@ -135,7 +154,7 @@ const vec2 vFontSize  = vec2(8.0, 15.0);  // multiples of 4x5 work best
 //----------------------------------------------------------
 // return font image intensity of character ch at text position tp
 //----------------------------------------------------------
-float char(int ch)
+float fontChar(int ch)
 {
   // Fixed texture coordinate calculation (same as AmigaSinus1 & 2)
   float x = float(ch - ch/16*16);  // Column (0-15)

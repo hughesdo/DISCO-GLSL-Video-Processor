@@ -88,7 +88,7 @@ const vec2 vFontSize  = vec2(8.0, 15.0);  // multiples of 4x5 work best
 
 //----- access to the image of ascii code characters ------
 #define SPACE tp.x-=FONT_SPACE;
-#define S(a) c+=char(a);   tp.x-=FONT_SPACE;
+#define S(a) c+=fontChar(a);   tp.x-=FONT_SPACE;
 
 #define _note  S(10);
 #define _star  S(28);
@@ -197,7 +197,7 @@ const vec2 vFontSize  = vec2(8.0, 15.0);  // multiples of 4x5 work best
 //----------------------------------------------------------
 // return font image intensity of character ch at text position tp
 //----------------------------------------------------------
-float char(int ch)
+float fontChar(int ch)
 {
   // Fixed texture coordinate calculation (same as AmigaSinus1 & 2)
   float x = float(ch - ch/16*16);  // Column (0-15)
@@ -401,7 +401,7 @@ vec3 Plasma()
 #define NUM_FACES 4
 #define IN_RADIUS 0.25
 #define OUT_RADIUS 0.70
-#define SCROLL_SPEED -0.9
+#define CYLINDER_SCROLL_SPEED -0.9
 #define COLOR_1 0.8, 0.1, 0.1  // Red
 #define COLOR_2 0.1, 0.1, 0.8  // Blue
 #define COLOR_3 0.9, 0.9, 0.9  // White
@@ -429,7 +429,7 @@ vec4 patrioticSlice(float x0, float x1, vec2 uv)
     col *= smoothstep(0.05, 0.10, u) * smoothstep(0.95, 0.90, u) + 0.5;
 
     // Checker board pattern with audio-reactive scrolling
-    uv.y += time * (SCROLL_SPEED + midLevel * 0.5);
+    uv.y += time * (CYLINDER_SCROLL_SPEED + midLevel * 0.5);
 
     // Anti-aliased checker pattern with treble reactivity
     col *= (-1.0 + 2.0 * smoothstep(-0.03, 0.03, sin(u * 3.14159 * 4.0) * cos(uv.y * (16.0 + trebleLevel * 8.0)))) * (1.0/16.0) + 0.7;

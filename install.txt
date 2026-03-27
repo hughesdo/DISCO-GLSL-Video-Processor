@@ -1,0 +1,85 @@
+DISCO - Installation Instructions
+=================================
+
+PREREQUISITES
+-------------
+
+1. Python 3.8 or higher
+   - Download from: https://www.python.org/downloads/
+   - IMPORTANT: Check "Add Python to PATH" during installation
+   - To verify: open a command prompt and type: python --version
+
+2. FFmpeg
+   - Download from: https://www.gyan.dev/ffmpeg/builds/
+     (get the "essentials" build)
+   - Extract the zip file somewhere (e.g. C:\ffmpeg)
+   - Add the "bin" folder to your system PATH:
+     * Search Windows for "Environment Variables"
+     * Under System Variables, find "Path" and click Edit
+     * Click New and add the path to the bin folder (e.g. C:\ffmpeg\bin)
+     * Click OK on all dialogs
+   - To verify: open a NEW command prompt and type: ffmpeg -version
+   - Alternative install methods:
+     * Chocolatey: choco install ffmpeg
+     * winget: winget install ffmpeg
+
+3. A modern web browser (Chrome, Firefox, Edge)
+
+4. A GPU with OpenGL 3.3+ support (most modern GPUs have this)
+
+
+INSTALLATION
+------------
+
+Option A - Automatic (recommended):
+  Double-click install.bat
+  This will check all prerequisites and install everything for you.
+
+Option B - Manual:
+  Open a command prompt in the Disco folder and run:
+    python -m venv disco_venv
+    disco_venv\Scripts\activate
+    pip install -r requirements.txt
+
+
+RUNNING THE APPLICATION
+-----------------------
+
+  Double-click startapp.bat
+
+  This starts the server and opens your browser to http://localhost:8000
+  Keep the command prompt window open while using the app.
+  Press Ctrl+C in the command prompt to stop the server.
+
+
+FIRST TIME USE
+--------------
+
+1. The browser should open automatically to http://localhost:8000
+2. Upload a video file and an audio file
+3. Select a shader from the dropdown menu
+4. Adjust the sliders to tweak the effect
+5. Click Render and wait for processing to complete
+6. Download or preview your processed video
+
+
+TROUBLESHOOTING
+---------------
+
+"python is not recognized"
+  -> Python is not in your PATH. Reinstall Python and check "Add to PATH".
+
+"ffmpeg is not recognized"
+  -> FFmpeg is not in your PATH. See the FFmpeg install steps above.
+     Make sure you opened a NEW command prompt after editing PATH.
+
+Server won't start / port in use
+  -> Another program is using port 8000. Close it, or edit startapp.bat
+     to use a different port (change 8000 to 8080).
+
+Black screen or OpenGL errors
+  -> Update your graphics drivers. You need OpenGL 3.3 or higher.
+
+Video processing fails
+  -> Make sure you have enough disk space for temporary files.
+  -> Try a different video format (MP4 with H.264 works best).

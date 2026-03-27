@@ -50,7 +50,7 @@ vec2 tp  = vec2(0);  // text position
 #define SCROLL_SPEED 2.0
 
 //----- access to the image of ascii code characters ------
-#define S(a) cc+=char(a); tp.x-=FONT_SPACE;
+#define S(a) cc+=fontChar(a); tp.x-=FONT_SPACE;
 
 #define _note  S(10);
 #define _star  S(28);
@@ -136,7 +136,7 @@ vec2 tp  = vec2(0);  // text position
 #define _9 S(57);
 
 // return character intensity of ch at position tp
-float char(int ch)
+float fontChar(int ch)
 {
   // Fixed texture coordinate calculation (same as AmigaSinus1)
   float x = float(ch - ch/16*16);  // Column (0-15)

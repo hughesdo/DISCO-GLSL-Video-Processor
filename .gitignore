@@ -1,4 +1,5 @@
 # Excluded Folders
+Notes and junk/
 OneOffRender/
 Outputs/
 Videos/
@@ -49,6 +50,9 @@ stream issue.txt
 *.7z
 *.tar
 *.gz
+
+# Claude Code
+.claude/
 
 # IDE
 .vscode/
